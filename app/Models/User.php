@@ -18,8 +18,13 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'pseudo',
         'email',
+        'status',
+        'avatar',
+        'contact',
+        'address',
+        'role',
         'password',
     ];
 
@@ -41,4 +46,31 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function tours()
+    {
+        return $this->hasMany(Tour::class);
+    }
+
+    public function slides()
+    {
+        return $this->hasMany(Slide::class);
+    }
+
+    public function testimonials()
+    {
+        return $this->hasMany(Testimonial::class);
+    }
+
+    public function isAdmin()
+    {
+        return $this->role === 'admin';
+    }
+
+    public function isUser()
+    {
+        return $this->role === 'user';
+    }
+
+
 }
