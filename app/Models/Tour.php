@@ -32,4 +32,9 @@ class Tour extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function tourImages()
+    {
+        return $this->hasMany(TourImages::class, 'tour_id');
+    }
 }
