@@ -28,8 +28,6 @@ class GalleriesController extends Controller
     public function index(Request $request)
     {
         try{
-            $galleries = $this->gelleryService->getAllGalleries(['id','image_url','status']);
-
             if ($request->ajax()) {
                 $galleries = $this->gelleryService->getAllGalleries(['id','image_url','status']);
 

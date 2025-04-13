@@ -2,17 +2,65 @@
 
 namespace App\Http\Controllers\ADMIN;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Services\ReservationServices;
 
 class ReservationsController extends Controller
 {
+    private $reservationService;
+
+    public function __construct(ReservationServices $reservationService)
+    {
+        $this->reservationService = $reservationService;
+    }
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        try{
+
+            if($request->ajax()){
+                $reservations = $this->reservationService->getAllReservations(['id','name','email','phone','status']);
+
+                return DataTables::of($reservations)
+                    ->addColumn('action', function ($row) {
+                        $editBtn = '<button type="button"
+                                        class="btn btn-outline-primary btn-sm btn-inline me-1"
+                                        title="Modifier le statut"
+                                        data-id="' . $row->id . '"
+                                        id="btn-edit-reservation-modal">
+                                        <i class="fa fa-edit"></i>
+                                    </button>';
+
+                        $deleteBtn = '';
+
+                        if (Auth::check() && Auth::user()->isAdmin()) {
+                            $deleteBtn = '<button type="button"
+                                            class="btn btn-outline-danger btn-sm btn-inline ms-1"
+                                            title="Supprimer la réservation"
+                                            data-id="' . $row->id . '"
+                                            id="btn-delete-reservation-confirm">
+                                            <i class="fa fa-trash"></i>
+                                        </button>';
+                        }
+
+                        return '<div class="d-flex justify-content-center">' . $editBtn . $deleteBtn . '</div>';
+                    })
+                    ->rawColumns(['action'])
+                    ->make(true);
+            }
+
+            return view('backoffice.reservations.index');
+
+        }catch (Exception $e) {
+            return response()->json([
+                'status' => false,
+                'message' => 'An error occurred while fetching the data.',
+                'error' => $e->getMessage(),
+            ], 500);
+        }
     }
 
     /**
