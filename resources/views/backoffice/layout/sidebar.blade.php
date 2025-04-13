@@ -4,7 +4,7 @@
             <div class="sb-sidenav-menu-heading">Core</div>
                 @include('backoffice.widget.nav_link', ['url' => route('admin.dashboard'), 'icon' => 'fa-tachometer-alt', 'name' => 'sidebar.dashboard'])
             <div class="sb-sidenav-menu-heading">ADMIN</div>
-                @include('backoffice.widget.nav_link', ['url' => '', 'icon' => 'fa-images', 'name' => 'sidebar.gallery', 'ids' => 'gallery-count', 'faIcons' => false])
+                @include('backoffice.widget.nav_link', ['url' => route('admin.gallery.index'), 'icon' => 'fa-images', 'name' => 'sidebar.gallery', 'ids' => 'gallery-count', 'faIcons' => false])
                 @include('backoffice.widget.nav_link', ['url' => '', 'icon' => 'fa-calendar-check', 'name' => 'sidebar.reservation', 'ids' => 'reservation-count', 'faIcons' => false])
                 @include('backoffice.widget.nav_link', ['url' => '','icon' => 'fa-sliders-h', 'name' => 'sidebar.slide', 'ids' => 'slides-count'])
                 @include('backoffice.widget.nav_link', ['url' => '','icon' => 'fa-comment-dots', 'name' => 'sidebar.testimonial', 'ids' => 'testimonial-count'])

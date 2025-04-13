@@ -14,6 +14,7 @@ class Gallery extends Model
 
     public $fillable = [
         'image_url',
+        'status'
     ];
 
     public $casts = [

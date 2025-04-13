@@ -18,8 +18,6 @@ return new class extends Migration
             $table->text('message');
             $table->tinyInteger('rating')->default(5);
             $table->enum('status',['publish','archived'])->default('archived');
-            $table->unsignedBigInteger('user_id')->nullable();
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->softDeletes();
             $table->timestamps();
         });

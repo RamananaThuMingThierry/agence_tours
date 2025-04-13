@@ -4,7 +4,7 @@ namespace App\Services;
 
 use App\Repositories\GalleryRepository;
 
-class GalleryServices{
+class GallerieServices{
 
     protected $galleryRepository;
 

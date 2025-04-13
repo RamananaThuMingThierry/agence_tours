@@ -2,17 +2,49 @@
 
 namespace App\Http\Controllers\ADMIN;
 
-use App\Http\Controllers\Controller;
+use Exception;
 use Illuminate\Http\Request;
+use App\Services\GallerieServices;
+use App\Http\Controllers\Controller;
+use Yajra\DataTables\Facades\DataTables;
+use Symfony\Component\VarDumper\Cloner\Data;
 
 class GalleriesController extends Controller
 {
+    private $gelleryService;
+
+    public function __construct(GallerieServices $gelleryService)
+    {
+        $this->gelleryService = $gelleryService;
+    }
+
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        try{
+            $galleries = $this->gelleryService->getAllGalleries(['id','image_url','status']);
+
+            if ($request->ajax()) {
+                $galleries = $this->gelleryService->getAllGalleries(['id','image_url','status']);
+    
+                return DataTables::of($galleries)
+                    ->addColumn('image_url', function ($row) {
+                        return '<img src="' . asset($row->image_url) . '" alt="Image" width="100">';
+                    })
+                    ->addColumn('action', function ($row) {
+                        return '<a href="' . route('admin.galleries.edit', $row->id) . '" class="btn btn-sm btn-primary">Modifier</a>';
+                    })
+                    ->rawColumns(['image_url', 'action'])
+                    ->make(true);
+            }
+    
+            return view('backoffice.galleries.index');
+
+        }catch(Exception $e){
+            return response()->json(['error' => $e->getMessage()], 500);
+        }
     }
 
     /**

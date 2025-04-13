@@ -18,8 +18,6 @@ return new class extends Migration
             $table->string('image');
             $table->text('description')->nullable();
             $table->integer('order')->default(0);
-            $table->unsignedBigInteger('user_id')->nullable();
-            $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
             $table->softDeletes();
             $table->timestamps();
         });

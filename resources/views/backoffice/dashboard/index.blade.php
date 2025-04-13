@@ -1,6 +1,6 @@
 @extends('backoffice.admin')
 
-@section('titre', 'Dashboard')
+@section('titre', __('title.dashboard'))
     
 @section('content')
     

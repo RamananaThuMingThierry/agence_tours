@@ -8,6 +8,7 @@ use App\Http\Controllers\AUTH\WaitingController;
 use App\Http\Controllers\ADMIN\ProfileController;
 use App\Http\Controllers\AUTH\RegisterController;
 use App\Http\Controllers\ADMIN\DashboardController;
+use App\Http\Controllers\ADMIN\GalleriesController;
 use App\Http\Controllers\AUTH\ResetPasswordController;
 use App\Http\Controllers\AUTH\ForgetPasswordController;
 
@@ -47,7 +48,7 @@ Route::middleware('auth')->group(function(){
 
 Route::prefix('backoffice')->name('admin.')->middleware(['auth','check.status'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-    
+    Route::resource('gallery', GalleriesController::class);
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
 });
 

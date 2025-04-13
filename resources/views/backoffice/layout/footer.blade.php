@@ -1,8 +1,7 @@
-<footer class="py-4 bg-light mt-auto">
+<footer class="py-2 bg-light mt-auto">
     <div class="container-fluid px-4">
-        <div class="d-flex align-items-center justify-content-between small flex-column flex-sm-row">
-            <div class="footer-brand">AntaTech-Solutions - {{ date('Y') }}</div>
-            <div class="text-danger fw-bold footer-text">ANTALAHA REHAREHANTSIKA</div>
+        <div class="d-flex align-items-center justify-content-center small flex-column flex-sm-row">
+            <div>@copyright - 2025</div>
         </div>
     </div>
 </footer>

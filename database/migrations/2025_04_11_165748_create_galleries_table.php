@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('galleries', function (Blueprint $table) {
             $table->id();
             $table->string('image_url');
+            $table->enum('status',['publish','archived'])->default('archived');
             $table->softDeletes();
             $table->timestamps();
         });

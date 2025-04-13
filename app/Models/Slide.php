@@ -17,8 +17,7 @@ class Slide extends Model
         'subtitle',
         'image',
         'description',
-        'order',
-        'user_id',
+        'order'
     ];
 
     public $casts = [
@@ -27,9 +26,4 @@ class Slide extends Model
     ];
 
     protected $dates = ['deleted_at'];
-
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
 }

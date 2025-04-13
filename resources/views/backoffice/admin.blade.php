@@ -9,7 +9,7 @@
         <link rel="shortcut icon" href="{{ asset(config('public_path.public_path').'images/logo.jpg') }}" type="image/x-icon">
         <meta name="author" content="RAMANANA Thu Ming Thierry" />
         <meta name="description" content="Agence Tours" />
-        <title>@yield('titre', 'Agence Tours')</title>
+        <title>@yield('titre', __('title.default'))</title>
         @include('backoffice.layout.styles')
         @stack('styles')
     </head>

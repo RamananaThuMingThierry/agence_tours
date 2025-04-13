@@ -17,8 +17,7 @@ class Tour extends Model
         'slug',
         'image',
         'price',
-        'status',
-        'user_id',
+        'status'
     ];
 
     public $casts = [
@@ -27,11 +26,6 @@ class Tour extends Model
     ];
 
     protected $dates = ['deleted_at'];
-
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
 
     public function tourImages()
     {

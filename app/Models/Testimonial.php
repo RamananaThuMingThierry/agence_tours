@@ -17,8 +17,7 @@ class Testimonial extends Model
         'message',
         'image',
         'status',
-        'rating',
-        'user_id',
+        'rating'
     ];
 
     public $casts = [
@@ -26,9 +25,4 @@ class Testimonial extends Model
     ];
 
     protected $dates = ['deleted_at'];
-
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
 }
