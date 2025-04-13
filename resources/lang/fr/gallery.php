@@ -7,6 +7,7 @@ return [
     'add'     => 'Nouvelle image',
     'edit'    => 'Modifier l\'image',
     'delete'  => 'Supprimer l\'image',
-    'active'  => 'Publier',
-    'inactive'=> 'Archiver',
+    'publish'  => 'Publier',
+    'archived'    => 'Archiver',
+    'image_added' => 'L\'image a été ajoutée.',
 ];
