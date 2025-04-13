@@ -7,28 +7,29 @@
 @endpush
 
 @section('content')
+    @include('backoffice.galleries.form')
     <div class="row pt-2">
         <div class="col-12 d-flex align-items-center justify-content-between">
-        <h2 class="text-primary">@yield('titre')</h2>
-        <a class="btn btn-sm btn-success shadow-sm d-flex align-items-center" href="{{ route('admin.gallery.create') }}">
-            <i class="fas fa-plus p-1 text-white-50"></i>
-            <span class="d-none d-sm-inline">&nbsp;{{ __('gallery.add') }}</span>
-        </a>
+            <h2 class="text-primary">@yield('titre')</h2>
+            <button class="btn btn-sm btn-success shadow-sm d-flex align-items-center" data-bs-toggle="modal" data-bs-target="#galleryModal">
+                <i class="fas fa-plus p-1 text-white-50"></i>
+                <span class="d-none d-sm-inline">&nbsp;{{ __('gallery.add') }}</span>
+            </button>        
         </div>
     </div>
     <div class="row mb-2">
         <div class="col-12">
         <div class="card rounded-0 p-3 shadow-sm">
                 <div class="table-responsive">
-                <table id="datatables" class="table table-striped table-bordered display w-100">
-                    <thead class="table-dark">
-                    <th scope="col">{{ __('gallery.image') }}</th>
-                    <th scope="col">{{ __('gallery.status') }}</th>
-                    <th scope="col" class="text-center">{{ __('gallery.actions') }}</th>
-                    </thead>
-                    <tbody>
-                    </tbody>
-                </table>
+                    <table id="datatables" class="table table-striped table-bordered display w-100">
+                        <thead class="table-dark">
+                        <th class="text-center" scope="col">{{ __('gallery.image') }}</th>
+                        <th class="text-center" scope="col">{{ __('gallery.status') }}</th>
+                        <th class="text-center" scope="col" class="text-center">{{ __('gallery.actions') }}</th>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
@@ -45,8 +46,10 @@
           serverSide: false,
           responsive: true,
           columns: [
-              { data: 'image_url' },
-              { data: 'status'},
+              { data: 'image_url', className: 'text-center'},
+              { data: 'status', className: 'text-center', render: function(data, type, row) {
+                  return data === 'publish' ? '<span class="badge bg-success">Publié</span>' : '<span class="badge bg-secondary">Archivé</span>';
+              }},
               { data: 'action', name: 'action', orderable: false, searchable: false }
           ],
           dom: '<"row"<"col-sm-6"B><"col-sm-6">>' +
@@ -123,6 +126,36 @@
         $('#btn-refresh').click(function() {
           table.ajax.reload(null, false); // Reload the data without resetting pagination
         });
+
+        $('#galleryForm').on('submit', function(e) {
+            e.preventDefault();
+
+            let formData = new FormData(this);
+            $('#galleryForm input, #galleryForm select').removeClass('is-invalid');
+            $('#galleryForm .invalid-feedback').text('');
+
+            $.ajax({
+                url: "{{ route('admin.gallery.store') }}",
+                type: "POST",
+                data: formData,
+                contentType: false,
+                processData: false,
+                success: function(response) {
+                    $('#galleryModal').modal('hide');
+                    $('#galleryForm')[0].reset();
+                    $('#datatables').DataTable().ajax.reload();
+                    toastr.success('Galerie ajoutée avec succès');
+                },
+                error: function(xhr) {
+                    let errors = xhr.responseJSON.errors;
+                    for (let key in errors) {
+                        $('#'+key).addClass('is-invalid');
+                        $('#error-'+key).text(errors[key][0]);
+                    }
+                }
+            });
+        });
+        
       });
     </script> 
 @endpush
