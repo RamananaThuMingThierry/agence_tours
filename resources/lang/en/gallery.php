@@ -10,4 +10,6 @@ return [
     'publish'  => 'Publish',
     'archived'    => 'Archive',
     'image_added' => 'The image has been added.',
+    'status_updated' => 'Status has been updated.',
+    'deleted' => 'Image deleted successfully.',
 ];

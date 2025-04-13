@@ -35,21 +35,32 @@ class GalleriesController extends Controller
 
                 return DataTables::of($galleries)
                     ->addColumn('image_url', function ($row) {
-                        return '<img src="' . asset(config('public_path.public_path').'galleries/'.$row->image_url) . '" alt="Image" width="30" height="30" class="rounded-2">';
+                        $src = asset(config('public_path.public_path').'galleries/'.$row->image_url);
+                        return '<img src="' . $src . '" data-src="'.$src.'" class="rounded-2 gallery-image" width="30" height="30" style="cursor: pointer;" alt="Image">';
                     })
                     ->addColumn('action', function ($row) {
-                           $viewEditButton =   '<a href="'. route('admin.gallery.edit', $row->id) . '" class="btn btn-outline-primary btn-sm btn-inline" title="Modifier le status">
-                                                    <i class="fa fa-edit"></i>
-                                                </a>';
-                            $deleteButtons = '';
+                        $editBtn = '<button type="button"
+                                        class="btn btn-outline-primary btn-sm btn-inline me-1"
+                                        title="Modifier le statut"
+                                        data-id="' . $row->id . '"
+                                        data-status="' . $row->status . '"
+                                        id="btn-edit-gallery-modal">
+                                        <i class="fa fa-edit"></i>
+                                    </button>';
 
-                            if (Auth::check() && Auth::user()->isAdmin()) {
-                                $deleteButtons = '<a href="javascript:void(0)" type="button" class="btn btn-outline-danger btn-sm btn-inline ms-1" title="Supprimer une image" id="btn-delete-gallery-form-modal" data-id="' . $row->id . '">
-                                        <i class="fa fa-trash"></i>
-                                    </a>';
-                            }
+                        $deleteBtn = '';
 
-                            return '<div class="d-flex justify-content-center">' . $viewEditButton . $deleteButtons . '</div>';
+                        if (Auth::check() && Auth::user()->isAdmin()) {
+                            $deleteBtn = '<button type="button"
+                                              class="btn btn-outline-danger btn-sm btn-inline ms-1"
+                                              title="Supprimer l\'image"
+                                              data-id="' . $row->id . '"
+                                              id="btn-delete-gallery-confirm">
+                                              <i class="fa fa-trash"></i>
+                                          </button>';
+                        }
+
+                        return '<div class="d-flex justify-content-center">' . $editBtn . $deleteBtn . '</div>';
                     })
                     ->rawColumns(['image_url', 'action'])
                     ->make(true);
@@ -98,16 +109,29 @@ class GalleriesController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'status' => 'required|in:publish,archived'
+        ]);
+
+        $gallery = Gallery::findOrFail($id);
+        $gallery->status = $request->status;
+        $gallery->save();
+
+        return response()->json(['message' => __('gallery.status_updated')]);
     }
+
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
+        $gallery = Gallery::findOrFail($id);
+        $gallery->delete();
+
+        return response()->json(['message' => __('gallery.deleted')]);
     }
+
 }

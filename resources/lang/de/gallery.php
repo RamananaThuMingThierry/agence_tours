@@ -9,5 +9,7 @@ return [
     'delete'  => 'Bild löschen',
     'publish'  => 'Veröffentlichen',
     'archived'    => 'Archiviert',
-    'image_added' => 'Das Bild wurde hinzugefügt.'
+    'image_added' => 'Das Bild wurde hinzugefügt.',
+    'status_updated' => 'Der Status wurde aktualisiert.',
+    'deleted' => 'Bild erfolgreich gelöscht.',
 ];

@@ -1,19 +1,19 @@
-<!-- Modal d'édition -->
+<!-- Modal de modification du statut -->
 <div class="modal fade" id="editGalleryModal" tabindex="-1" aria-labelledby="editGalleryModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <form id="editGalleryForm">
         @csrf
         @method('PUT')
-        <input type="hidden" name="id" id="edit-id">
+        <input type="hidden" id="edit-id" name="id">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="editGalleryModalLabel">{{ __('gallery.edit') }}</h5>
+            <h5 class="modal-title">Mettre à jours le status</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
           </div>
           <div class="modal-body">
             <div class="mb-3">
-              <label for="edit-status" class="form-label">{{ __('gallery.status') }}</label>
-              <select class="form-select" name="status" id="edit-status">
+              <label for="edit-status">{{ __('gallery.status') }}</label>
+              <select name="status" id="edit-status" class="form-select">
                 <option value="publish">{{ __('gallery.publish') }}</option>
                 <option value="archived">{{  __('gallery.archived') }}</option>
               </select>
@@ -21,11 +21,12 @@
             </div>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ __('gallery.cancel') }}</button>
-            <button type="submit" class="btn btn-primary">Mettre à jour</button>
+            <button type="submit" class="btn btn-sm btn-primary" id="btn-update-status">
+                <span class="spinner-border spinner-border-sm d-none me-1" role="status" aria-hidden="true"></span>
+                <span class="btn-text"><i class="fas fa-save"></i>&nbsp;{{ __('form.save') }}</span>
+            </button>
           </div>
         </div>
       </form>
     </div>
   </div>
-  

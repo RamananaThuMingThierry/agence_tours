@@ -6,4 +6,5 @@ return [
     'delete' => 'Supprimer',
     'add' => 'Ajouter',
     'edit' => 'Modifier',
+    'in_progress' => 'En cours',
 ];

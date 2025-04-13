@@ -17,18 +17,20 @@
                 <div class="mb-3">
                     <label for="status" class="form-label">{{ __('gallery.status') }}</label>
                     <select class="form-select" name="status" id="status">
-                        <option value="publish">Publié</option>
-                        <option value="archived">Archivé</option>
+                        <option value="publish">{{ __('gallery.publish') }}</option>
+                        <option value="archived">{{ __('gallery.archived') }}</option>
                     </select>
                     <div class="invalid-feedback" id="error-status"></div>
                 </div>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-sm btn-outline-danger" data-bs-dismiss="modal"><i class="fas fa-arrow-left"></i>&nbsp;{{ __('form.cancel') }}</button>
-              <button type="submit" class="btn btn-sm btn-primary"><i class="fas fa-save"></i>&nbsp;{{ __('form.save') }}</button>
+                <button type="button" class="btn btn-sm btn-outline-danger" data-bs-dismiss="modal"><i class="fas fa-arrow-left"></i>&nbsp;{{ __('form.cancel') }}</button>
+                <button type="submit" class="btn btn-sm btn-primary" id="btn-save-gallery">
+                    <span class="spinner-border spinner-border-sm d-none me-1" role="status" aria-hidden="true"></span>
+                    <span class="btn-text"><i class="fas fa-save"></i>&nbsp;{{ __('form.save') }}</span>
+                </button>
             </div>
           </div>
       </form>
     </div>
   </div>
-  
