@@ -14,4 +14,11 @@ return [
     'seen' => 'Seen',
     'pending' => 'Pending',
     'actions' => 'Actions',
+    'description' => 'Description',
+    'date' => 'Date',
+    'time' => 'Time',
+    'price' => 'Price',
+    'image' => 'Image',
+    'duration' => 'Duration',
+    'location' => 'Location',
 ];

@@ -16,4 +16,11 @@ return [
     'seen' => 'Vu',
     'pending' => 'En attente',
     'actions' => 'Actions',
+    'description' => 'Description',
+    'date' => 'Date',
+    'time' => 'Heure',
+    'price' => 'Prix',
+    'image' => 'Image',
+    'duration' => 'Durée',
+    'location' => 'Emplacement',
 ];

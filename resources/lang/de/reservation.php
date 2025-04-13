@@ -14,4 +14,7 @@ return [
     'search' => 'Nach Reservierungen suchen',
     'no_reservations_found' => 'Keine Reservierungen gefunden.',
     'reservation_details' => 'Reservierungsdetails',
+    'created' => 'Reservierung erfolgreich hinzugefügt.',
+    'error_create' => 'Beim Erstellen der Reservierung ist ein Fehler aufgetreten.',
+    'invalid_tour' => 'Die ausgewählte Tour ist ungültig.',
 ];

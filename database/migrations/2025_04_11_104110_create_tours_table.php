@@ -16,7 +16,6 @@ return new class extends Migration
             $table->string('title');
             $table->text('description')->nullable();
             $table->string('slug')->unique();
-            $table->string('image')->nullable();
             $table->decimal('price', 10, 2);
             $table->enum('status', ['active', 'inactive'])->default('inactive');
             $table->softDeletes();

@@ -14,4 +14,11 @@ return [
     'seen' => 'Gesehen',
     'pending' => 'Ausstehend',
     'actions' => 'Aktionen',
+    'description' => 'Beschreibung',
+    'date' => 'Datum',
+    'time' => 'Uhrzeit',
+    'price' => 'Preis',
+    'image' => 'Bild',
+    'duration' => 'Dauer',
+    'location' => 'Standort',
 ];

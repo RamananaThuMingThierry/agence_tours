@@ -15,7 +15,6 @@ class Tour extends Model
         'title',
         'description',
         'slug',
-        'image',
         'price',
         'status'
     ];

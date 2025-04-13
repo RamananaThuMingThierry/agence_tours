@@ -14,4 +14,7 @@ return [
     'search' => 'Search Reservations',
     'no_reservations_found' => 'No reservations found.',
     'reservation_details' => 'Reservation Details',
+    'created' => 'Reservation added successfully.',
+    'error_create' => 'An error occurred while creating the reservation.',
+    'invalid_tour' => 'The selected tour is invalid.',
 ];

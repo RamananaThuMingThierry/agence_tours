@@ -11,7 +11,7 @@ class TourRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -21,8 +21,21 @@ class TourRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
-            //
+        $rules =  [
+            'title' => 'required|string|max:255',
+            'description' => 'nullable|string',
+            'price' => 'required|numeric|min:0',
         ];
+
+            
+        if ($this->isMethod('post')) {
+            $rules['images'] = 'required|array';
+            $rules['images.*'] = 'required|image|mimes:jpeg,png,jpg';
+        } else {
+            $rules['images'] = 'nullable|array';
+            $rules['images.*'] = 'nullable|image|mimes:jpeg,png,jpg';
+        }
+
+        return $rules;
     }
 }

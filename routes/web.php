@@ -10,19 +10,10 @@ use App\Http\Controllers\AUTH\RegisterController;
 use App\Http\Controllers\ADMIN\DashboardController;
 use App\Http\Controllers\ADMIN\GalleriesController;
 use App\Http\Controllers\ADMIN\ReservationsController;
+use App\Http\Controllers\ADMIN\TourController;
 use App\Http\Controllers\AUTH\ResetPasswordController;
 use App\Http\Controllers\AUTH\ForgetPasswordController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
 Route::get('lang/{lang}', [LanguesController::class, 'changeLanguage'])->name('lang');
 
 Route::get('/login', [LoginController::class, 'showLogin'])->name('login');
@@ -50,6 +41,7 @@ Route::middleware('auth')->group(function(){
 Route::prefix('backoffice')->name('admin.')->middleware(['auth','check.status'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::resource('gallery', GalleriesController::class);
+    Route::resource('tours', TourController::class);
     Route::resource('reservations', ReservationsController::class);
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
 });
