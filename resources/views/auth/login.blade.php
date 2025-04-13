@@ -74,8 +74,6 @@
 @endsection
 
 @push('script')
-    <!-- reCAPTCHA v3 -->
-    <script src="https://www.google.com/recaptcha/api.js?render={{ config('services.recaptcha.sitekey') }}"></script>
     <script>
         $(document).ready(function () {
             $('#login-form').on('submit', function (e) {
@@ -88,46 +86,40 @@
 
                 // Désactiver le bouton et afficher un spinner
                 button.html(loadingContent).prop('disabled', true);
+                
+                // Envoyer le formulaire avec AJAX
+                $.ajax({
+                    url: form.attr('action'),
+                    method: "POST",
+                    data: form.serialize(),
+                    headers: {
+                        'X-CSRF-TOKEN': $('input[name="_token"]').val()
+                    },
+                    success: function (response) {
+                        if (response.success) {
+                            Swal.fire({
+                                title: 'Connexion réussie!',
+                                text: 'Vous serez redirigé vers votre tableau de bord...',
+                                icon: 'success',    
+                            });
+                            button.html(originalContent).prop('disabled', false);
+                            window.location.href = "{{ route('admin.dashboard') }}";
+                        }
+                    },
+                    error: function (xhr) {
+                        button.html(originalContent).prop('disabled', false);
 
-                grecaptcha.ready(function () {
-                    grecaptcha.execute("{{ config('services.recaptcha.sitekey') }}", { action: "login" }).then(function (token) {
-                        $('#g-recaptcha-response').val(token);
-
-                        // Envoyer le formulaire avec AJAX
-                        $.ajax({
-                            url: form.attr('action'),
-                            method: "POST",
-                            data: form.serialize(),
-                            headers: {
-                                'X-CSRF-TOKEN': $('input[name="_token"]').val()
-                            },
-                            success: function (response) {
-                                if (response.success) {
-                                    Swal.fire({
-                                        title: 'Connexion réussie!',
-                                        text: 'Vous serez redirigé vers votre tableau de bord...',
-                                        icon: 'success',    
-                                    });
-                                    button.html(originalContent).prop('disabled', false);
-                                    window.location.href = "{{ route('admin.dashboard') }}";
-                                }
-                            },
-                            error: function (xhr) {
-                                button.html(originalContent).prop('disabled', false);
-
-                                if (xhr.status === 422) {
-                                    var response = xhr.responseJSON;
-                                    
-                                    // Afficher les erreurs
-                                    if (response.errors && response.errors["g-recaptcha-response"]) {
-                                        $('#recaptcha-error').text(response.errors["g-recaptcha-response"][0]).show();
-                                    }
-                                } else {
-                                    Swal.fire('Erreur!', 'Une erreur inattendue s\'est produite.', 'error');
-                                }
+                        if (xhr.status === 422) {
+                            var response = xhr.responseJSON;
+                            
+                            // Afficher les erreurs
+                            if (response.errors && response.errors["g-recaptcha-response"]) {
+                                $('#recaptcha-error').text(response.errors["g-recaptcha-response"][0]).show();
                             }
-                        });
-                    });
+                        } else {
+                            Swal.fire('Erreur!', 'Une erreur inattendue s\'est produite.', 'error');
+                        }
+                    }
                 });
             });
         });

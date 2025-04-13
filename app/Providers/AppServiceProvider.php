@@ -12,10 +12,12 @@ use Illuminate\Support\ServiceProvider;
 use App\Interfaces\ReservationInterface;
 use App\Interfaces\TestimonialInterface;
 use App\Interfaces\TourImagesInterface;
+use App\Interfaces\UserInterface;
 use App\Repositories\GalleryRepository;
 use App\Repositories\ReservationRepository;
 use App\Repositories\TestimonialRepository;
 use App\Repositories\TourImagesRepository;
+use App\Repositories\UserRepository;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -30,6 +32,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(TourInterface::class, TourRepository::class);
         $this->app->bind(GalleryInterface::class, GalleryRepository::class);
         $this->app->bind(TourImagesInterface::class, TourImagesRepository::class);
+        $this->app->bind(UserInterface::class, UserRepository::class);
     }
 
     /**

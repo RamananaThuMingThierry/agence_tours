@@ -10,7 +10,7 @@
         <meta name="author" content="RAMANANA Thu Ming Thierry" />
         <meta name="description" content="Agence Tours" />
         <title>@yield('titre', 'Agence Tours')</title>
-        @include('admin.layout.styles')
+        @include('backoffice.layout.styles')
         @stack('styles')
     </head>
     <body class="sb-nav-fixed">

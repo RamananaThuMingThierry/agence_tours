@@ -19,7 +19,7 @@
       color: red !important;
     }
     .sb-sidenav-dark {
-        background-color: hsl(162, 79%, 13%) !important; /* Vert Bootstrap */
+        background-color: hsl(0, 0%, 9%) !important; /* Vert Bootstrap */
         color: white !important; /* Texte en blanc */
     }
 

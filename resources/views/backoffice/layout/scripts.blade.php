@@ -48,7 +48,7 @@
                 success: function (data) {
                     // Si la langue a été changée avec succès, mettre à jour l'interface
                     if (data.locale) {
-                        $('#current-lang').text(data.locale === 'fr' ? 'Français' : 'English');
+                        $('#current-lang').text(data.locale === 'fr' ? 'Français' : (data.locale === 'de' ? 'Deutsch' : 'English'));
                         location.reload();
                     }
                 },

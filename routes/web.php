@@ -1,9 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\LanguesController;
 use App\Http\Controllers\AUTH\LoginController;
 use App\Http\Controllers\ADMIN\UsersController;
+use App\Http\Controllers\AUTH\LanguesController;
+use App\Http\Controllers\AUTH\WaitingController;
+use App\Http\Controllers\ADMIN\ProfileController;
 use App\Http\Controllers\AUTH\RegisterController;
 use App\Http\Controllers\ADMIN\DashboardController;
 use App\Http\Controllers\AUTH\ResetPasswordController;
@@ -19,6 +21,7 @@ use App\Http\Controllers\AUTH\ForgetPasswordController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::get('lang/{lang}', [LanguesController::class, 'changeLanguage'])->name('lang');
 
 Route::get('/login', [LoginController::class, 'showLogin'])->name('login');
 
@@ -37,21 +40,17 @@ Route::group(['middleware' => 'guest'], function(){
     Route::post('/reset-password', [ResetPasswordController::class, 'reset'])->name('password.reset');
 });
 
-Route::prefix('admin')->name('admin.')->middleware(['auth','check.status'])->group(function () {
-    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-
-    Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
-});
-
 Route::middleware('auth')->group(function(){
-    Route::get('/waiting/user', [UsersController::class, 'waiting'])->name('status.not.approuved');
+    Route::get('/waiting/user', [WaitingController::class, 'waiting'])->name('status.not.approuved');
     Route::post('/logout', [UsersController::class, 'logout'])->name('logout');
 });
 
-
-Route::middleware(['locale'])->group(function () {
-    Route::get('lang/{lang}', [LanguesController::class, 'changeLanguage'])->name('lang');
+Route::prefix('backoffice')->name('admin.')->middleware(['auth','check.status'])->group(function () {
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    
+    Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
 });
+
 
 Route::fallback(function () {
     return response()->view('errors.404', [], 404);

@@ -11,7 +11,7 @@
 @endpush
    
 @section('content')
-  @include('admin.modal.logout')
+  @include('backoffice.modal.logout')
   <div class="container d-flex justify-content-center align-items-center min-vh-100">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -20,7 +20,7 @@
                 <div class="card-body">
                   <div class="row">
                     <div class="col-md-4">
-                      <img src="{{ asset(config('public_path.public_path').'images/logo.jpg') }}" class="img-fluid rounded-pill" alt="">
+                      <img src="{{ asset(config('public_path.public_path').'utiles/logo.jpg') }}" class="img-fluid rounded-pill" alt="">
                     </div>
                     <div class="col-md-8 d-flex align-items-center justify-content-center">
                       <p class="text-muted">Bonjour Mr/Mm/Mlle <span class="text-primary">{{ Auth::user()->pseudo }}</span>, votre compte est en attente d'approbation par un administrateur. Vous recevrez un email une fois votre compte approuvé.</p>

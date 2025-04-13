@@ -72,5 +72,21 @@ class User extends Authenticatable
         return $this->role === 'user';
     }
 
+    public function isInactive()
+    {
+        return $this->status === 'inactive';
+    }
+    public function isActive()
+    {
+        return $this->status === 'active';
+    }
 
+    public function isInactiveAndUser()
+    {
+        return $this->isInactive() && $this->isUser();
+    }
+    public function isActiveAndAdmin()
+    {
+        return $this->isActive() && $this->isAdmin();
+    }
 }
