@@ -17,4 +17,6 @@ return [
     'created' => 'Reservierung erfolgreich hinzugefügt.',
     'error_create' => 'Beim Erstellen der Reservierung ist ein Fehler aufgetreten.',
     'invalid_tour' => 'Die ausgewählte Tour ist ungültig.',
+    'deleted' => 'Reservierung erfolgreich gelöscht.',
+    'confirm_delete_text' => 'Möchten Sie diese Reservierung wirklich löschen? Diese Aktion kann nicht rückgängig gemacht werden.',
 ];

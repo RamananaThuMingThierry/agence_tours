@@ -10,9 +10,13 @@ class ReservationRepository implements ReservationInterface
 {
     public function getAll($fields = [])
     {
-        return empty($fields)
-            ? Reservation::all()
-            : Reservation::select($fields)->get();
+        $query = Reservation::with('tour');
+
+        if (!empty($fields)) {
+            $query->select($fields);
+        }
+
+        return $query->get();
     }
 
     public function getById($id, $fields = [])

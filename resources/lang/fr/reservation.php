@@ -17,4 +17,6 @@ return [
     'created' => 'Réservation ajoutée avec succès.',
     'error_create' => 'Une erreur s’est produite lors de la création de la réservation.',
     'invalid_tour' => 'Le tour sélectionné est invalide.',
+    'deleted' => 'Réservation supprimée avec succès.',
+    'confirm_delete_text' => 'Êtes-vous sûr de vouloir supprimer cette réservation ? Cette action est irréversible.',
 ];

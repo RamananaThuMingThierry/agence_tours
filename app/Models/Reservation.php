@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Models\Tour;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -30,7 +32,7 @@ class Reservation extends Model
 
     public function tour()
     {
-        return $this->belongsTo(Tour::class);
+        return $this->belongsTo(Tour::class, 'tour_id');
     }
 
     public function user()

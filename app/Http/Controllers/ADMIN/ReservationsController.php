@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers\ADMIN;
 
+use Exception;
+use App\Models\Reservation;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\ReservationRequest;
 use Illuminate\Support\Facades\Auth;
 use App\Services\ReservationServices;
+use Illuminate\Support\Facades\Crypt;
 use Yajra\DataTables\Facades\DataTables;
-use Exception;
+use App\Http\Requests\ReservationRequest;
 
 class ReservationsController extends Controller
 {
@@ -26,33 +28,37 @@ class ReservationsController extends Controller
         try{
             if($request->ajax()){
 
-                $reservations = $this->reservationService->getAllReservations(['id','name','email','phone','status']);
+                $reservations = $this->reservationService->getAllReservations();
+
+                $reservations->map(function ($reservation) {
+                    $reservation->encrypted_id = Crypt::encryptString($reservation->id);
+                    unset($reservation->id);
+                    return $reservation;
+                });
 
                 return DataTables::of($reservations)
-                    // ->addColumn('action', function ($row) {
-                    //     $editBtn = '<button type="button"
-                    //                     class="btn btn-outline-primary btn-sm btn-inline me-1"
-                    //                     title="Modifier le statut"
-                    //                     data-id="' . $row->id . '"
-                    //                     id="btn-edit-reservation-modal">
-                    //                     <i class="fa fa-edit"></i>
-                    //                 </button>';
+                    ->addColumn('action', function ($row) {
+                        $viewBtn = '<button type="button"
+                            class="btn btn-outline-warning btn-sm btn-inline"
+                            title="' . __('form.seen') . '"
+                            data-id="' . $row->encrypted_id . '"
+                            id="btn-show-reservation">
+                            <i class="fa fa-eye"></i>
+                        </button>';
+                        $deleteBtn = '';
+                        if (Auth::check() && Auth::user()->isAdmin()) {
+                            $deleteBtn = '<button type="button"
+                                            class="btn btn-outline-danger btn-sm btn-inline ms-1"
+                                            title="Supprimer la réservation"
+                                            data-id="' . $row->encrypted_id . '"
+                                            id="btn-delete-reservation-confirm">
+                                            <i class="fa fa-trash"></i>
+                                        </button>';
+                        }
 
-                    //     $deleteBtn = '';
-
-                    //     if (Auth::check() && Auth::user()->isAdmin()) {
-                    //         $deleteBtn = '<button type="button"
-                    //                         class="btn btn-outline-danger btn-sm btn-inline ms-1"
-                    //                         title="Supprimer la réservation"
-                    //                         data-id="' . $row->id . '"
-                    //                         id="btn-delete-reservation-confirm">
-                    //                         <i class="fa fa-trash"></i>
-                    //                     </button>';
-                    //     }
-
-                    //     return '<div class="d-flex justify-content-center">' . $editBtn . $deleteBtn . '</div>';
-                    // })
-                    // ->rawColumns(['action'])
+                        return '<div class="d-flex justify-content-center">' . $viewBtn . $deleteBtn . '</div>';
+                    })
+                    ->rawColumns(['action'])
                     ->make(true);
             }
 
@@ -75,7 +81,7 @@ class ReservationsController extends Controller
     {
         $data = $request->validated();
 
-        $data['tour_id'] = 1;
+        $data['tour_id'] = 3;
         $data['status'] = 'pending';
 
         try {
@@ -88,7 +94,7 @@ class ReservationsController extends Controller
         } catch (Exception $e) {
             return response()->json([
                 'status' => false,
-                'message' => __('An error occurred while creating the reservation.'),
+                'message' => 'An error occurred while creating the reservation.',
                 'error' => $e->getMessage(),
             ], 500);
         }
@@ -97,32 +103,57 @@ class ReservationsController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show($encrypted_id)
     {
-        //
-    }
+        try {
+            $id = Crypt::decryptString($encrypted_id);
+            $reservation = Reservation::with('tour')->findOrFail($id);
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
+            if ($reservation->status === 'pending') {
+                $reservation->update(['status' => 'seen']);
+            }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
+            return response()->json([
+                'status' => true,
+                'data' => $reservation
+            ]);
+        } catch (Exception $e) {
+            return response()->json([
+                'status' => false,
+                'message' => 'Erreur lors de la récupération des détails.',
+                'error' => $e->getMessage()
+            ], 500);
+        }
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($encrypted_id)
     {
-        //
+        try {
+            $id = Crypt::decryptString($encrypted_id);
+            $reservation = Reservation::findOrFail($id);
+
+            if (!auth()->user() || !auth()->user()->isAdmin()) {
+                return response()->json([
+                    'status' => false,
+                    'message' => __('form.unauthorized')
+                ], 403);
+            }
+
+            $reservation->delete();
+
+            return response()->json([
+                'status' => true,
+                'message' => __('reservation.deleted')
+            ]);
+        } catch (\Exception $e) {
+            return response()->json([
+                'status' => false,
+                'message' => __('form.delete_error'),
+                'error' => $e->getMessage()
+            ], 500);
+        }
     }
 }

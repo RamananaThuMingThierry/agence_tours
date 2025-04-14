@@ -17,4 +17,6 @@ return [
     'created' => 'Reservation added successfully.',
     'error_create' => 'An error occurred while creating the reservation.',
     'invalid_tour' => 'The selected tour is invalid.',
+    'deleted' => 'Reservation deleted successfully.',
+    'confirm_delete_text' => 'Are you sure you want to delete this reservation? This action is irreversible.',
 ];
