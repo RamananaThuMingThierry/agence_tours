@@ -10,6 +10,7 @@ use App\Services\TourServices;
 use App\Http\Requests\TourRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Crypt;
 use Yajra\DataTables\Facades\DataTables;
 
@@ -60,7 +61,10 @@ class TourController extends Controller
                     $deleteButtons = '';
                     if (Auth::check() && Auth::user()->role == "admin") {
                         $deleteButtons = '
-                            <a href="javascript:void(0)" type="button" class="btn btn-outline-danger btn-sm btn-inline ms-1" title="Supprimer un tour" id="btn-delete-tour-form-modal" data-id="' . $row->id . '">
+                            <a href="javascript:void(0)"
+                            class="btn btn-outline-danger btn-sm btn-inline ms-1 btn-delete-tour"
+                            title="Supprimer un tour"
+                            data-id="' . $row->encrypted_id . '">
                                 <i class="fa fa-trash"></i>
                             </a>';
                     }
@@ -276,8 +280,47 @@ class TourController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(string $encryptedId)
     {
-        //
+        try {
+            // 🔐 Décrypter l’ID
+            $id = Crypt::decryptString($encryptedId);
+
+            // 🔎 Récupérer le tour avec ses images
+            $tour = $this->tourService->getTourById($id);
+
+            if (!$tour) {
+                return response()->json([
+                    'status' => false,
+                    'message' => __('tour.tour_not_found'),
+                ], 404);
+            }
+
+            // 🗑 Supprimer les fichiers images du dossier
+            foreach ($tour->images as $image) {
+                $imagePath = public_path('images/tours/' . $image->image);
+                if (File::exists($imagePath)) {
+                    File::delete($imagePath);
+                }
+
+                // Supprimer de la BDD
+                $image->delete();
+            }
+
+            // 🧹 Soft delete (ou hard delete si tu préfères)
+            $tour->delete();
+
+            return response()->json([
+                'status' => true,
+                'message' => __('tour.delete_success')
+            ], 200);
+        } catch (\Exception $e) {
+            return response()->json([
+                'status' => false,
+                'message' => __('form.delete_error'),
+                'error' => $e->getMessage()
+            ], 500);
+        }
     }
+
 }

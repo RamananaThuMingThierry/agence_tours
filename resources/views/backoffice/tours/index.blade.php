@@ -181,6 +181,62 @@
                 }
             });
         });
-      });
+
+        // Suppression avec confirmation SweetAlert
+    });
+
+    $(document).on('click', '.btn-delete-tour', function () {
+        let encryptedId = $(this).data('id');
+        let url = "{{ route('admin.tours.destroy', ':id') }}".replace(':id', encryptedId);
+
+        Swal.fire({
+            title: "{{ __('tour.delete_confirm') }}",
+            text: "{{ __('tour.delete_tour_confirm') }}",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#d33",
+            cancelButtonColor: "#6c757d",
+            confirmButtonText: "{{ __('form.yes') }}",
+            cancelButtonText: "{{ __('form.no') }}",
+            buttonsStyling: false,
+            customClass: {
+                confirmButton: 'btn btn-sm btn-primary',
+                cancelButton: 'btn btn-sm btn-danger ms-1'
+            }
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    url: url,
+                    type: 'POST',
+                    data: {
+                        _method: 'DELETE',
+                        _token: '{{ csrf_token() }}'
+                    },
+                    success: function (response) {
+                        Swal.fire({
+                            title: "{{ __('form.delete') }}",
+                            text: response.message,
+                            icon: "success",
+                            confirmButtonColor: "#3085d6"
+                        }).then(() => {
+                            $('#datatables').DataTable().ajax.reload(null, false);
+                        });
+                    },
+                    error: function (xhr) {
+                        let message = "{{ __('form.delete_error') }}";
+                        if (xhr.responseJSON && xhr.responseJSON.message) {
+                            message = xhr.responseJSON.message;
+                        }
+
+                        Swal.fire({
+                            title: "{{ __('form.error') }}",
+                            text: message,
+                            icon: "error"
+                        });
+                    }
+                });
+            }
+        });
+    });
     </script>
 @endpush
