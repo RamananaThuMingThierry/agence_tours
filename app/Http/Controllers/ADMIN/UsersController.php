@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\ADMIN;
 
 use Exception;
+use App\Models\User;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use App\Services\UserServices;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Crypt;
 use Yajra\DataTables\Facades\DataTables;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
@@ -14,143 +16,145 @@ class UsersController extends Controller
 {
     use AuthorizesRequests;
 
-    protected $userServcies;
+    protected $userService;
 
-    public function __construct(UserServices $userServcies)
+    public function __construct(UserServices $userService)
     {
-        $this->userServcies = $userServcies;
+        $this->userService = $userService;
     }
         /**
      * Display a listing of the resource.
      */
     public function index(Request $request)
     {
-        // try {
+        if ($request->ajax()) {
 
-        //     if ($request->ajax()) {
-        //         $utilisateurs = $this->userServcies->getAllUsers(['id','avatar','pseudo','contact','role','status']);
-        //         return DataTables::of($utilisateurs)
-        //             ->addColumn('action', function ($row) {
-        //                 $viewEditButton = '
-        //                     <a href="javascript:void(0)" class="btn btn-outline-warning btn-sm btn-inline" id="btn-show-utilisateur-modal" data-id="'.$row->id.'" title="Voir un utilisateur">
-        //                         <i class="fa fa-eye"></i>
-        //                     </a>
-                            
-        //                 ';
-        //                 // Vérifiez le rôle de l'utilisateur pour afficher les actions supplémentaires
-        //                 $deleteButtons = '';
-        //                 if (Auth::check() && Auth::user()->role == "admin") {
-        //                     $deleteButtons = '
-        //                         <a href="javascript:void(0)" class="btn btn-outline-primary btn-sm btn-inline ms-1" title="Modifier un utilisateur" id="btn-update-utilisateur-form-modal" data-id="'.$row->id.'">
-        //                             <i class="fa fa-edit"></i>
-        //                         </a>
-        //                         <a href="javascript:void(0)" type="button" class="btn btn-outline-danger btn-sm btn-inline ms-1" title="Supprimer un utilisateur" id="btn-delete-utilisateur-form-modal" data-id="'.$row->id.'">
-        //                             <i class="fa fa-trash"></i>
-        //                         </a>';
-        //                 }
-        //                 return '<div class="d-flex justify-content-center">'.$viewEditButton.$deleteButtons.'</div>';
-        //             })
-        //             ->rawColumns(['action'])
-        //             ->make(true);
-        //     }
+            $users = $this->userService->getAllUsers();
+            
+            $users->map(function ($user) {
+                $user->encrypted_id = Crypt::encryptString($user->id);
+                return $user;
+            });
+            
+            return DataTables::of($users)
+                ->addColumn('avatar', function ($user) {
+                    $src = $user->avatar
+                        ? asset('images/avatars/' . $user->avatar)
+                        : asset('images/avatars/default.png');
+                    return '<img src="' . $src . '" class="rounded-circle" width="30" height="30" alt="Avatar">';
+                })
+                ->addColumn('action', function ($user) {
+                    $showBtn = '<button type="button"
+                        class="btn btn-outline-warning btn-sm me-1"
+                        data-id="' . $user->encrypted_id . '"
+                        id="btn-show-user">
+                        <i class="fa fa-eye"></i>
+                    </button>';
+                    $edit = $delete = '';
+                    if (Auth::user()->isAdmin() && Auth::user()->id != $user->id) {
+                        $edit = '<button class="btn btn-sm btn-outline-primary me-1" data-id="'.$user->encrypted_id.'" data-role="'.$user->role.'" data-status="'.$user->status.'" id="btn-edit-user">
+                            <i class="fa fa-edit"></i>
+                        </button>';
+                        $delete = '<button class="btn btn-sm btn-danger"
+                            data-id="'.$user->id.'"
+                            id="btn-delete-user">
+                            <i class="fa fa-trash"></i>
+                        </button>';
+                    }
+                    return '<div class="d-flex justify-content-center">'. $showBtn . $edit . $delete . '</div>';
+                })
+                ->rawColumns(['avatar', 'action'])
+                ->make(true);
+        }
 
-        //     return view('admin.users.index');
-        // } catch (Exception $e) {
-        //     return response()->json(['error' => $e->getMessage()], 500);
-        // }       
+        return view('backoffice.users.index');
     }
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show($encrypted_id)
     {
-        // $user = $this->userServcies->getUserById($id);
+        try{
+            $id = Crypt::decryptString($encrypted_id);
 
-        // if(!$user){
-        //     abort(404);
-        // }
+            $user = $this->userService->getUserById($id);
 
-        // $imagePath = asset(config('public_path.public_path') . 'images/' . ($user->image ?? 'img.png'));
-        
-        // return response()->json([
-        //     'success' => true,
-        //     'user' => $user,
-        //     'imagePath' => $imagePath
-        // ]);
+            $user->avatar_url = $user->avatar ? asset('images/users/' . $user->avatar) : asset('images/avatars/default.png');
+    
+            return response()->json([
+                'status' => true,
+                'data' => $user
+            ]);
+        } catch (\Exception $e) {
+            return response()->json([
+                'status' => false,
+                'message' => __('form.delete_error'),
+                'error' => $e->getMessage()
+            ], 500);
+        }
     }
     
-    public function edit(string $id)
+    public function update(Request $request, $encrypted_id)
     {
-        // $user = $this->userServcies->getUserById($id);
+        $request->validate([
+            'role' => 'required|in:admin,user',
+            'status' => 'required|in:active,inactive',
+        ]);
+    
+        try{
+            $id = Crypt::decryptString($encrypted_id);
 
-        // if(!$user){
-        //     abort(404);
-        // }
-        // return response()->json([
-        //     'success' => true,
-        //     'user' => $user
-        // ]);
-    }
+            $user = $this->userService->getUserById($id);
 
-    public function approuve(Request $request, string $id)
-    {
-        // $user = $this->userServcies->getUserById($id);
-
-        // if (!$user) {
-        //     return response()->json([
-        //         'success' => false,
-        //         'message' => 'Utilisateur non trouvée'
-        //     ], 404);
-        // }
-            
-        // $data['roles'] = $request->role;
-        // $data['status'] = 'active';
-        // $user->update($data);
-
-        // return response()->json([
-        //     'success' => true,
-        //     'message' => 'Vous avez approuvé un utilisateur'
-        // ]);
-    }
-
-    public function update(Request $request, string $id)
-    {
-        // $user = User::find($id);
-
-        // if (!$user) {
-        //     return response()->json([
-        //         'success' => false,
-        //         'message' => 'Utilisateur non trouvée'
-        //     ], 404);
-        // }
-            
-        // $data['role'] = $request->role;
+            $user->update([
+                'role' => $request->role,
+                'status' => $request->status,
+            ]);
         
-        // $user->update($data);
-
-        // return response()->json([
-        //     'success' => true,
-        //     'message' => 'Mise à jour effectuée'
-        // ]);
+            return response()->json([
+                'status' => true,
+                'message' => __('Utilisateur mis à jour avec succès.')
+            ]);
+        } catch (\Exception $e) {
+            return response()->json([
+                'status' => false,
+                'message' => __('form.delete_error'),
+                'error' => $e->getMessage()
+            ], 500);
+        }
     }
-
-    public function destroy(string $id)
+    
+    public function destroy($encrypted_id)
     {
-        // $user = $this->userServcies->getUserById($id);
+        try {
+            $id = Crypt::decryptString($encrypted_id);
+
+            $user = $this->userService->getUserById($id);
+
+            if (auth()->id() == $user->id) {
+                return response()->json([
+                    'status' => false,
+                    'message' => 'Vous ne pouvez pas vous supprimer vous-même.'
+                ], 403);
+            }
+
+            if ($user->avatar && file_exists(public_path('images/users/' . $user->avatar))) {
+                unlink(public_path('images/users/' . $user->avatar));
+            }
         
-        // if (!$user) {
-        //     return response()->json([
-        //         'success' => false,
-        //         'message' => 'Utilisateur non trouvée'
-        //     ], 404);
-        // }
+            $user->delete();
 
-        // $user->delete();
-
-        // return response()->json([
-        //     'success' => true,
-        //     'message' => 'Utilisateur supprimée avec succès'
-        // ]);
+            return response()->json([
+                'status' => true,
+                'message' => 'Utilisateur supprimé avec succès.'
+            ]);
+        } catch (\Exception $e) {
+            return response()->json([
+                'status' => false,
+                'message' => __('form.delete_error'),
+                'error' => $e->getMessage()
+            ], 500);
+        }
     }
 
     public function logout(Request $request)
@@ -159,22 +163,5 @@ class UsersController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
         return redirect()->route('login');
-    }
-
-    public function checkEmail(){
-        // if(Auth::check()){
-        //     $user = Auth::user();
-        //     if($user->email_verified_at === NULL){
-        //         return view('auth.verify-email');
-        //     }else{
-        //         if($user->status === 'inactive'){
-        //             return redirect()->route('status.not.approuved');
-        //         }else{
-        //             return redirect()->route('admin.dashboard');
-        //         }
-        //     }
-        // }else{
-        //     return redirect()->route('login');
-        // }
     }
 }

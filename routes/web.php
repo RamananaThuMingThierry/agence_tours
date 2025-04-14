@@ -49,9 +49,11 @@ Route::prefix('backoffice')->name('admin.')->middleware(['auth','check.status'])
     Route::resource('reservations', ReservationsController::class);
     Route::resource('tour-images', TourImagesController::class);
     Route::resource('testimonials', TestimonialsController::class);
+    Route::resource('users', UsersController::class);
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
+    Route::put('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
+    Route::put('/profile/password', [ProfileController::class, 'updatePassword'])->name('profile.password.update');
 });
-
 
 Route::fallback(function () {
     return response()->view('errors.404', [], 404);
