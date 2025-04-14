@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ADMIN\TourController;
 use App\Http\Controllers\AUTH\LoginController;
+use App\Http\Controllers\ADMIN\BadgeController;
 use App\Http\Controllers\ADMIN\UsersController;
 use App\Http\Controllers\ADMIN\SlidesController;
 use App\Http\Controllers\AUTH\LanguesController;
@@ -43,6 +44,7 @@ Route::middleware('auth')->group(function(){
 
 Route::prefix('backoffice')->name('admin.')->middleware(['auth','check.status'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/badge',[BadgeController::class, 'getAll'])->name('badge');
     Route::resource('gallery', GalleriesController::class);
     Route::resource('tours', TourController::class);
     Route::resource('slides', SlidesController::class);

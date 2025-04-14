@@ -16,16 +16,16 @@
         });
 
         $.ajax({
-            url: '/admin/badge',
+            url: '/backoffice/badge',
             method: 'GET',
             success: function(response) {
                 console.log(response);
-                $('#groupes-count').text(response.groupes ?? '0');
-                $('#fonctions-count').text(response.fonctions ?? '0');
-                $('#membres-count').text(response.membres ?? '0');
+                $('#galleries-count').text(response.galleries ?? '0');
+                $('#reservations-count').text(response.reservations ?? '0');
+                $('#tours-count').text(response.tours ?? '0');
+                $('#testimonials-count').text(response.testimonials ?? '0');
                 $('#users-count').text(response.users ?? '0');
-                $('#actualites-count').text(response.actualites ?? '0');
-                $('#pending_membres').text(response.pending_membres ?? '0');
+                $('#slides-count').text(response.slides ?? '0');
             },
             error: function(xhr, status, error) {
                 console.error('Error:', error);

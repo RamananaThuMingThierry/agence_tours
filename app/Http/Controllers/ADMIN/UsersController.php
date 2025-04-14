@@ -39,7 +39,7 @@ class UsersController extends Controller
             return DataTables::of($users)
                 ->addColumn('avatar', function ($user) {
                     $src = $user->avatar
-                        ? asset('images/avatars/' . $user->avatar)
+                        ? asset('images/users/' . $user->avatar)
                         : asset('images/avatars/default.png');
                     return '<img src="' . $src . '" class="rounded-circle" width="30" height="30" alt="Avatar">';
                 })

@@ -20,12 +20,12 @@ class BadgeController extends Controller
 
         $data = Cache::remember($cacheKey, $cacheTime, function () {
             return [
-                'galleries' => Gallery::whereNull('deleted_at')->count(),
-                'reservations' => Reservation::whereNull('deleted_at')->count(),
-                'tours' => Tour::whereNull('deleted_at')->count(),
-                'testimonials' => Testimonial::whereNull('deleted_at')->count(),
-                'users' => User::whereNull('deleted_at')->count(),
-                'slides' => Slide::whereNull('deleted_at')->count(),
+                'galleries' => Gallery::count(),
+                'reservations' => Reservation::count(),
+                'tours' => Tour::count(),
+                'testimonials' => Testimonial::count(),
+                'users' => User::count(),
+                'slides' => Slide::count(),
             ];
         });
 
