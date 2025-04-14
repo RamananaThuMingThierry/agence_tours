@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ADMIN\TourController;
 use App\Http\Controllers\AUTH\LoginController;
 use App\Http\Controllers\ADMIN\UsersController;
+use App\Http\Controllers\ADMIN\SlidesController;
 use App\Http\Controllers\AUTH\LanguesController;
 use App\Http\Controllers\AUTH\WaitingController;
 use App\Http\Controllers\ADMIN\ProfileController;
@@ -43,6 +44,7 @@ Route::prefix('backoffice')->name('admin.')->middleware(['auth','check.status'])
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::resource('gallery', GalleriesController::class);
     Route::resource('tours', TourController::class);
+    Route::resource('slides', SlidesController::class);
     Route::resource('reservations', ReservationsController::class);
     Route::resource('tour-images', TourImagesController::class);
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
