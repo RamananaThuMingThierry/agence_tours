@@ -1,6 +1,6 @@
 @extends('backoffice.admin')
 
-@section('titre', __('tour.'))
+@section('titre', __('tour.details'))
 
 @push('styles')
 <style>

@@ -2,16 +2,17 @@
 
 return [
     'add' => 'Neue Tour',
-    'title' => 'Tour',
     'image' => 'Bilds',
     'title' => 'Titel',
     'description' => 'Beschreibung',
+    'details' => 'Einzelheiten der Tour',
     'price' => 'Preis',
     'status' => 'Status',
     'actions' => 'Aktionen',
     'add_tour' => 'Neue Tour hinzufügen',
     'edit_tour' => 'Tour bearbeiten',
     'delete' => 'Tour löschen',
+    'tour_not_found' => 'Tour nicht gefunden',
     'delete_confirm' => 'Sind Sie sicher, dass Sie diese Tour löschen möchten?',
     'delete_success' => 'Tour erfolgreich gelöscht.',
     'delete_error' => 'Fehler beim Löschen der Tour.',
@@ -26,5 +27,6 @@ return [
     'image_not_found' => 'Bild nicht gefunden',
     'image_delete_error' => 'Letztes Bild dieses Elements kann nicht gelöscht werden',
     'invalid_image_id' => 'Ungültige oder beschädigte Bild-ID.',
+    'please_add_at_least_one_image' => 'Bitte fügen Sie mindestens ein Bild hinzu, da es zu dieser Nachricht keine Bilder gibt.'
 ];
 

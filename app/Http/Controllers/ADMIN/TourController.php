@@ -171,17 +171,106 @@ class TourController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(string $encrypted_id)
     {
-        //
+        try{
+            $id = Crypt::decryptString($encrypted_id);
+
+            $tour = $this->tourService->getTourById($id);
+
+            if (!$tour) {
+                abort(404);
+            }
+
+            // Réencrypte l'ID pour la vue
+            $tour->encrypted_id = Crypt::encryptString($id);
+
+            foreach ($tour->images as $image) {
+                $image->encrypted_id = Crypt::encryptString($image->id);
+            }
+
+            return view('backoffice.tours.form', compact('tour'));
+        }catch(Exception $e){
+            return redirect()->route('admin.tours.index')->with('error', 'Erreur : ID invalide ou corrompu. Veuillez réesayer');
+        }
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(TourRequest $request, $encrypted_id)
     {
-        //
+        try {
+            $id = Crypt::decryptString($encrypted_id);
+            $tour = $this->tourService->getTourById($id);
+
+            if (!$tour) {
+                return response()->json([
+                    'status' => 404,
+                    'message' => __('tour.tour_not_found')
+                ], 404);
+            }
+
+            $validatedData = $request->validated();
+
+            // Traiter les images si présentes
+            $images = null;
+            if ($request->hasFile('images')) {
+                $images = $request->file('images'); // plus clair que $validatedData['images']
+            }
+
+            // Si aucune nouvelle image et aucune existante
+            if (!$images && $tour->images->isEmpty()) {
+                return response()->json([
+                    'status' => 422,
+                    'errors' => [
+                        'images' => [__('tour.please_add_at_least_one_image')]
+                    ]
+                ], 422);
+            }
+
+            // Génération du slug si le titre a changé
+            if (isset($validatedData['title'])) {
+                $slug = Str::slug($validatedData['title']);
+                $originalSlug = $slug;
+                $counter = 1;
+
+                while (\App\Models\Tour::where('slug', $slug)->where('id', '!=', $id)->exists()) {
+                    $slug = $originalSlug . '-' . $counter++;
+                }
+
+                $validatedData['slug'] = $slug;
+            }
+
+            // Mettre à jour le tour
+            $this->tourService->updateTour($id, $validatedData);
+
+            // Gérer les nouvelles images
+            if ($images) {
+                foreach ($images as $image) {
+                    if ($image->isValid()) {
+                        $imageName = Str::slug($tour->title) . '-' . time() . '-' . uniqid() . '.' . $image->getClientOriginalExtension();
+                        $image->move(public_path('images/tours'), $imageName);
+
+                        $tour->images()->create([
+                            'image' => $imageName,
+                            'tour_id' => $tour->id,
+                        ]);
+                    }
+                }
+            }
+
+            return response()->json([
+                'status' => 200,
+                'message' => __('tour.update_success')
+            ]);
+        } catch (\Exception $e) {
+            return response()->json([
+                'status' => 500,
+                'message' => __('tour.update_error'),
+                'error' => $e->getMessage(),
+            ], 500);
+        }
     }
 
     /**

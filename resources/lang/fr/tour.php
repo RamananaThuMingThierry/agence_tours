@@ -4,6 +4,7 @@ return [
     'add' => 'Nouvelle tour',
     'edit' => 'Modifier la tour',
     'delete' => 'Supprimer la tour',
+    'details' => 'Détails de la visite',
     'delete_confirm' => 'Êtes-vous sûr de vouloir supprimer cette tour ?',
     'delete_success' => 'La tour a été supprimée avec succès.',
     'delete_error' => 'Erreur lors de la suppression de la tour.',
@@ -11,13 +12,13 @@ return [
     'update_error' => 'Erreur lors de la mise à jour de la tour.',
     'create_success' => 'La tour a été créée avec succès.',
     'create_error' => 'Erreur lors de la création de la tour.',
-    'title' => 'Visite',
     'image' => 'Images',
     'title' => 'Titre',
     'add_tour' => 'Ajouter une nouvelle visite',
     'edit_tour' => 'Modifier la visite',
     'description' => 'Description',
     'price' => 'Prix',
+    'tour_not_found' => 'La tour non trouvé',
     'status' => 'Statut',
     'actions' => 'Actions',
     'published' => 'Publié',
@@ -27,4 +28,5 @@ return [
     'image_delete_success' => 'Image supprimée avec succès',
     'image_delete_error' => 'Impossible de supprimer la dernière image de cet élément',
     'invalid_image_id' => 'ID d\'image invalide ou corrompu.',
+    'please_add_at_least_one_image' => 'Veuillez ajouter au moins une image, car aucune n\'existe pour cette actualité.'
 ];

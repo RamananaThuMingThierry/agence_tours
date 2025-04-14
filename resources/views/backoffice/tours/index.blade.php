@@ -1,6 +1,6 @@
 @extends('backoffice.admin')
 
-@section('title', __('sidebar.tour'))
+@section('titre', __('sidebar.tour'))
 
 @push('styles')
     <link rel="stylesheet" href="https://cdn.datatables.net/v/bs5/jq-3.7.0/dt-2.0.8/b-3.0.2/b-html5-3.0.2/b-print-3.0.2/r-3.0.2/datatables.min.css" />
@@ -16,7 +16,7 @@
                 <span class="d-none d-sm-inline">&nbsp;{{ __('tour.add') }}</span>
             </a>
         </div>
-    </div>
+</div>
     <div class="row mb-2">
         <div class="col-12">
         <div class="card rounded-0 p-3 shadow-sm">
@@ -59,8 +59,11 @@
               { data: 'description', className: 'text-center'},
               { data: 'price', className: 'text-center'},
               { data: 'status', className: 'text-center', render: function(data, type, row) {
-                  return data === 'publish' ? '<span class="badge bg-success">Publié</span>' : '<span class="badge bg-secondary">Archivé</span>';
-              }},
+                return data === 'active'
+                    ? '<span class="badge bg-success">{{ __("tour.published") }}</span>'
+                    : '<span class="badge bg-secondary">{{ __("tour.draft") }}</span>';
+                }
+              },
               { data: 'action', name: 'action', orderable: false, searchable: false }
           ],
           dom: '<"row"<"col-sm-6"B><"col-sm-6">>' +

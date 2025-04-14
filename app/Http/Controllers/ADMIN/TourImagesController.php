@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers\ADMIN;
 
+use Illuminate\Support\Facades\File;
+use App\Models\TourImages;
 use Illuminate\Http\Request;
 use App\Services\TourImageServices;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Crypt;
 
 class TourImagesController extends Controller
 {
@@ -30,7 +33,7 @@ class TourImagesController extends Controller
             }
 
             // Vérifier si l'image est la seule de l'élément
-            $imageCount = Gallery::where('tour_id', $tourImage->tour_id)
+            $imageCount = TourImages::where('tour_id', $tourImage->tour_id)
                 ->count();
 
             if ($imageCount <= 1) {

@@ -16,7 +16,7 @@
     <body class="sb-nav-fixed">
         @include('backoffice.layout.nav')
         @include('backoffice.layout.toats')
-        
+
         <div id="layoutSidenav">
             <div id="layoutSidenav_nav">
                 @include('backoffice.layout.sidebar')
@@ -24,7 +24,7 @@
             <div id="layoutSidenav_content" style="background-color: rgb(189, 189, 189)">
                 <main>
                     <div class="container-fluid">
-                        @yield('content')        
+                        @yield('content')
                     </div>
                 </main>
                 @include('backoffice.layout.footer')
