@@ -16,9 +16,9 @@ class WaitingController extends Controller
             if($user->isInactive()){
                 return view('auth.waiting');
             }else{
-                return redirect()->route('backoffice.dashboard');
+                return redirect()->route('admin.dashboard');
             }
-            
+
         }else{
             return redirect()->route('login');
         }

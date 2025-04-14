@@ -27,7 +27,7 @@ class TourRequest extends FormRequest
             'price' => 'required|numeric|min:0',
         ];
 
-            
+
         if ($this->isMethod('post')) {
             $rules['images'] = 'required|array';
             $rules['images.*'] = 'required|image|mimes:jpeg,png,jpg';

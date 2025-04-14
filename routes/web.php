@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ADMIN\TourController;
 use App\Http\Controllers\AUTH\LoginController;
 use App\Http\Controllers\ADMIN\UsersController;
 use App\Http\Controllers\AUTH\LanguesController;
@@ -9,8 +10,8 @@ use App\Http\Controllers\ADMIN\ProfileController;
 use App\Http\Controllers\AUTH\RegisterController;
 use App\Http\Controllers\ADMIN\DashboardController;
 use App\Http\Controllers\ADMIN\GalleriesController;
+use App\Http\Controllers\ADMIN\TourImagesController;
 use App\Http\Controllers\ADMIN\ReservationsController;
-use App\Http\Controllers\ADMIN\TourController;
 use App\Http\Controllers\AUTH\ResetPasswordController;
 use App\Http\Controllers\AUTH\ForgetPasswordController;
 
@@ -43,6 +44,7 @@ Route::prefix('backoffice')->name('admin.')->middleware(['auth','check.status'])
     Route::resource('gallery', GalleriesController::class);
     Route::resource('tours', TourController::class);
     Route::resource('reservations', ReservationsController::class);
+    Route::resource('tour-images', TourImagesController::class);
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
 });
 

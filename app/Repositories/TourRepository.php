@@ -10,10 +10,15 @@ class TourRepository implements TourInterface
 {
     public function getAll($fields = [])
     {
-        return empty($fields)
-            ? Tour::all()
-            : Tour::select($fields)->get();
+        $query = Tour::with('images');
+
+        if (!empty($fields)) {
+            $query->select($fields);
+        }
+
+        return $query->get();
     }
+
 
     public function getById($id, $fields = [])
     {
