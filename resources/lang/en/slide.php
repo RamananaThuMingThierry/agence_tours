@@ -8,6 +8,7 @@ return [
     'image' => 'Image',
     'actions' => 'Actions',
     'new' => 'New slideshow',
+    'details' => 'Slide details',
     'edit' => 'Edit slideshow',
     'deleted' => 'Delete slideshow',
     'added' => 'The image has been added.',

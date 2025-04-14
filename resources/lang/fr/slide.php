@@ -9,6 +9,7 @@ return [
     'actions' => 'Actions',
     'new' => 'Nouveau diaporama',
     'edit' => 'Modifier le diaporama',
+    'details' => 'Détails du slide',
     'deleted' => 'Supprimer le diaporama',
     'added' => 'L\'image a été ajoutée.',
     'status_updated' => 'Le statut a été mis à jour.',

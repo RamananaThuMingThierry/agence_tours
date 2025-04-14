@@ -13,6 +13,7 @@ use App\Http\Controllers\ADMIN\DashboardController;
 use App\Http\Controllers\ADMIN\GalleriesController;
 use App\Http\Controllers\ADMIN\TourImagesController;
 use App\Http\Controllers\ADMIN\ReservationsController;
+use App\Http\Controllers\ADMIN\TestimonialsController;
 use App\Http\Controllers\AUTH\ResetPasswordController;
 use App\Http\Controllers\AUTH\ForgetPasswordController;
 
@@ -47,6 +48,7 @@ Route::prefix('backoffice')->name('admin.')->middleware(['auth','check.status'])
     Route::resource('slides', SlidesController::class);
     Route::resource('reservations', ReservationsController::class);
     Route::resource('tour-images', TourImagesController::class);
+    Route::resource('testimonials', TestimonialsController::class);
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
 });
 

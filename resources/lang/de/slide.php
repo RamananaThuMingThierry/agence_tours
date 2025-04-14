@@ -7,6 +7,7 @@ return [
     'order' => 'Reihenfolge',
     'image' => 'Bild',
     'actions' => 'Aktionen',
+    'details' => 'Slide-Details',
     'new' => 'Neue Diashow',
     'edit' => 'Diashow bearbeiten',
     'deleted' => 'Diashow löschen',

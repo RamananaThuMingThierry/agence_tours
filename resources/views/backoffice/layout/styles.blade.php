@@ -14,7 +14,13 @@
       margin: 0;
       flex-direction: column;
     }
-
+    
+    #toast-container.toast-middle-center {
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      position: fixed;
+    }
     .btn-close{
       color: red !important;
     }

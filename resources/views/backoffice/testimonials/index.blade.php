@@ -1,6 +1,6 @@
 @extends('backoffice.admin')
 
-@section('titre', __('title.slides'))
+@section('titre', __('title.testimonials'))
 
 @push('styles')
     <link rel="stylesheet" href="https://cdn.datatables.net/v/bs5/jq-3.7.0/dt-2.0.8/b-3.0.2/b-html5-3.0.2/b-print-3.0.2/r-3.0.2/datatables.min.css" />
@@ -8,18 +8,18 @@
 @endpush
 
 @section('content')
-    @include('backoffice.slides.create')
-    @include('backoffice.slides.show')
-    @include('backoffice.slides.details')
-    @include('backoffice.slides.update')
+    @include('backoffice.testimonials.create')
+    @include('backoffice.testimonials.show')
+    @include('backoffice.testimonials.update')
+    @include('backoffice.testimonials.details')
 
     <div class="row pt-2">
         <div class="col-12 d-flex align-items-center justify-content-between">
             <h2 class="text-primary">@yield('titre')</h2>
-            <button class="btn btn-sm btn-success shadow-sm d-flex align-items-center" data-bs-toggle="modal" data-bs-target="#slideModal">
+            <button class="btn btn-sm btn-success shadow-sm d-flex align-items-center" data-bs-toggle="modal" data-bs-target="#testimonialModal">
                 <i class="fas fa-plus p-1 text-white-50"></i>
-                <span class="d-none d-sm-inline">&nbsp;{{ __('slide.new') }}</span>
-            </button>
+                <span class="d-none d-sm-inline">&nbsp;{{ __('testimonial.new') }}</span>
+            </button>            
         </div>
     </div>
     <div class="row mb-2">
@@ -28,12 +28,12 @@
                 <div class="table-responsive">
                     <table id="datatables" class="table table-striped table-bordered display w-100">
                         <thead class="table-dark">
-                        <th class="text-center" scope="col">{{ __('slide.image') }}</th>
-                        <th class="text-center" scope="col">{{ __('slide.title') }}</th>
-                        <th class="text-center" scope="col">{{ __('slide.subtitle') }}</th>
-                        <th class="text-center" scope="col">{{ __('slide.description') }}</th>
-                        <th class="text-center" scope="col">{{ __('slide.order') }}</th>
-                        <th class="text-center" scope="col" class="text-center">{{ __('slide.actions') }}</th>
+                        <th class="text-center" scope="col">{{ __('testimonial.image') }}</th>
+                        <th class="text-center" scope="col">{{ __('testimonial.name') }}</th>
+                        <th class="text-center" scope="col">{{ __('testimonial.message') }}</th>
+                        <th class="text-center" scope="col">{{ __('testimonial.raiting') }}</th>
+                        <th class="text-center" scope="col">{{ __('testimonial.status') }}</th>
+                        <th class="text-center" scope="col" class="text-center">{{ __('testimonial.actions') }}</th>
                         </thead>
                         <tbody>
                         </tbody>
@@ -51,18 +51,26 @@
     <script type="text/javascript">
       $(document).ready(function(){
         var table = $('#datatables').DataTable({
-          ajax: "{{ route('admin.slides.index') }}",
+          ajax: "{{ route('admin.testimonials.index') }}",
           processing: false,
           serverSide: false,
           responsive: true,
           columns: [
-              { data: 'image', className: 'text-center'},
-              { data: 'title', className: 'text-center'},
-              { data: 'subtitle', className: 'text-center'},
-              { data: 'description', className: 'text-center'},
-              { data: 'order', className: 'text-center'},
-              { data: 'action', name: 'action', orderable: false, searchable: false }
-          ],
+                { data: 'image', className: 'text-center' },
+                { data: 'name', className: 'text-center' },
+                { data: 'message', className: 'text-center' },
+                { data: 'rating', className: 'text-center' },
+                {
+                    data: 'status',
+                    className: 'text-center',
+                    render: function (data) {
+                        return data === 'publish'
+                            ? '<span class="badge bg-success">{{ __("testimonial.published") }}</span>'
+                            : '<span class="badge bg-secondary">{{ __("testimonial.archived") }}</span>';
+                    }
+                },
+                { data: 'action', orderable: false, searchable: false, className: 'text-center' }
+            ],
           dom: '<"row"<"col-sm-6"B><"col-sm-6">>' +
             '<"row mt-2"<"col-sm-6"l><"col-sm-6"f>>' +
             '<"row mt-2"<"col-sm-12"t>>' +
@@ -138,30 +146,31 @@
           table.ajax.reload(null, false); // Reload the data without resetting pagination
         });
 
-        $('#slideForm').on('submit', function(e) {
+        $('#testimonialForm').on('submit', function(e) {
             e.preventDefault();
 
             let formData = new FormData(this);
-            $('#slideForm input, #slideForm select').removeClass('is-invalid');
-            $('#slideForm .invalid-feedback').text('');
+            $('#testimonialForm input, #testimonialForm select').removeClass('is-invalid');
+            $('#testimonialForm .invalid-feedback').text('');
 
             // ➕ Spinner ON
-            let $btn = $('#btn-save-slide');
+            let $btn = $('#btn-save-testimonial');
             $btn.prop('disabled', true);
             $btn.find('.spinner-border').removeClass('d-none');
             $btn.find('.btn-text').html('{{ __("form.in_progress") }}');
 
             $.ajax({
-                url: "{{ route('admin.slides.store') }}",
+                url: "{{ route('admin.testimonials.store') }}",
                 type: "POST",
                 data: formData,
                 contentType: false,
                 processData: false,
                 success: function(response) {
-                    $('#slideModal').modal('hide');
-                    $('#slideForm')[0].reset();
+                    $('#testimonialModal').modal('hide');
+                    $('#testimonialForm')[0].reset();
                     $('#datatables').DataTable().ajax.reload();
-                    toastr.success("{{ __('slide.added') }}");
+                    toastr.options.positionClass = 'toast-middle-center';
+                    toastr.success("{{ __('testimonial.added') }}");
                 },
                 error: function(xhr) {
                     let errors = xhr.responseJSON.errors;
@@ -181,91 +190,90 @@
       });
 
       // Ouvrir la modal au clic sur une image
-    $(document).on('click', '.slide-image', function () {
+    $(document).on('click', '.testimonial-image', function () {
         const src = $(this).data('src');
         $('#preview-image').attr('src', src);
         $('#imagePreviewModal').modal('show');
     });
 
-    $(document).on('click', '#btn-edit-slide-modal', function () {
+    // Ouvrir la modale d'édition (uniquement pour le statut)
+    $(document).on('click', '#btn-edit-testimonial-modal', function () {
         const id = $(this).data('id');
-        const url = `/backoffice/slides/${id}/edit`;
+        const status = $(this).data('status');
 
-        $.get(url, function (data) {
-            $('#edit-id').val(data.id);
-            $('#edit-title').val(data.title);
-            $('#edit-subtitle').val(data.subtitle);
-            $('#edit-description').val(data.description);
-            $('#edit-order').val(data.order);
-            $('#editSlideModal').modal('show');
-        });
+        $('#edit-testimonial-id').val(id);
+        $('#edit-testimonial-status').val(status);
+        $('#editTestimonialModal').modal('show');
     });
 
-
-    $('#editSlideForm').on('submit', function (e) {
+    // Soumettre le formulaire de mise à jour
+    $('#editTestimonialForm').on('submit', function (e) {
         e.preventDefault();
 
-        const id = $('#edit-id').val();
-        const formData = new FormData(this);
-        const $btn = $('#btn-update-slide');
+        const id = $('#edit-testimonial-id').val();
+        const status = $('#edit-testimonial-status').val();
+        const $btn = $('#btn-update-testimonial-status');
 
         $btn.prop('disabled', true);
         $btn.find('.spinner-border').removeClass('d-none');
         $btn.find('.btn-text').text("{{ __('form.in_progress') }}");
 
         $.ajax({
-            url: `/backoffice/slides/${id}`,
+            url: `/backoffice/testimonials/${id}`,
             type: 'POST',
-            data: formData,
-            contentType: false,
-            processData: false,
-            success: function (response) {
-                $('#editSlideModal').modal('hide');
+            data: {
+                _token: '{{ csrf_token() }}',
+                _method: 'PUT',
+                status: status
+            },
+            success: function (res) {
+                $('#editTestimonialModal').modal('hide');
+                $('#editTestimonialForm')[0].reset();
                 $('#datatables').DataTable().ajax.reload(null, false);
-                toastr.success(response.message);
+                toastr.options.positionClass = 'toast-middle-center';
+                toastr.success(res.message);
             },
             error: function (xhr) {
-                let errors = xhr.responseJSON.errors;
-                for (let key in errors) {
-                    $(`#edit-${key}`).addClass('is-invalid');
-                    $(`#error-edit-${key}`).text(errors[key][0]);
+                const err = xhr.responseJSON.errors;
+                if (err?.status) {
+                    $('#edit-testimonial-status').addClass('is-invalid');
+                    $('#error-edit-status').text(err.status[0]);
                 }
             },
             complete: function () {
                 $btn.prop('disabled', false);
                 $btn.find('.spinner-border').addClass('d-none');
-                $btn.find('.btn-text').html('<i class="fas fa-save"></i>&nbsp;{{ __("form.save") }}');
+                $btn.find('.btn-text').html('<i class="fas fa-save"></i> {{ __("form.save") }}');
             }
         });
     });
 
-    // Suppression avec confirmation via SweetAlert2
-    $(document).on('click', '#btn-delete-slide-confirm', function () {
-        let id = $(this).data('id');
+    // Suppression d'un témoignage avec SweetAlert2
+    $(document).on('click', '#btn-delete-testimonial-confirm', function () {
+        const id = $(this).data('id');
 
         Swal.fire({
             title: '{{ __("alerts.confirm_title") }}',
-            text: '{{ __("alerts.confirm_text") }}',
+            text: '{{ __("testimonial.confirm_delete_text") ?? __("alerts.confirm_text") }}',
             icon: 'warning',
             showCancelButton: true,
             customClass: {
-                confirmButton: 'btn btn-sm btn-primary',
-                cancelButton: 'btn btn-sm btn-danger ms-2'
+                confirmButton: 'btn btn-sm btn-dark',
+                cancelButton: 'btn btn-sm btn-danger ms-1'
             },
             buttonsStyling: false,
             confirmButtonText: '{{ __("alerts.confirm_button") }}',
             cancelButtonText: '{{ __("alerts.cancel_button") }}'
-        })
-        .then((result) => {
+        }).then((result) => {
             if (result.isConfirmed) {
                 $.ajax({
-                    url: '/backoffice/slides/' + id,
+                    url: `/backoffice/testimonials/${id}`,
                     type: 'POST',
                     data: {
-                        _token: '{{ csrf_token() }}',
-                        _method: 'DELETE'
+                        _method: 'DELETE',
+                        _token: '{{ csrf_token() }}'
                     },
-                    success: function(response) {
+                    success: function (response) {
                         $('#datatables').DataTable().ajax.reload(null, false);
                         Swal.fire({
                             icon: 'success',
@@ -275,11 +283,11 @@
                             showConfirmButton: false
                         });
                     },
-                    error: function(xhr) {
+                    error: function (xhr) {
                         Swal.fire({
                             icon: 'error',
                             title: '{{ __("alerts.error") }}',
-                            text: '{{ __("alerts.delete_failed") }}',
+                            text: '{{ __("alerts.delete_failed") }}'
                         });
                     }
                 });
@@ -288,25 +296,34 @@
     });
 
     // Ouvrir modal show avec détails
-    $(document).on('click', '#btn-show-slide', function () {
-        let id = $(this).data('id');
-        $.get(`/backoffice/slides/${id}/edit`, function (data) {
-            $('#show-slide-title').text(data.title);
-            $('#show-slide-subtitle').text(data.subtitle ?? '-');
-            $('#show-slide-description').text(data.description ?? '-');
-            $('#show-slide-order').text(data.order);
-            $('#show-slide-image').attr('src', `/images/slides/${data.image}`);
+    $(document).on('click', '#btn-show-testimonial', function () {
+        const id = $(this).data('id');
 
-            let badge = data.status === 'active'
-                ? '<span class="badge bg-success">Actif</span>'
-                : '<span class="badge bg-secondary">Inactif</span>';
+        $.get(`/backoffice/testimonials/${id}`, function (res) {
+            if (res.status) {
+                const data = res.data;
 
-            $('#show-slide-status').html(badge);
+                $('#testimonial-show-image').attr('src', data.image);
+                $('#testimonial-show-name').text(data.name);
+                $('#testimonial-show-message').text(data.message);
+                $('#testimonial-show-rating').text(data.rating);
+                $('#testimonial-show-created').text(data.created_at);
 
-            $('#showSlideModal').modal('show');
+                let badge = data.status === 'publish'
+                    ? '<span class="badge bg-success">{{ __("testimonial.published") }}</span>'
+                    : '<span class="badge bg-secondary">{{ __("testimonial.archived") }}</span>';
+
+                $('#testimonial-show-status').html(badge);
+
+                $('#showTestimonialModal').modal('show');
+            }
+        }).fail(function () {
+            Swal.fire({
+                icon: 'error',
+                title: '{{ __("form.error") }}',
+                text: '{{ __("form.load_failed") }}',
+            });
         });
     });
-
-
     </script>
 @endpush

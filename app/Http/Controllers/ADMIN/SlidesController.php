@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\ADMIN;
 
+use Exception;
 use App\Models\Slide;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
@@ -44,6 +45,14 @@ class SlidesController extends Controller
                         return '<img src="' . $src . '" data-src="'.$src.'" class="rounded-2 slide-image" width="30" height="30" style="cursor: pointer;" alt="Image">';
                     })
                     ->addColumn('action', function ($row) {
+                        $showBtn = '<button type="button"
+                            class="btn btn-outline-warning btn-sm btn-inline me-1"
+                            title="Voir les détails"
+                            data-id="' . $row->id . '"
+                            id="btn-show-slide">
+                            <i class="fa fa-eye"></i>
+                        </button>';
+
                         $editBtn = '<button type="button"
                                         class="btn btn-outline-primary btn-sm btn-inline me-1"
                                         title="Modifier le slide"
@@ -65,7 +74,7 @@ class SlidesController extends Controller
                                           </button>';
                         }
 
-                        return '<div class="d-flex justify-content-center">' . $editBtn . $deleteBtn . '</div>';
+                        return '<div class="d-flex justify-content-center">' . $showBtn . $editBtn . $deleteBtn . '</div>';
                     })
                     ->rawColumns(['image', 'action'])
                     ->make(true);
