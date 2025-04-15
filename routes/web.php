@@ -20,6 +20,8 @@ use App\Http\Controllers\AUTH\ResetPasswordController;
 use App\Http\Controllers\AUTH\ForgetPasswordController;
 
 Route::get('/', [FrontofficeController::class, 'index'])->name('frontoffice');
+Route::get('/testimonials', [FrontofficeController::class, 'testimonials'])->name('testimonials');
+Route::get('/tours', [FrontofficeController::class, 'tours'])->name('tours');
 
 Route::get('lang/{lang}', [LanguesController::class, 'changeLanguage'])->name('lang');
 

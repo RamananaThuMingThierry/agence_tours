@@ -1,17 +1,17 @@
-<header class="bg-white shadow-sm fixed-top z-50">
+<header class="bg-header shadow-sm fixed-top z-50">
     <div class="container-fluid px-4">
         <div class="d-flex justify-content-between align-items-center py-2">
             <!-- Logo -->
             <a href="{{ route('frontoffice') }}" class="navbar-brand fw-bold text-primary">
-                <img src="{{ asset(config('public_path.public_path').'utiles/logo.jpg') }}" alt="Logo" height="40">
+                <img src="{{ asset(config('public_path.public_path').'utiles/logo.jpg') }}" class="rounded-pill" alt="Logo" width="40" height="40">
             </a>
 
             <!-- Menu -->
             <nav class="d-none d-lg-flex gap-4">
                 <a href="{{ route('frontoffice') }}" class="nav-link">{{ __('nav.home') }}</a>
                 <a href="" class="nav-link">{{ __('nav.about') }}</a>
-                <a href="" class="nav-link">{{ __('nav.testimonials') }}</a>
-                <a href="" class="nav-link">{{ __('nav.tours') }}</a>
+                <a href="{{ route('testimonials') }}" class="nav-link">{{ __('nav.testimonials') }}</a>
+                <a href="{{ route('tours') }}" class="nav-link">{{ __('nav.tours') }}</a>
                 <a href="" class="nav-link">{{ __('nav.contact') }}</a>
             </nav>
 

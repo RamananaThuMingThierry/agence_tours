@@ -39,5 +39,43 @@
                 }
             });
         });
+
+        const scrollToTopBtn = document.getElementById("scrollToTopBtn");
+
+        // Afficher le bouton après avoir scrollé de 200px
+        window.addEventListener("scroll", () => {
+            if (window.scrollY > 200) {
+                scrollToTopBtn.style.display = "flex";
+            } else {
+                scrollToTopBtn.style.display = "none";
+            }
+        });
+
+        // Scroll vers le haut en douceur
+        scrollToTopBtn.addEventListener("click", () => {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        });
+
+        function updateFooterPosition() {
+            const footer = document.getElementById('mainFooter');
+            const body = document.body;
+            const html = document.documentElement;
+            const windowHeight = window.innerHeight;
+            const bodyHeight = Math.max(body.scrollHeight, body.offsetHeight,
+                                        html.clientHeight, html.scrollHeight, html.offsetHeight);
+
+            if (bodyHeight <= windowHeight) {
+                footer.classList.add('fixed-footer');
+            } else {
+                footer.classList.remove('fixed-footer');
+            }
+        }
+
+        window.addEventListener('load', updateFooterPosition);
+        window.addEventListener('resize', updateFooterPosition);
+        window.addEventListener('scroll', updateFooterPosition);
     });
 </script>
