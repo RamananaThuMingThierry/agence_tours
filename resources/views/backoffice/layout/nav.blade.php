@@ -11,7 +11,7 @@
                         <a class="dropdown-item lang-change {{ app()->getLocale() === 'en' ? 'active' : '' }}" href="javascript:void(0);" data-lang="en">
                             <i class="fas fa-flag-usa"></i>&nbsp;Anglais
                         </a>
-                    </li>  
+                    </li>
                     <li>
                       <a class="dropdown-item lang-change {{ app()->getLocale() === 'fr' ? 'active' : '' }}" href="javascript:void(0);" data-lang="fr">
                           <img src="{{ asset(config('public_path.public_path') .'img/icon_fr.png') }}" width="22px"/>&nbsp;Français

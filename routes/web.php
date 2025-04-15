@@ -13,10 +13,13 @@ use App\Http\Controllers\AUTH\RegisterController;
 use App\Http\Controllers\ADMIN\DashboardController;
 use App\Http\Controllers\ADMIN\GalleriesController;
 use App\Http\Controllers\ADMIN\TourImagesController;
+use App\Http\Controllers\FRONT\FrontofficeController;
 use App\Http\Controllers\ADMIN\ReservationsController;
 use App\Http\Controllers\ADMIN\TestimonialsController;
 use App\Http\Controllers\AUTH\ResetPasswordController;
 use App\Http\Controllers\AUTH\ForgetPasswordController;
+
+Route::get('/', [FrontofficeController::class, 'index'])->name('frontoffice');
 
 Route::get('lang/{lang}', [LanguesController::class, 'changeLanguage'])->name('lang');
 
