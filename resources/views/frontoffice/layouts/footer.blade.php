@@ -2,28 +2,28 @@
     <div class="container">
         <div class="row text-center text-md-start">
             <!-- Contact -->
-            <div class="col-md-4 mb-4">
-                <h5 class="text-uppercase fw-bold text-warning">Contact</h5>
+            <div class="col-md-4 mb-4 text-center">
+                <h5 class="text-uppercase fw-bold text-danger">{{ __('frontend.contact') }}</h5>
                 <p><i class="fas fa-phone-alt me-2"></i> +261 32 12 345 67</p>
                 <p><i class="fas fa-envelope me-2"></i> contact@yourdomain.com</p>
             </div>
 
             <!-- Location -->
-            <div class="col-md-4 mb-4">
-                <h5 class="text-uppercase fw-bold text-warning">Location</h5>
+            <div class="col-md-4 mb-4 text-center">
+                <h5 class="text-uppercase fw-bold text-danger">{{ __('frontend.location') }}</h5>
                 <p><i class="fas fa-map-marker-alt me-2"></i> Antananarivo, Madagascar</p>
-                <p><i class="fas fa-clock me-2"></i> Mon - Sat: 08:00 - 18:00</p>
+                <p>Ambavahaditokona, Antananarivo</p>
             </div>
 
             <!-- Social Media -->
-            <div class="col-md-4 mb-4">
-                <h5 class="text-uppercase fw-bold text-warning">Connect</h5>
-                <div class="d-flex justify-content-center justify-content-md-start gap-3">
-                    <a href="#" class="text-light fs-5"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" class="text-light fs-5"><i class="fab fa-instagram"></i></a>
+            <div class="col-md-4 mb-4 text-center">
+                <h5 class="text-uppercase fw-bold text-danger">{{ __('frontend.contect') }}</h5>
+                <div class="d-flex justify-content-center gap-3">
+                    <a href="#" class="text-primary fs-5"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="text-warning fs-5"><i class="fab fa-instagram"></i></a>
                     <a href="#" class="text-light fs-5"><i class="fab fa-twitter"></i></a>
-                    <a href="#" class="text-light fs-5"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="#" class="text-light fs-5"><i class="fab fa-youtube"></i></a>
+                    <a href="#" class="text-info fs-5"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" class="text-danger fs-5"><i class="fab fa-youtube"></i></a>
                 </div>
             </div>
         </div>

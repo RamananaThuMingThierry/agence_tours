@@ -164,6 +164,7 @@
                     $('#galleryModal').modal('hide');
                     $('#galleryForm')[0].reset();
                     $('#datatables').DataTable().ajax.reload();
+                    toastr.options.positionClass = 'toast-middle-center';
                     toastr.success("{{ __('gallery.image_added') }}");
                 },
                 error: function(xhr) {

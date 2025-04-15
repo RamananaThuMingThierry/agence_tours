@@ -1,9 +1,9 @@
 <?php
 
 return [
-    'home' => 'Accueil',
-    'about' => 'À propos',
-    'testimonials' => 'Témoignages',
-    'tours' => 'Tours',
-    'contact' => 'Contact',
+    'home' => 'ACCUEIL',
+    'about' => 'À PROPOS',
+    'testimonials' => 'TÉMOIGNAGES',
+    'tours' => 'TOURS',
+    'contact' => 'CONTACT',
 ];

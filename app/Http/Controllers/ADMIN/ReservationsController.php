@@ -5,6 +5,7 @@ namespace App\Http\Controllers\ADMIN;
 use Exception;
 use App\Models\Reservation;
 use Illuminate\Http\Request;
+use App\Events\ReservationCreated;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Services\ReservationServices;
@@ -80,17 +81,29 @@ class ReservationsController extends Controller
     public function store(ReservationRequest $request)
     {
         $data = $request->validated();
-
-        $data['tour_id'] = 3;
         $data['status'] = 'pending';
-
+    
         try {
             $reservation = $this->reservationService->createReservation($data);
-
+    
+            // ✉️ Envoi automatique à l'admin
+            event(new ReservationCreated($reservation));
+            
+            // 📲 Redirection vers WhatsApp
+            $whatsappNumber = '261327563770'; // Numéro de l'admin
+            $clientMessage = "Bonjour, je viens de réserver un tour via le site. Voici mes informations:\n"
+                . "Nom: {$data['name']}\n"
+                . "Email: {$data['email']}\n"
+                . "Téléphone: {$data['phone']}\n"
+                . "Message: {$data['message']}";
+    
+            $whatsappUrl = "https://wa.me/{$whatsappNumber}?text=" . urlencode($clientMessage);
+    
             return response()->json([
                 'status' => true,
-                'message' => __('reservation.created'),
-            ], 201);
+                'redirect_url' => $whatsappUrl,
+            ]);
+    
         } catch (Exception $e) {
             return response()->json([
                 'status' => false,

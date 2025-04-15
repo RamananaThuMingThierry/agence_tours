@@ -8,15 +8,10 @@
 @endpush
 
 @section('content')
-    @include('backoffice.reservations.create')
     @include('backoffice.reservations.show')
     <div class="row pt-2">
         <div class="col-12 d-flex align-items-center justify-content-between">
             <h2 class="text-primary">@yield('titre')</h2>
-            <button class="btn btn-sm btn-success shadow-sm d-flex align-items-center" data-bs-toggle="modal" data-bs-target="#reservationModal">
-                <i class="fas fa-plus p-1 text-white-50"></i>
-                <span class="d-none d-sm-inline">&nbsp;{{ __('reservation.add') }}</span>
-            </button>
         </div>
     </div>
     <div class="row mb-2">
@@ -177,6 +172,7 @@
                         $('#reservationModal').modal('hide');
                         $('#reservationForm')[0].reset();
                         $('#datatables').DataTable().ajax.reload(null, false);
+                        toastr.options.positionClass = 'toast-middle-center';
                         toastr.success("{{ __('reservation.created') }}");
                     },
                     error: function(xhr) {
@@ -223,6 +219,7 @@
                     }
                 },
                 error: function (xhr) {
+                    toastr.options.positionClass = 'toast-middle-center';
                     toastr.error("Erreur lors du chargement de la réservation.");
                 }
             });

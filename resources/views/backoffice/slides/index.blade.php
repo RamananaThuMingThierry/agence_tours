@@ -161,6 +161,7 @@
                     $('#slideModal').modal('hide');
                     $('#slideForm')[0].reset();
                     $('#datatables').DataTable().ajax.reload();
+                    toastr.options.positionClass = 'toast-middle-center';
                     toastr.success("{{ __('slide.added') }}");
                 },
                 error: function(xhr) {
@@ -222,6 +223,7 @@
             success: function (response) {
                 $('#editSlideModal').modal('hide');
                 $('#datatables').DataTable().ajax.reload(null, false);
+                toastr.options.positionClass = 'toast-middle-center';
                 toastr.success(response.message);
             },
             error: function (xhr) {

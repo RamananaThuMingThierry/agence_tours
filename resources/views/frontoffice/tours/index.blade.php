@@ -1,7 +1,7 @@
 <section id="tours" class="py-5 position-relative" style="background: url('{{ asset(config('public_path.public_path').'images/cameleon.jpg') }}') no-repeat center center / cover;">
     <div class="container position-relative z-2">
         <div class="text-center text-white mb-5">
-            <h2 class="fw-bold">Our Popular Tours</h2>
+            <h2 class="fw-bold text-uppercase">{{ __('frontend.our_tours') }}</h2>
             <div class="mx-auto mt-2" style="width: 60px; height: 4px; background-color: #ffc107;"></div>
         </div>
 
@@ -33,17 +33,17 @@
                                 </p>
                             </div>
 
-                            <a href=""
-                               class="btn btn-danger text-white mt-3 w-100">
-                                <i class="fas fa-calendar-alt"></i> {{ __('Réserver') }}
-                            </a>
+                            <a href="javascript:void(0);"
+                                class="btn btn-danger text-white mt-3 w-100"
+                                data-bs-toggle="modal"
+                                data-bs-target="#reservationModal"
+                                data-tour-id="{{ $tour->id }}">
+                                    <i class="fas fa-calendar-alt"></i> {{ __('frontend.reserved') }}
+                                </a>
                         </div>
                     </div>
                 </div>
             @endforeach
         </div>
     </div>
-
-    <!-- Overlay sombre -->
-    <div class="position-absolute top-0 start-0 w-100 h-100 bg-dark opacity-50"></div>
 </section>

@@ -25,22 +25,15 @@
             border-radius: 2px;
         }
 
-        .service-card:hover {
-            transform: translateY(-5px);
-            transition: 0.3s;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-        }
-
         .gallery-item {
-            height: 350px;
-            overflow: hidden;
-            position: relative;
+            height: 300px;
         }
 
         .gallery-img {
             object-fit: cover;
             width: 100%;
             height: 100%;
+            display: block;
             transition: transform 0.3s ease-in-out;
         }
 
@@ -78,6 +71,7 @@
 @endpush
 
 @section('content')
+    @include('backoffice.reservations.create')
     @include('frontoffice.slides.index')
     @include('frontoffice.services.index')
     @include('frontoffice.galleries.index')

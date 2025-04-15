@@ -1,0 +1,31 @@
+<?php
+
+return [
+    'choose_tour' => 'CHOOSE YOU TOUR',
+    'services' => 'SERVICES',
+    'slide_title' => 'WORLD OF MADAGASCAR TOUR',
+    'slide_subtitle' => 'We’ll guide you to amazing places',
+    'small_groupes' => 'SMALL GROUPS',
+    'activity_tours' => 'ACTIVITY TOURS',
+    'highlights' => 'HIGHLIGHTS',
+    'custom_tours' => 'CUSTOM TOURS',
+    'about' => 'ABOUT',
+    'about_titre' => 'Ricki Cardo, Private Tour Guide (Founder)',
+    'about_description' => 'Hello, my name is <strong>MILASOA Ricki Cardo</strong>, from Antalaha, Madagascar, and now based in Antananarivo. I have worked in tourism since 2015 and became a professional tour guide in 2017. I am fluent in Malagasy, French, English and speak some German. With years of experience guiding tours across Madagascar, I’ve worked with travelers from many countries, including Germany, Russia, Italy, the USA, Australia, China, Japan, South Africa, Morocco, and France.',
+    'about_description_2' => 'We create experiences blending nature, culture, history, and Madagascar’s biodiversity. We also provide translation and organize tailored evening activities. In 2024, we started a tour company, collaborating with drivers, guides, and a marketing manager to deliver top-quality service. Our goal is to offer journeys through Madagascar that feel like exploring with a friend. Contact me to discover Madagascar!',
+    'reserved' => 'RESERVED',
+    'testimonials' => 'TESTIMONIALS',
+    'our_testimonials' => 'OUR TESTIMONIALS',
+    'contact' => 'CONTACT',
+    'contact_text' => 'Send us an email and we\'ll get back to you soon.',
+    'email_us' => 'Email US',
+    'location' => 'LOCATION',
+    'contect' => 'CONNECT',
+    'our_tours' => 'OUR TOURS',
+    'name' => 'Name',
+    'message' => 'Message',
+    'raiting' => 'Raiting',
+    'send' => 'SEND',
+    'gallery' => 'GALLERY',
+    'gallery_text' => 'Explore some of our best moments'
+];

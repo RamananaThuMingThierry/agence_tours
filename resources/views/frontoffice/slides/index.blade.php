@@ -5,10 +5,10 @@
                 <img src="{{ asset('images/slides/' . $slide->image) }}" class="d-block w-100 hero-slide-img" alt="{{ $slide->title }}">
                 <div class="carousel-caption d-flex flex-column justify-content-center align-items-center h-100">
                     <div class="text-center p-4 rounded">
-                        <h1 class="text-white fw-bold">{{ $slide->title }}</h1>
-                        <p class="text-white mb-4">{{ $slide->subtitle }}</p>
-                        <a href="" class="btn btn-warning btn-lg">
-                            <i class="fas fa-map-marked-alt me-2"></i> {{ __('Choisir un tour') }}
+                        <h1 class="text-white fw-bold">{{ __('frontend.slide_title') }}</h1>
+                        <p class="text-white mb-4">{{ __('frontend.slide_subtitle') }}</p>
+                        <a href="{{ route('tours') }}" class="btn btn-danger btn-md text-white">
+                            <i class="fas fa-map-marked-alt me-2"></i> {{ __('frontend.choose_tour') }}
                         </a>
                     </div>
                 </div>

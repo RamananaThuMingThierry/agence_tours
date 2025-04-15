@@ -1,6 +1,7 @@
 @extends('frontoffice.app')
 
 @push('style')
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet"/>
     <style>
         .bg-header{
             background-color: #ffc107;
@@ -124,7 +125,9 @@
                     contentType: false,
                     processData: false,
                     success: function (response) {
+                        console.log(response);
                         $('#testimonialForm')[0].reset();
+                        toastr.options.positionClass = 'toast-middle-center';
                         toastr.success("{{ __('testimonial.added') }}");
                     },
                     error: function (xhr) {

@@ -1,7 +1,7 @@
 <section id="testimonials" class="py-5 bg-light">
     <div class="container">
         <div class="text-center mb-5">
-            <h2 class="fw-bold text-danger">{{ __('Témoignages') }}</h2>
+            <h2 class="fw-bold text-danger">{{ __('frontend.testimonials') }}</h2>
             <div class="mx-auto mt-2" style="width: 60px; height: 4px; background-color: #ffc107;"></div>
         </div>
 
@@ -25,7 +25,7 @@
                             </div>
                         </div>
                         <p class="card-text text-muted" style="text-align: justify;">
-                            <i class="fas fa-quote-left me-2 text-warning"></i>
+                            <i class="fas fa-quote-left me-2 text-danger"></i>
                             {{ Str::limit($testimonial->message, 150) }}
                         </p>
                     </div>

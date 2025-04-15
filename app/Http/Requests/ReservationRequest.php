@@ -25,6 +25,7 @@ class ReservationRequest extends FormRequest
             'name' => 'required|string|max:255',
             'email' => 'required|email',
             'phone' => 'required|string|max:20',
+            'tour_id' => 'required|integer',
             'message' => 'nullable|string',
         ];
     }

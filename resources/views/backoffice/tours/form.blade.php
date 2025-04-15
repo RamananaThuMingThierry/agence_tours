@@ -130,7 +130,7 @@
                 success: function (response) {
                     if (response.status === 200) {
                         Swal.fire({
-                            position: "top",
+                            position: "center",
                             title: "{{ __('form.success') }}",
                             text: response.message,
                             icon: 'success',

@@ -102,6 +102,7 @@
                 success: function (res) {
                     $('#editUserModal').modal('hide');
                     $('#datatables').DataTable().ajax.reload(null, false);
+                    toastr.options.positionClass = 'toast-middle-center';
                     toastr.success(res.message);
                 },
                 error: function (xhr) {
