@@ -103,7 +103,7 @@
             { targets: -1, orderable: false }
           ],
           language: {
-            url: "{{ asset('lang/datatables/' . app()->getLocale() . '.json') }}"
+            url: "{{ asset(config('public_path.public_path').'lang/datatables/' . app()->getLocale() . '.json') }}"
           }, initComplete: function() {
 
             // Function to generate a random color

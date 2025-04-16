@@ -17,7 +17,7 @@
 
                     <div class="card-body">
                         <div class="text-center mb-3">
-                            <img src="{{ Auth::user()->avatar ? asset('images/users/' . Auth::user()->avatar) : asset('images/avatars/default.png') }}"
+                            <img src="{{ Auth::user()->avatar ? asset(config('public_path.public_path').'images/users/' . Auth::user()->avatar) : asset(config('public_path.public_path').'images/avatars/default.png') }}"
                                 class="rounded-circle shadow"
                                 width="120"
                                 height="120"
@@ -27,11 +27,11 @@
                             <button class="btn btn-outline-primary btn-sm" data-bs-toggle="modal" data-bs-target="#editInfoModal">
                                 <i class="fas fa-edit me-1"></i> {{ __('Modifier les infos') }}
                             </button>
-                        
+
                             <button class="btn btn-outline-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editPasswordModal">
                                 <i class="fas fa-key me-1"></i> {{ __('Changer le mot de passe') }}
                             </button>
-                        </div>                    
+                        </div>
                         <table class="table table-bordered">
                             <tr>
                                 <th>{{ __('Pseudo') }}</th>

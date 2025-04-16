@@ -61,7 +61,7 @@
                 { data: 'action', orderable: false, searchable: false, className: 'text-center' }
             ],
             language: {
-                url: "{{ asset('lang/datatables/' . app()->getLocale() . '.json') }}"
+                url: "{{ asset(config('public_path.public_path').'lang/datatables/' . app()->getLocale() . '.json') }}"
             }
         });
 

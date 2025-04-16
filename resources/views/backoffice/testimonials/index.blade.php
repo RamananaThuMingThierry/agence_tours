@@ -19,7 +19,7 @@
             <button class="btn btn-sm btn-success shadow-sm d-flex align-items-center" data-bs-toggle="modal" data-bs-target="#testimonialModal">
                 <i class="fas fa-plus p-1 text-white-50"></i>
                 <span class="d-none d-sm-inline">&nbsp;{{ __('testimonial.new') }}</span>
-            </button>            
+            </button>
         </div>
     </div>
     <div class="row mb-2">
@@ -116,7 +116,7 @@
             { targets: -1, orderable: false }
           ],
           language: {
-            url: "{{ asset('lang/datatables/' . app()->getLocale() . '.json') }}"
+            url: "{{ asset(config('public_path.public_path').'lang/datatables/' . app()->getLocale() . '.json') }}"
           }, initComplete: function() {
 
             // Function to generate a random color

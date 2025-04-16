@@ -30,17 +30,17 @@ class UsersController extends Controller
         if ($request->ajax()) {
 
             $users = $this->userService->getAllUsers();
-            
+
             $users->map(function ($user) {
                 $user->encrypted_id = Crypt::encryptString($user->id);
                 return $user;
             });
-            
+
             return DataTables::of($users)
                 ->addColumn('avatar', function ($user) {
                     $src = $user->avatar
-                        ? asset('images/users/' . $user->avatar)
-                        : asset('images/avatars/default.png');
+                        ? asset(config('public_path.public_path').'images/users/' . $user->avatar)
+                        : asset(config('public_path.public_path').'images/avatars/default.png');
                     return '<img src="' . $src . '" class="rounded-circle" width="30" height="30" alt="Avatar">';
                 })
                 ->addColumn('action', function ($user) {
@@ -79,8 +79,8 @@ class UsersController extends Controller
 
             $user = $this->userService->getUserById($id);
 
-            $user->avatar_url = $user->avatar ? asset('images/users/' . $user->avatar) : asset('images/avatars/default.png');
-    
+            $user->avatar_url = $user->avatar ? asset(config('public_path.public_path').'images/users/' . $user->avatar) : asset(config('public_path.public_path').'images/avatars/default.png');
+
             return response()->json([
                 'status' => true,
                 'data' => $user
@@ -93,14 +93,14 @@ class UsersController extends Controller
             ], 500);
         }
     }
-    
+
     public function update(Request $request, $encrypted_id)
     {
         $request->validate([
             'role' => 'required|in:admin,user',
             'status' => 'required|in:active,inactive',
         ]);
-    
+
         try{
             $id = Crypt::decryptString($encrypted_id);
 
@@ -110,7 +110,7 @@ class UsersController extends Controller
                 'role' => $request->role,
                 'status' => $request->status,
             ]);
-        
+
             return response()->json([
                 'status' => true,
                 'message' => __('Utilisateur mis à jour avec succès.')
@@ -123,7 +123,7 @@ class UsersController extends Controller
             ], 500);
         }
     }
-    
+
     public function destroy($encrypted_id)
     {
         try {
@@ -141,7 +141,7 @@ class UsersController extends Controller
             if ($user->avatar && file_exists(public_path('images/users/' . $user->avatar))) {
                 unlink(public_path('images/users/' . $user->avatar));
             }
-        
+
             $user->delete();
 
             return response()->json([
