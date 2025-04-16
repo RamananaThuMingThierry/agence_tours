@@ -1,6 +1,10 @@
-<header class="bg-header shadow-sm fixed-top z-50">
+@php
+    $isHome = request()->routeIs('frontoffice');
+@endphp
+
+<header class="bg-header fixed-top z-50">
     <div class="container-fluid px-4">
-        <nav class="navbar navbar-expand-lg navbar-light bg-header">
+        <nav class="navbar navbar-expand-lg navbar-light">
             <div class="container-fluid">
                 <!-- Logo -->
                 <a href="{{ route('frontoffice') }}" class="navbar-brand fw-bold text-primary">
@@ -10,7 +14,7 @@
                 <!-- Toggle button for mobile -->
                 <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
                     aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
+                    <span id="navbarToggleIcon"><i class="fas fa-bars"></i></span>
                 </button>
 
                 <!-- Menu -->
@@ -23,7 +27,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#about"
+                            <a href="{{ $isHome ? '#about' : route('frontoffice') . '#about' }}"
                                class="nav-link {{ request()->is('*about*') ? 'active fw-bold text-white' : 'text-dark' }}">
                                 {{ __('nav.about') }}
                             </a>
@@ -41,7 +45,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#contact"
+                            <a href="{{ $isHome ? '#contact' : route('frontoffice') . '#contact' }}"
                                class="nav-link {{ request()->is('*contact*') ? 'active fw-bold text-white' : 'text-dark' }}">
                                 {{ __('nav.contact') }}
                             </a>

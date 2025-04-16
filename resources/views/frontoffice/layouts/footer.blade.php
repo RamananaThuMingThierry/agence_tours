@@ -4,8 +4,16 @@
             <!-- Contact -->
             <div class="col-md-4 mb-4 text-center">
                 <h5 class="text-uppercase fw-bold text-danger">{{ __('frontend.contact') }}</h5>
-                <p><i class="fas fa-phone-alt me-2"></i> +261 32 12 345 67</p>
-                <p><i class="fas fa-envelope me-2"></i> contact@yourdomain.com</p>
+                <p>
+                    <i class="fas fa-phone-alt me-2"></i>
+                    <a href="tel:+261327563770" class="text-decoration-none text-light">+261 32 75 637 70</a>
+                  </p>
+                  
+                  <p>
+                    <i class="fas fa-envelope me-2"></i>
+                    <a href="mailto:ramananathumingthierry@gmail.com" class="text-decoration-none text-light">ramananathumingthierry@gmail.com</a>
+                  </p>
+                  
             </div>
 
             <!-- Location -->

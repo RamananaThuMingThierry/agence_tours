@@ -6,19 +6,82 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet"/>
 <style>
-.nav-link.active {
-    color: #dc3545 !important;
-    border-radius: 5px;
-    padding: 5px 10px;
-    font-weight: bold;
-}
-.nav-link:hover {
-    color: #ffc107 !important;
-}
+    html, body{
+      font-family: "Chakra Petch", sans-serif;
+      font-weight: 300;
+      font-style: normal;
+      display: flex;
+      margin: 0;
+      flex-direction: column;
+    }
+    
+    /* Par défaut, le header est transparent */
+    .bg-header {
+        background-color: transparent;
+        box-shadow: none;
+        transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    }
 
-.lang-dropdown-mobile {
-    transition: all 0.3s ease-in-out;
-}
+    /* Quand on scroll */
+    .bg-header.scrolled {
+        background-color: white !important;
+        width: 100%;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    #toast-container.toast-middle-center {
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      position: fixed;
+    }
+    .btn-close{
+      color: red !important;
+    }
+    .nav-link.active {
+        color: #dc3545 !important;
+        font-weight: bold;
+    }
+    .lang-dropdown-mobile {
+        transition: all 0.3s ease-in-out;
+    }
+
+    @keyframes breathe {
+        0% {
+            transform: scale(1);
+            box-shadow: 0 0 0 rgba(220, 53, 69, 0.4);
+        }
+        50% {
+            transform: scale(1.1);
+            box-shadow: 0 0 15px rgba(220, 53, 69, 0.6);
+        }
+        100% {
+            transform: scale(1);
+            box-shadow: 0 0 0 rgba(220, 53, 69, 0.4);
+        }
+    }
+
+    #scrollToTopBtn {
+        position: fixed;
+        bottom: 30px;
+        right: 20px;
+        display: none;
+        z-index: 9999;
+        width: 45px;
+        height: 45px;
+        font-size: 18px;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 0 0 15px rgba(219, 136, 144, 0.4);
+        animation: breathe 2s infinite ease-in-out;
+        transition: background-color 0.3s;
+    }
+
+    #scrollToTopBtn:hover {
+        background-color: #c82333;
+        transform: scale(1.15);
+    }
+
 
 @media (max-width: 991.98px) {
     #navbarContent .nav-link {
@@ -38,6 +101,12 @@
         background-color: #ffc107 !important;
     }
 
+    #about_title{
+        text-align: center;
+    }
+    .bg-header.scrolled {
+        background-color: #ffc107 !important;
+    }
     /* Centrer le bouton de langue */
     .dropdown {
         width: 100%;

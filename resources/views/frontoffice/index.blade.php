@@ -2,8 +2,9 @@
 
 @push('style')
     <style>
-        .bg-header{
-            background-color: white;
+
+        .nav-link:hover {
+            color: #ffc107 !important;
         }
         #heroCarousel .hero-slide-img {
             height: 80vh;

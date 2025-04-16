@@ -60,6 +60,15 @@
             });
         });
 
+        window.addEventListener("scroll", function () {
+            const navbar = document.querySelector(".bg-header");
+            if (window.scrollY > 50) {
+                navbar.classList.add("scrolled");
+            } else {
+                navbar.classList.remove("scrolled");
+            }
+        });
+
         function updateFooterPosition() {
             const footer = document.getElementById('mainFooter');
             const body = document.body;
@@ -163,6 +172,22 @@
                 const tourId = this.getAttribute('data-tour-id');
                 document.getElementById('tour_id').value = tourId;
             });
+        });
+    });
+
+    document.addEventListener('DOMContentLoaded', function () {
+        const toggler = document.querySelector('.navbar-toggler');
+        const icon = document.getElementById('navbarToggleIcon');
+
+        toggler.addEventListener('click', function () {
+            setTimeout(() => {
+                const isExpanded = toggler.getAttribute('aria-expanded') === 'true';
+                if (isExpanded) {
+                    icon.innerHTML = '<i class="fas fa-times"></i>'; // Menu ouvert → croix
+                } else {
+                    icon.innerHTML = '<i class="fas fa-bars"></i>';  // Menu fermé → hamburger
+                }
+            }, 300); // délai pour attendre la classe .show
         });
     });
 </script>

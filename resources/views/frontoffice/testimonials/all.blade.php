@@ -7,6 +7,9 @@
             background-color: #ffc107;
         }
 
+        .nav-link:hover {
+            color: #ffffff !important;
+        }
         .divider {
             width: 60px;
             height: 4px;

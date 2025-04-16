@@ -13,6 +13,10 @@
         border-radius: 2px;
     }
 
+    .nav-link:hover {
+        color: #ffffff !important;
+    }
+
     #scrollToTopBtn {
         position: fixed;
         bottom: 30px;
@@ -54,7 +58,7 @@
     }
 
     #tours {
-        margin-top: 30px;
+        margin-top: 60px !important;
         background: url('{{ asset(config('public_path.public_path').'images/cameleon.jpg') }}') no-repeat center center / cover;
         position: relative;
         z-index: 0;

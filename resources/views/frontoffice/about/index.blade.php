@@ -16,7 +16,7 @@
                                      class="img-fluid rounded-3 shadow" style="max-height: 500px; object-fit: cover;">
                             </div>
                             <div class="col-md-7">
-                                <p class="fw-semibold fst-italic mb-2">{{ __('frontend.about_titre') }}</p>
+                                <p class="fw-semibold fst-italic mb-2" id="about_title">{{ __('frontend.about_titre') }}</p>
                                 <p class="text-justify" style="text-align: justify;">
                                     {!! __('frontend.about_description') !!}
                                 </p>
