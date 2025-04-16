@@ -9,22 +9,22 @@
               <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarlangueDropdown">
                 <li>
                     <a class="dropdown-item lang-change {{ app()->getLocale() === 'en' ? 'active' : '' }}" href="javascript:void(0);" data-lang="en">
-                        <i class="fas fa-flag-usa"></i>&nbsp;Anglais
+                        <i class="fas fa-flag-usa"></i>&nbsp;{{ __('lang.english') }}
                     </a>
                 </li>
                 <li>
                     <a class="dropdown-item lang-change {{ app()->getLocale() === 'de' ? 'active' : '' }}" href="javascript:void(0);" data-lang="de">
-                        <img src="{{ asset(config('public_path.public_path') .'img/icon_de.png') }}" width="22px"/>&nbsp;Allemand
+                        <img src="{{ asset(config('public_path.public_path') .'img/icon_de.png') }}" width="22px"/>&nbsp;{{ __('lang.german') }}
                     </a>
                 </li>
                 <li>
                     <a class="dropdown-item lang-change {{ app()->getLocale() === 'es' ? 'active' : '' }}" href="javascript:void(0);" data-lang="es">
-                        <img src="{{ asset(config('public_path.public_path') .'img/icon_es.png') }}" width="22px"/>&nbsp;Espagnol
+                        <img src="{{ asset(config('public_path.public_path') .'img/icon_es.png') }}" width="22px"/>&nbsp;{{ __('lang.spanish') }}
                     </a>
                 </li>
                 <li>
                     <a class="dropdown-item lang-change {{ app()->getLocale() === 'fr' ? 'active' : '' }}" href="javascript:void(0);" data-lang="fr">
-                        <img src="{{ asset(config('public_path.public_path') .'img/icon_fr.png') }}" width="22px"/>&nbsp;Français
+                        <img src="{{ asset(config('public_path.public_path') .'img/icon_fr.png') }}" width="22px"/>&nbsp;{{ __('lang.french') }}
                     </a>
                 </li>
             </ul>            
@@ -39,8 +39,8 @@
                    </div>
                 </li>
                 <hr class="mt-0">
-                <li><a class="dropdown-item" href="{{ route('admin.profile') }}"><i class="fas fa-user text-gray-400 fa-fw mr-2 text-warning"></i>&nbsp;Profile</a></li>
-                <li><a class="dropdown-item" href="javascript:void(0)" id="logout-link"><i class="fas fa-sign-out-alt text-gray-400 fa-fw mr-2 text-warning"></i>&nbsp;Se déconnecter</a></li>
+                <li><a class="dropdown-item" href="{{ route('admin.profile') }}"><i class="fas fa-user text-gray-400 fa-fw mr-2 text-warning"></i>&nbsp;{{ __('default.profile') }}</a></li>
+                <li><a class="dropdown-item" href="javascript:void(0)" id="logout-link"><i class="fas fa-sign-out-alt text-gray-400 fa-fw mr-2 text-warning"></i>&nbsp;{{ __('default.logout') }}</a></li>
             </ul>
           </li>
     </ul>

@@ -5,25 +5,25 @@
         @csrf
         @method('PUT')
         <div class="modal-header">
-          <h5 class="modal-title" id="editPasswordModalLabel">{{ __('Changer le mot de passe') }}</h5>
+          <h5 class="modal-title" id="editPasswordModalLabel">{{ __('default.change_password') }}</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
         </div>
         <div class="modal-body">
           <div class="mb-3">
-              <label for="current_password" class="form-label">Mot de passe actuel</label>
+              <label for="current_password" class="form-label">{{ __('default.current_password') }}</label>
               <input type="password" name="current_password" class="form-control" required>
           </div>
           <div class="mb-3">
-              <label for="new_password" class="form-label">Nouveau mot de passe</label>
+              <label for="new_password" class="form-label">{{ __('default.new_password') }}</label>
               <input type="password" name="new_password" class="form-control" required>
           </div>
           <div class="mb-3">
-              <label for="new_password_confirmation" class="form-label">Confirmation</label>
+              <label for="new_password_confirmation" class="form-label">{{ __('default.confirmation') }}</label>
               <input type="password" name="new_password_confirmation" class="form-control" required>
           </div>
         </div>
         <div class="modal-footer">
-          <button type="submit" class="btn btn-sm btn-warning"><i class="fas fa-lock"></i> {{ __('Modifier') }}</button>
+          <button type="submit" class="btn btn-sm btn-warning"><i class="fas fa-lock"></i> {{ __('default.update') }}</button>
         </div>
       </form>
     </div>

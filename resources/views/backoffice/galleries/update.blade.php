@@ -7,7 +7,7 @@
         <input type="hidden" id="edit-id" name="id">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title">Mettre à jours le status</h5>
+            <h5 class="modal-title">{{ __('gallery.update_status') }}</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
           </div>
           <div class="modal-body">

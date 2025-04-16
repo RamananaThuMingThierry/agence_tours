@@ -11,7 +11,7 @@
             <div class="col-md-8">
                 <div class="card shadow-sm rounded-0">
                     <div class="card-header d-flex justify-content-between align-items-center">
-                        <h5 class="mb-0"><i class="fas fa-user-circle me-2"></i>{{ __('Mon Profil') }}</h5>
+                        <h5 class="mb-0"><i class="fas fa-user-circle me-2"></i>{{ __('default.my_profile') }}</h5>
                         <a href="{{ route('admin.dashboard') }}" class="text-danger text-decoration-none"><i class="fas fa-chevron-left"></i>&nbsp;{{ __('Retour') }}</a>
                     </div>
 
