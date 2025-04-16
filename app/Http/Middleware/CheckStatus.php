@@ -19,8 +19,7 @@ class CheckStatus
     public function handle(Request $request, Closure $next)
     {
         if (Auth::check()) {
-            $user = Auth::user(); // Ce sera bien une instance de App\Models\User
-
+            $user = Auth::user();
             if ($user->isInactive()) {
                 return redirect()->route('status.not.approuved');
             }
@@ -28,8 +27,12 @@ class CheckStatus
             if ($user->isActive()) {
                 return $next($request);
             }
+
+            return redirect()->route('login');
+        }else{
+            return redirect()->route('frontoffice');
         }
 
-        return redirect()->route('login');
+
     }
 }

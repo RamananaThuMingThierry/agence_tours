@@ -129,6 +129,8 @@
                 }
             });
         });
+
+
     });
 
     document.addEventListener("DOMContentLoaded", function () {
@@ -191,3 +193,24 @@
         });
     });
 </script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const toggles = document.querySelectorAll('.toggle-readmore');
+
+        toggles.forEach(toggle => {
+            const tourId = toggle.getAttribute('data-tour-id');
+            const target = document.getElementById('moreText' + tourId);
+
+            // Quand le collapse s’ouvre
+            target.addEventListener('shown.bs.collapse', function () {
+                toggle.textContent = 'Réduire le texte';
+            });
+
+            // Quand le collapse se referme
+            target.addEventListener('hidden.bs.collapse', function () {
+                toggle.textContent = 'Lire la suite';
+            });
+        });
+    });
+</script>
+

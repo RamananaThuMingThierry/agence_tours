@@ -106,6 +106,8 @@
                                 <p class="card-text text-dark" style="text-align: justify;">
                                     {{ Str::limit($tour->description, 120) }}
                                 </p>
+                                <p class="text-danger text-center">From</p>
+                                <p class="text-center"><span class="text-dark fw-bold">{{ $tour->price }}</span>&nbsp;<span class="text-secondary">USD</span></p>
                             </div>
                             <a href="javascript:void(0);"
                                 class="btn btn-danger text-white mt-3 w-100"

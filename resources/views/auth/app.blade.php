@@ -2,7 +2,7 @@
 <html dir="ltr" lang="en-US">
 
 <head>
-  <title>@yield('titre', 'Gestion des membres ASNA') | ASNA</title>
+  <title>@yield('titre') | AGENCE TOURS</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
   <link rel="icon" href="{{ asset(config('public_path.public_path').'images/logo.jpg') }}" type="image/x-icon">
@@ -246,7 +246,7 @@
         fill="currentColor" />
     </symbol>
   </svg>
-  
+
   <main>
     @yield('content')
   </main>
@@ -299,7 +299,7 @@
               });
           });
       });
-  </script> 
+  </script>
   @stack('script')
 </body>
 
