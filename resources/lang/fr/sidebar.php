@@ -7,5 +7,5 @@ return [
     'reservation'  => 'Réservations',
     'slide'        => 'Diaporamas',
     'testimonial'  => 'Témoignages',
-    'tour'         => 'Visites',
+    'tour'         => 'Circuits',
 ];

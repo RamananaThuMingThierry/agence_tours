@@ -7,6 +7,6 @@ return [
     'users' => 'Utilisateurs',
     'reservations' => 'Réservations',
     'slides' => 'Slides',
-    'tours' => 'Visites',
+    'tours' => 'Circuits',
     'testimonials' => 'Témoignages',
 ];

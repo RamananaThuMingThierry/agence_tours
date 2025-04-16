@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'choose_tour' => 'CHOISISSEZ VOTRE TOUR',
+    'choose_tour' => 'CHOISISSEZ VOTRE CIRCUIT',
     'services' => 'SERVICES',
     'slide_title' => 'MONDE DES TOURS À MADAGASCAR',
     'slide_subtitle' => 'Nous vous guiderons vers des lieux incroyables',

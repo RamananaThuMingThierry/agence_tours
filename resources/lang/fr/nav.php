@@ -4,6 +4,6 @@ return [
     'home' => 'ACCUEIL',
     'about' => 'À PROPOS',
     'testimonials' => 'TÉMOIGNAGES',
-    'tours' => 'TOURS',
+    'tours' => 'CIRCUITS',
     'contact' => 'CONTACT',
 ];

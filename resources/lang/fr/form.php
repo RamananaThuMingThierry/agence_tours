@@ -11,7 +11,7 @@ return [
     'email' => 'Email',
     'phone' => 'Téléphone',
     'message' => 'Message',
-    'tour' => 'Visite',
+    'tour' => 'Circuit',
     'status' => 'Statut',
     'seen' => 'Vu',
     'delete_confirm' => 'Êtes-vous sûr ?',
