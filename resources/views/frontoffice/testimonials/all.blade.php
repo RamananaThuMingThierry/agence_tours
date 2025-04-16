@@ -8,7 +8,7 @@
         }
 
         .nav-link:hover {
-            color: #ffffff !important;
+            color: #ffc107 !important;
         }
         .divider {
             width: 60px;
@@ -43,6 +43,12 @@
             bottom: 0;
             width: 100%;
             z-index: 1000;
+        }
+
+        @media (max-width: 991.98px) {
+            .nav-link:hover {
+                color: #ffffff !important;
+            }
         }
     </style>
 @endpush

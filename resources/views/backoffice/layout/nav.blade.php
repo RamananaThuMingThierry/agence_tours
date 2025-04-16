@@ -6,24 +6,28 @@
               <a class="nav-link dropdown-toggle" id="navbarlangueDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   <i class="fas fa-globe fa-fw"></i>
               </a>
-                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarlangueDropdown">
-                    <li>
-                        <a class="dropdown-item lang-change {{ app()->getLocale() === 'en' ? 'active' : '' }}" href="javascript:void(0);" data-lang="en">
-                            <i class="fas fa-flag-usa"></i>&nbsp;Anglais
-                        </a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item lang-change {{ app()->getLocale() === 'fr' ? 'active' : '' }}" href="javascript:void(0);" data-lang="fr">
-                          <img src="{{ asset(config('public_path.public_path') .'img/icon_fr.png') }}" width="22px"/>&nbsp;Français
-                      </a>
-                    </li>
-
-                    <li>
-                        <a class="dropdown-item lang-change {{ app()->getLocale() === 'de' ? 'active' : '' }}" href="javascript:void(0);" data-lang="de">
-                            <i class="fas fa-flag-usa"></i>&nbsp;Allemand
-                        </a>
-                    </li>
-                </ul>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarlangueDropdown">
+                <li>
+                    <a class="dropdown-item lang-change {{ app()->getLocale() === 'en' ? 'active' : '' }}" href="javascript:void(0);" data-lang="en">
+                        <i class="fas fa-flag-usa"></i>&nbsp;Anglais
+                    </a>
+                </li>
+                <li>
+                    <a class="dropdown-item lang-change {{ app()->getLocale() === 'de' ? 'active' : '' }}" href="javascript:void(0);" data-lang="de">
+                        <img src="{{ asset(config('public_path.public_path') .'img/icon_de.png') }}" width="22px"/>&nbsp;Allemand
+                    </a>
+                </li>
+                <li>
+                    <a class="dropdown-item lang-change {{ app()->getLocale() === 'es' ? 'active' : '' }}" href="javascript:void(0);" data-lang="es">
+                        <img src="{{ asset(config('public_path.public_path') .'img/icon_es.png') }}" width="22px"/>&nbsp;Espagnol
+                    </a>
+                </li>
+                <li>
+                    <a class="dropdown-item lang-change {{ app()->getLocale() === 'fr' ? 'active' : '' }}" href="javascript:void(0);" data-lang="fr">
+                        <img src="{{ asset(config('public_path.public_path') .'img/icon_fr.png') }}" width="22px"/>&nbsp;Français
+                    </a>
+                </li>
+            </ul>            
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>

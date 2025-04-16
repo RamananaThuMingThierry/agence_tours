@@ -9,7 +9,7 @@ class LanguesController extends Controller
 {
     public function changeLanguage($lang)
     {
-        if (in_array($lang, ['en', 'fr', 'de'])) {
+        if (in_array($lang, ['en', 'fr', 'de','es'])) {
             session(['locale' => $lang]);
 
             if (request()->ajax()) {

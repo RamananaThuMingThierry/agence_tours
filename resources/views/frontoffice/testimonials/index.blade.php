@@ -7,6 +7,10 @@
 
         <div class="row g-4">
             @foreach($testimonials as $testimonial)
+                @php
+                    $shortMsg = Str::limit($testimonial->message, 150);
+                    $isLongMsg = strlen($testimonial->message) > 150;
+                @endphp
                 <div class="col-md-4">
                     <div class="card h-100 border-0 elevation-0 rounded-à p-3">
                         <div class="d-flex align-items-center mb-3">
@@ -26,7 +30,19 @@
                         </div>
                         <p class="card-text text-muted" style="text-align: justify;">
                             <i class="fas fa-quote-left me-2 text-danger"></i>
-                            {{ Str::limit($testimonial->message, 150) }}
+                            {{ $shortMsg }}
+                            @if($isLongMsg)
+                                <span id="moreTestimonial{{ $testimonial->id }}" class="collapse">{{ substr($testimonial->message, 150) }}</span>
+                                <a class="text-primary toggle-readmore-testimonial"
+                                   data-bs-toggle="collapse"
+                                   href="#moreTestimonial{{ $testimonial->id }}"
+                                   role="button"
+                                   aria-expanded="false"
+                                   aria-controls="moreTestimonial{{ $testimonial->id }}"
+                                   data-testimonial-id="{{ $testimonial->id }}">
+                                    Lire la suite
+                                </a>
+                            @endif
                         </p>
                     </div>
                 </div>

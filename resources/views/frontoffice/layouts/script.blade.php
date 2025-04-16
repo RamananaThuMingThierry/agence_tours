@@ -213,4 +213,25 @@
         });
     });
 </script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const toggles = document.querySelectorAll('.toggle-readmore-testimonial');
+
+        toggles.forEach(toggle => {
+            const collapseId = toggle.getAttribute('href').replace('#', '');
+            const target = document.getElementById(collapseId);
+
+            if (target) {
+                target.addEventListener('shown.bs.collapse', function () {
+                    toggle.textContent = 'Réduire le texte';
+                });
+
+                target.addEventListener('hidden.bs.collapse', function () {
+                    toggle.textContent = 'Lire la suite';
+                });
+            }
+        });
+    });
+</script>
+
 

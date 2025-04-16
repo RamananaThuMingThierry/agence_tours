@@ -3,7 +3,7 @@
 @push('style')
 <style>
     .bg-header {
-        background-color: #ffc107;
+        background-color: #fff;
     }
 
     .divider {
@@ -14,7 +14,7 @@
     }
 
     .nav-link:hover {
-        color: #ffffff !important;
+        color: #ffc107 !important;
     }
 
     #scrollToTopBtn {
@@ -64,6 +64,12 @@
         z-index: 0;
         min-height:100vh;
     }
+
+    @media (max-width: 991.98px) {
+        .nav-link:hover {
+            color: #ffffff !important;
+        }
+    }
 </style>
 @endpush
 
@@ -82,43 +88,59 @@
 
             <div class="row g-4">
                 @foreach($tours as $tour)
-                <div class="col-md-4">
-                    <div class="card tour-card h-100 border-0 shadow overflow-hidden rounded-4 bg-white">
-                        <div class="tour-image-wrapper position-relative">
-                            <div id="carouselTour{{ $tour->id }}" class="carousel slide" data-bs-ride="carousel">
-                                <div class="carousel-inner">
-                                    @foreach($tour->images as $index => $img)
-                                    <div class="carousel-item {{ $index === 0 ? 'active' : '' }}">
-                                        <img src="{{ asset(config('public_path.public_path').'images/tours/' . $img->image) }}" class="d-block w-100 tour-img"
-                                            alt="{{ $tour->title }}" style="height: 250px; object-fit: cover;">
+                    @php
+                        $shortDesc = Str::limit($tour->description, 120);
+                        $isLong = strlen($tour->description) > 120;
+                    @endphp
+                    <div class="col-md-4">
+                        <div class="card tour-card h-100 border-0 shadow overflow-hidden rounded-4 bg-white">
+                            <div class="tour-image-wrapper position-relative">
+                                <div id="carouselTour{{ $tour->id }}" class="carousel slide" data-bs-ride="carousel">
+                                    <div class="carousel-inner">
+                                        @foreach($tour->images as $index => $img)
+                                        <div class="carousel-item {{ $index === 0 ? 'active' : '' }}">
+                                            <img src="{{ asset(config('public_path.public_path').'images/tours/' . $img->image) }}" class="d-block w-100 tour-img"
+                                                alt="{{ $tour->title }}" style="height: 250px; object-fit: cover;">
+                                        </div>
+                                        @endforeach
                                     </div>
-                                    @endforeach
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="card-body d-flex flex-column justify-content-between">
-                            <div>
-                                <h5 class="card-title text-danger text-center text-uppercase fw-bold">
-                                    {{ $tour->title }}
-                                </h5>
-                                <div class="mx-auto my-2" style="width: 40px; height: 3px; background-color: #ffc107;"></div>
-                                <p class="card-text text-dark" style="text-align: justify;">
-                                    {{ Str::limit($tour->description, 120) }}
-                                </p>
-                                <p class="text-danger text-center">From</p>
-                                <p class="text-center"><span class="text-dark fw-bold">{{ $tour->price }}</span>&nbsp;<span class="text-secondary">USD</span></p>
+                            <div class="card-body d-flex flex-column justify-content-between">
+                                <div>
+                                    <h5 class="card-title text-danger text-center text-uppercase fw-bold">
+                                        {{ $tour->title }}
+                                    </h5>
+                                    <div class="mx-auto my-2" style="width: 40px; height: 3px; background-color: #ffc107;"></div>
+                                    <p class="card-text text-dark" style="text-align: justify;">
+                                        {{ $shortDesc }}
+                                        @if($isLong)
+                                            <span id="moreText{{ $tour->id }}" class="collapse">{{ substr($tour->description, 120) }}</span>
+                                            <a class="text-primary toggle-readmore"
+                                            data-bs-toggle="collapse"
+                                            href="#moreText{{ $tour->id }}"
+                                            role="button"
+                                            aria-expanded="false"
+                                            aria-controls="moreText{{ $tour->id }}"
+                                            data-tour-id="{{ $tour->id }}">
+                                             Lire la suite
+                                         </a>
+                                        @endif
+                                    </p>
+                                    <p class="text-danger text-center">From</p>
+                                    <p class="text-center"><span class="text-dark fw-bold">{{ $tour->price }}</span>&nbsp;<span class="text-secondary">USD</span></p>
+                                </div>
+                                <a href="javascript:void(0);"
+                                    class="btn btn-danger text-white mt-3 w-100"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#reservationModal"
+                                    data-tour-id="{{ $tour->id }}">
+                                        <i class="fas fa-calendar-alt"></i> {{ __('frontend.reserved') }}
+                                    </a>
                             </div>
-                            <a href="javascript:void(0);"
-                                class="btn btn-danger text-white mt-3 w-100"
-                                data-bs-toggle="modal"
-                                data-bs-target="#reservationModal"
-                                data-tour-id="{{ $tour->id }}">
-                                    <i class="fas fa-calendar-alt"></i> {{ __('frontend.reserved') }}
-                                </a>
                         </div>
                     </div>
-                </div>
                 @endforeach
             </div>
         </div>
