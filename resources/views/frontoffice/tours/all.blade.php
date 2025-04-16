@@ -68,6 +68,9 @@
 @endpush
 
 @section('content')
+    @section('title', 'Accueil - World of Madagascar Tour')
+    @section('meta_description', 'Explore Madagascar with private tours, local guides, and cultural adventures.')
+    @section('meta_keywords', 'Madagascar, Tours, Private guide, Adventure, Culture')
     @include('backoffice.reservations.create')
     <section id="tours" class="py-5 text-white position-relative">
         <div class="section-overlay"></div>
@@ -87,7 +90,7 @@
                                     @foreach($tour->images as $index => $img)
                                     <div class="carousel-item {{ $index === 0 ? 'active' : '' }}">
                                         <img src="{{ asset('images/tours/' . $img->image) }}" class="d-block w-100 tour-img"
-                                            alt="Tour image" style="height: 250px; object-fit: cover;">
+                                            alt="{{ $tour->title }}" style="height: 250px; object-fit: cover;">
                                     </div>
                                     @endforeach
                                 </div>

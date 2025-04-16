@@ -72,6 +72,10 @@
 @endpush
 
 @section('content')
+    @section('title', 'Accueil - World of Madagascar Tour')
+    @section('meta_description', 'Explore Madagascar with private tours, local guides, and cultural adventures.')
+    @section('meta_keywords', 'Madagascar, Tours, Private guide, Adventure, Culture')
+
     @include('backoffice.reservations.create')
     @include('frontoffice.slides.index')
     @include('frontoffice.services.index')

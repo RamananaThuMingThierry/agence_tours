@@ -8,7 +8,7 @@
             <div class="container-fluid">
                 <!-- Logo -->
                 <a href="{{ route('frontoffice') }}" class="navbar-brand fw-bold text-primary">
-                    <img src="{{ asset(config('public_path.public_path').'utiles/logo.jpg') }}" class="rounded-pill" alt="Logo" width="40" height="40">
+                    <img src="{{ asset(config('public_path.public_path').'utiles/logo.jpg') }}" alt="Logo Agence" class="rounded-pill" alt="Logo" width="40" height="40">
                 </a>
 
                 <!-- Toggle button for mobile -->

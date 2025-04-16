@@ -1,5 +1,7 @@
 <?php
 
+use Spatie\Sitemap\Sitemap;
+use Spatie\Sitemap\Tags\Url;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ADMIN\TourController;
 use App\Http\Controllers\AUTH\LoginController;
@@ -65,4 +67,16 @@ Route::prefix('backoffice')->name('admin.')->middleware(['auth','check.status'])
 
 Route::fallback(function () {
     return response()->view('errors.404', [], 404);
+});
+
+
+Route::get('/sitemap', function () {
+    $sitemap = Sitemap::create()
+        ->add(Url::create('/'))
+        ->add(Url::create('/tours'))
+        ->add(Url::create('/testimonials'));
+
+    $sitemap->writeToFile(public_path('sitemap.xml'));
+
+    return 'Sitemap generated';
 });
