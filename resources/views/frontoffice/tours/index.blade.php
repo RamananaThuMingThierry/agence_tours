@@ -14,7 +14,7 @@
                                 <div class="carousel-inner">
                                     @foreach($tour->images as $index => $img)
                                         <div class="carousel-item {{ $index === 0 ? 'active' : '' }}">
-                                            <img src="{{ asset('images/tours/' . $img->image) }}"
+                                            <img src="{{ asset(config('public_path.public_path').'images/tours/' . $img->image) }}"
                                                  class="d-block w-100 tour-img"
                                                  alt="{{ $tour->title }}"
                                                  style="height: 250px; object-fit: cover;">

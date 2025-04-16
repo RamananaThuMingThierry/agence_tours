@@ -2,7 +2,7 @@
     <div class="carousel-inner">
         @foreach ($slides as $index => $slide)
             <div class="carousel-item {{ $index === 0 ? 'active' : '' }}">
-                <img src="{{ asset('images/slides/' . $slide->image) }}" class="d-block w-100 hero-slide-img" alt="{{ $slide->title }}">
+                <img src="{{ asset(config('public_path.public_path').'images/slides/' . $slide->image) }}" class="d-block w-100 hero-slide-img" alt="{{ $slide->title }}">
                 <div class="carousel-caption d-flex flex-column justify-content-center align-items-center h-100">
                     <div class="text-center p-4 rounded">
                         <h1 class="text-white fw-bold">{{ __('frontend.slide_title') }}</h1>
