@@ -3,16 +3,16 @@
 
 Une nouvelle réservation a été effectuée :
 
-**Nom :** {{ $reservation->name }}  
-**Email :** {{ $reservation->email }}  
-**Téléphone :** {{ $reservation->phone }}  
-**Message :**  
+**Nom :** {{ $reservation->name }}
+**Email :** {{ $reservation->email }}
+**Téléphone :** {{ $reservation->phone }}
+**Message :**
 {{ $reservation->message }}
 
 @component('mail::button', ['url' => url('/')])
 Voir le site
 @endcomponent
 
-Merci,  
+Merci,
 {{ config('app.name') }}
 @endcomponent

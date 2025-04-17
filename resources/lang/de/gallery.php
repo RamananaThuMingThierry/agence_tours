@@ -7,9 +7,10 @@ return [
     'actions' => 'Aktionen',
     'edit'    => 'Bild bearbeiten',
     'delete'  => 'Bild löschen',
-    'publish'  => 'Veröffentlichen',
-    'archived'    => 'Archiviert',
+    'publish' => 'Veröffentlichen',
+    'archived' => 'Archivieren',
+    'update_status' => 'Status aktualisieren',
     'image_added' => 'Das Bild wurde hinzugefügt.',
-    'status_updated' => 'Der Status wurde aktualisiert.',
+    'status_updated' => 'Status wurde aktualisiert.',
     'deleted' => 'Bild erfolgreich gelöscht.',
 ];

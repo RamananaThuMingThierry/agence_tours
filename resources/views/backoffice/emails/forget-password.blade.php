@@ -3,21 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Réinitialisation de mot de passe</title>
+    <title>{{ __('email.password_reset_title') }}</title>
     <style>
-        /* Ajoutez vos styles personnalisés ici */
         .container {
             width: 100%;
             max-width: 600px;
             margin: 0 auto;
             padding: 20px;
             font-family: Arial, sans-serif;
-            text-align: center; /* Centre le texte et les images */
+            text-align: center;
         }
         .logo {
-            width: 200px; /* Ajustez la taille du logo */
+            width: 200px;
             height: auto;
-            margin-bottom: 20px; /* Espace sous le logo */
+            margin-bottom: 20px;
             border-radius: 100%;
         }
         .button {
@@ -39,16 +38,15 @@
 <body>
     <div class="container">
         <img src="https://images.wakelet.com/resize?id=bTPWLcE1XYXJU0QLPFeJR&h=705&w=768&q=85" alt="Logo" class="logo">
-        <p>Bonjour !</p>
-        <p>Vous recevez cet e-mail car nous avons reçu une demande de réinitialisation de mot de passe pour votre compte.</p>
-        <p><a href="{{ $resetUrl }}" class="button">Réinitialiser le mot de passe</a></p>
-        <p>Ce lien de réinitialisation du mot de passe expirera dans 60 minutes.</p>
-        <p>Si vous n'avez pas demandé de réinitialisation de mot de passe, vous pouvez ignorer ce message.</p>
+        <p>{{ __('email.greeting') }}</p>
+        <p>{{ __('email.reset_request_message') }}</p>
+        <p><a href="{{ $resetUrl }}" class="button">{{ __('email.reset_button') }}</a></p>
+        <p>{{ __('email.expiration_notice', ['count' => 60]) }}</p>
+        <p>{{ __('email.ignore_notice') }}</p>
         <div class="footer">
-            <p>Cordialement,</p>
-            <p>RAMANANA Thu Ming Thierry</p>
-            <p>+261 32 75 637 70</p>
-            <p>+261 38 29 216 85</p>
+            <p>{{ __('email.signature_closing') }}</p>
+            <p>Ricki Cardo</p>
+            <p>+261 38 09 137 03</p>
         </div>
     </div>
 </body>

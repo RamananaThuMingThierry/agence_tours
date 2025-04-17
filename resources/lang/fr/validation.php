@@ -5,13 +5,12 @@ return [
     'image' => 'Le champ :attribute doit être une image.',
     'mimes' => 'Le champ :attribute doit être un fichier de type : :values.',
     'in' => 'La valeur sélectionnée pour :attribute est invalide.',
-    'email' => 'Le champ :attribute doit être une adresse email valide.',
+    'email' => 'Le champ :attribute doit être une adresse e-mail valide.',
     'string' => 'Le champ :attribute doit être une chaîne de caractères.',
     'max' => [
-        'string' => 'Le champ :attribute ne peut pas dépasser :max caractères.',
+        'string' => 'Le champ :attribute ne doit pas dépasser :max caractères.',
     ],
-    'image' => 'Le champ :attribute doit être une image.',
-    'mimes' => 'Le champ :attribute doit être un fichier de type : :values.',
+
     'testimonial' => [
         'name_required' => 'Le nom est requis.',
         'name_string' => 'Le nom doit être une chaîne de caractères.',
@@ -28,8 +27,7 @@ return [
         'status_in' => 'Le statut sélectionné est invalide.',
 
         'image_image' => 'Le fichier doit être une image.',
-        'image_mimes' => 'L\'image doit être au format jpeg, png, jpg ou webp.',
-        'image_max' => 'La taille de l\'image ne doit pas dépasser 2 Mo.',
+        'image_mimes' => 'L’image doit être de type : jpeg, png, jpg, webp.',
+        'image_max' => 'L’image ne peut pas dépasser 2 Mo.',
     ],
-
 ];

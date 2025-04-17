@@ -52,7 +52,7 @@
                         </li>
                     </ul>
                 </div>
-                
+
 
                 <!-- Language Selector -->
                 <div class="dropdown lang-dropdown-mobile d-lg-block">
@@ -79,7 +79,7 @@
                         </li>
                     </ul>
                 </div>
-                
+
             </div>
         </nav>
     </div>

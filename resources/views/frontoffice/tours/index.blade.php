@@ -43,11 +43,11 @@
                                         aria-expanded="false"
                                         aria-controls="moreText{{ $tour->id }}"
                                         data-tour-id="{{ $tour->id }}">
-                                         Lire la suite
+                                         {{ __('default.read_more') }}
                                      </a>
                                     @endif
                                 </p>
-                                <p class="text-danger text-center">From</p>
+                                <p class="text-danger text-center">{{ __('default.from') }}</p>
                                 <p class="text-center"><span class="text-dark fw-bold">{{ $tour->price }}</span>&nbsp;<span class="text-secondary">USD</span></p>
                             </div>
 

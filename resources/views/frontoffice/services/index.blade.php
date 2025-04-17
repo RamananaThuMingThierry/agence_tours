@@ -13,7 +13,7 @@
                         <img src="{{ asset(config('public_path.public_path').'images/services/jumelles.png') }}" alt="Guided Tours" width="80" height="80">
                     </div>
                     <h5 class="fw-bold text-danger text-uppercase mb-2">{{ __('frontend.small_groupes') }}</h5>
-                    <p class="text-muted small">Discover places with expert guides for an immersive experience.</p>
+                    <p class="text-muted small">{{ __('default.service_jumelle') }}</p>
                 </div>
             </div>
 
@@ -24,7 +24,7 @@
                         <img src="{{ asset(config('public_path.public_path').'images/services/panneaux.png') }}" alt="Guided Tours" width="80" height="80">
                     </div>
                     <h5 class="fw-bold text-danger text-uppercase mb-2">{{ __('frontend.activity_tours') }}</h5>
-                    <p class="text-muted small">Discover places with expert guides for an immersive experience.</p>
+                    <p class="text-muted small">{{ __('default.service_panneaux') }}</p>
                 </div>
             </div>
 
@@ -35,7 +35,7 @@
                         <img src="{{ asset(config('public_path.public_path').'images/services/cible.png') }}" alt="Guided Tours" width="80" height="80">
                     </div>
                     <h5 class="fw-bold text-danger text-uppercase mb-2">{{ __('frontend.highlights') }}</h5>
-                    <p class="text-muted small">Discover places with expert guides for an immersive experience.</p>
+                    <p class="text-muted small">{{ __('default.service_cible') }}</p>
                 </div>
             </div>
 
@@ -46,7 +46,7 @@
                         <img src="{{ asset(config('public_path.public_path').'images/services/montre.png') }}" alt="Guided Tours" width="80" height="80">
                     </div>
                     <h5 class="fw-bold text-danger text-uppercase mb-2">{{ __('frontend.custom_tours') }}</h5>
-                    <p class="text-muted small">Discover places with expert guides for an immersive experience.</p>
+                    <p class="text-muted small">{{ __('default.service_montre') }}</p>
                 </div>
             </div>
         </div>

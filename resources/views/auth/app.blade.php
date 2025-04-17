@@ -278,14 +278,14 @@
           document.getElementById('logout-link').addEventListener('click', function(event) {
               event.preventDefault();
               Swal.fire({
-                  title: 'Êtes-vous sûr ?',
-                  text: "Vous allez être déconnecté.",
+                  title: '{{ __("logout.confirm_title") }}',
+                  text: '{{ __("logout.confirm_text") }}',
                   icon: 'warning',
                   showCancelButton: true,
                   confirmButtonColor: '#3085d6',
                   cancelButtonColor: '#d33',
-                  confirmButtonText: 'Oui, déconnectez-moi!',
-                  cancelButtonText: 'Annuler'
+                  confirmButtonText: '{{ __("logout.confirm_yes") }}',
+                  cancelButtonText: '{{ __("logout.confirm_no") }}'
               }).then((result) => {
                   if (result.isConfirmed) {
                       var logoutForm = document.createElement('form');

@@ -8,9 +8,9 @@ return [
     'alert' => 'Alarm',
     'delete' => 'Gelöscht',
     'confirm' => 'Bestätigen',
-    'confirm_title' => 'Sind Sie sicher?',
-    'confirm_text' => 'Sind Sie sicher, dass Sie dieses Element löschen möchten?',
-    'confirm_button' => 'Ja, löschen Sie es!',
+    'confirm_title' => 'Bist du sicher?',
+    'confirm_text' => 'Bist du sicher, dass du dieses Element löschen möchtest?',
+    'confirm_button' => 'Ja, löschen!',
     'cancel_button' => 'Abbrechen',
     'delete_button' => 'Löschen',
     'delete_failed' => 'Löschen fehlgeschlagen',
@@ -18,4 +18,5 @@ return [
     'update_success' => 'Erfolgreich aktualisiert',
     'create_success' => 'Erfolgreich erstellt',
     'upload_success' => 'Erfolgreich hochgeladen',
+    'upload_failed' => 'Hochladen fehlgeschlagen',
 ];

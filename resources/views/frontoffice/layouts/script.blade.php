@@ -203,12 +203,12 @@
 
             // Quand le collapse s’ouvre
             target.addEventListener('shown.bs.collapse', function () {
-                toggle.textContent = 'Réduire le texte';
+                toggle.textContent = __('default.minimize_text');
             });
 
             // Quand le collapse se referme
             target.addEventListener('hidden.bs.collapse', function () {
-                toggle.textContent = 'Lire la suite';
+                toggle.textContent = __('default.read_more');
             });
         });
     });
@@ -223,11 +223,11 @@
 
             if (target) {
                 target.addEventListener('shown.bs.collapse', function () {
-                    toggle.textContent = 'Réduire le texte';
+                    toggle.textContent =  __('default.minimize_text');
                 });
 
                 target.addEventListener('hidden.bs.collapse', function () {
-                    toggle.textContent = 'Lire la suite';
+                    toggle.textContent = __('default.read_more');
                 });
             }
         });

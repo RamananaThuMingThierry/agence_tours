@@ -1,12 +1,10 @@
 <?php
 
 return [
-    'default' => 'Agence Tours',
+    'default' => 'Agence de Tours',
     'dashboard' => 'Tableau de bord',
-    'gallery' => 'Galeries',
+    'gallery' => 'Galerie',
     'users' => 'Utilisateurs',
     'reservations' => 'Réservations',
-    'slides' => 'Slides',
-    'tours' => 'Circuits',
-    'testimonials' => 'Témoignages',
+    'slides' => 'Diapositives',
 ];

@@ -40,7 +40,7 @@
                                    aria-expanded="false"
                                    aria-controls="moreTestimonial{{ $testimonial->id }}"
                                    data-testimonial-id="{{ $testimonial->id }}">
-                                    Lire la suite
+                                    {{ __('default.read_more') }}
                                 </a>
                             @endif
                         </p>

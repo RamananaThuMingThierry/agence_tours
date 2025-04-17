@@ -6,14 +6,14 @@
                 <h5 class="text-uppercase fw-bold text-danger">{{ __('frontend.contact') }}</h5>
                 <p>
                     <i class="fas fa-phone-alt me-2"></i>
-                    <a href="tel:+261327563770" class="text-decoration-none text-light">+261 32 75 637 70</a>
+                    <a href="tel:+261380913703" class="text-decoration-none text-light">+261 38 09 137 03</a>
                   </p>
-                  
+
                   <p>
                     <i class="fas fa-envelope me-2"></i>
-                    <a href="mailto:ramananathumingthierry@gmail.com" class="text-decoration-none text-light">ramananathumingthierry@gmail.com</a>
+                    <a href="mailto:worldofmadagascartour@gmail.com" class="text-decoration-none text-light">worldofmadagascartour@gmail.com</a>
                   </p>
-                  
+
             </div>
 
             <!-- Location -->
@@ -37,7 +37,7 @@
         </div>
 
         <div class="text-center border-top pt-3 mt-3" style="font-size: 14px;">
-            &copy; {{ now()->year }} Your Company. All rights reserved.
+            &copy; {{ now()->year }} {{ __('default.footer_text') }}
         </div>
 
         <button id="scrollToTopBtn" class="btn btn-danger shadow rounded-circle">

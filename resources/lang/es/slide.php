@@ -1,0 +1,28 @@
+<?php
+
+return [
+    'title' => 'Título',
+    'subtitle' => 'Subtítulo',
+    'description' => 'Descripción',
+    'order' => 'Orden',
+    'image' => 'Imagen',
+    'actions' => 'Acciones',
+    'new' => 'Nuevo slideshow',
+    'details' => 'Detalles del slideshow',
+    'edit' => 'Editar slideshow',
+    'deleted' => 'Eliminar slideshow',
+    'added' => 'La imagen ha sido añadida.',
+    'status_updated' => 'El estado ha sido actualizado.',
+    'title_required' => 'El título es obligatorio.',
+    'title_max' => 'El título no puede tener más de 255 caracteres.',
+    'subtitle_max' => 'El subtítulo no puede tener más de 255 caracteres.',
+    'order_required' => 'El orden es obligatorio.',
+    'order_integer' => 'El orden debe ser un número entero.',
+    'order_min' => 'El orden debe ser al menos 1.',
+    'order_max' => 'El orden no puede ser mayor que 4.',
+    'image_required' => 'La imagen es obligatoria.',
+    'image_image' => 'El archivo debe ser una imagen.',
+    'image_mimes' => 'La imagen debe ser de tipo: jpeg, png, jpg.',
+    'image_max' => 'La imagen no puede superar los 2 MB.',
+    'limit_reached' => 'Solo puedes añadir hasta 4 diapositivas.',
+];

@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Bienvenue sur notre application!</title>
+    <title>{{ __('email.welcome_subject') }}</title>
 </head>
 <body>
-    <h1>Bienvenue, {{ $user->pseudo }}!</h1>
-    <p>Nous sommes heureux de vous avoir parmi nous. Merci de vous être inscrit!</p>
+    <h1>{{ __('email.welcome_title', ['name' => $user->pseudo]) }}</h1>
+    <p>{{ __('email.welcome_message') }}</p>
 </body>
 </html>

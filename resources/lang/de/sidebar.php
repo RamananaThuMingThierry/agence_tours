@@ -2,10 +2,10 @@
 
 return [
     'dashboard'    => 'Dashboard',
-    'user'        => 'Benutzer',
+    'user'         => 'Benutzer',
     'gallery'      => 'Galerie',
-    'reservation' => 'Reservierung',
-    'slide'       => 'Folien',
-    'testimonial' => 'Zeugnis',
-    'tour'        => 'Touren',
+    'reservation'  => 'Reservierungen',
+    'slide'        => 'Folien',
+    'testimonial'  => 'Bewertungen',
+    'tour'         => 'Touren',
 ];

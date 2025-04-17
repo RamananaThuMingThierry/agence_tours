@@ -1,11 +1,10 @@
 <?php
 
 return [
-    'default' => 'Reiseagentur',
-    'dashboard' => 'Übersicht',
+    'default' => 'Tourenagentur',
+    'dashboard' => 'Dashboard',
     'gallery' => 'Galerie',
     'users' => 'Benutzer',
     'reservations' => 'Reservierungen',
     'slides' => 'Folien',
-    'tours' => 'Touren',
 ];

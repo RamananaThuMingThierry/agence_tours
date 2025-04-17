@@ -3,9 +3,9 @@
 return [
     'dashboard'    => 'Tableau de bord',
     'user'         => 'Utilisateurs',
-    'gallery'       => 'Galeries',
+    'gallery'      => 'Galerie',
     'reservation'  => 'Réservations',
-    'slide'        => 'Diaporamas',
+    'slide'        => 'Diapositives',
     'testimonial'  => 'Témoignages',
-    'tour'         => 'Circuits',
+    'tour'         => 'Tours',
 ];

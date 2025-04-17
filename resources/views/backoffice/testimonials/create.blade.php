@@ -23,7 +23,7 @@
                             <label for="rating" class="form-label fw-bold">{{ __('testimonial.rating') }}</label>
                             <select class="form-select" id="rating" name="rating">
                                 @for ($i = 1; $i <= 5; $i++)
-                                    <option value="{{ $i }}">{{ $i }} ★</option>
+                                    <option value="{{ $i }}">{{ $i }} <span class="text-warning">★</span></option>
                                 @endfor
                             </select>
                             <div class="invalid-feedback" id="error-rating"></div>

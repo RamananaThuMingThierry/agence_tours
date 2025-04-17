@@ -17,4 +17,6 @@ return [
     'delete_success' => 'Supprimé avec succès',
     'update_success' => 'Mis à jour avec succès',
     'create_success' => 'Créé avec succès',
+    'upload_success' => 'Téléchargé avec succès',
+    'upload_failed' => 'Échec du téléchargement',
 ];

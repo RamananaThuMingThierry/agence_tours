@@ -1,6 +1,6 @@
 @extends('auth.app')
 
-@section('titre', "Inscription")
+@section('titre', __('register.register'))
 
 @section('content')
     <section id="login-register" class="vh-100" style="background: url('{{ asset(config('public_path.public_path').'utiles/login.jpg') }}') no-repeat center center/cover;">
@@ -23,48 +23,48 @@
                               <div class="d-flex justify-content-center align-items-center h-100">
                                 <!-- Icon visible sur les écrans plus grands -->
                                 <i class="fas fa-sign-in-alt fa-2x me-3 d-none d-md-block" style="color: #af8511;"></i>
-                            
+
                                 <!-- Logo visible sur les petits écrans (smartphone) -->
-                                <img src="{{ asset(config('public_path.public_path'). 'utiles/logo.jpg') }}" 
-                                     alt="login form" 
-                                     class="img-fluid d-block d-md-none" 
+                                <img src="{{ asset(config('public_path.public_path'). 'utiles/logo.jpg') }}"
+                                     alt="login form"
+                                     class="img-fluid d-block d-md-none"
                                      style="width:50px;"
                                      />
                             </div>
-                            
-                              <span class="h1 fw-bold mb-0">Inscription</span>
+
+                              <span class="h1 fw-bold mb-0">{{ __('register.register') }}</span>
                             </div>
                             <div class="form-group mb-2">
-                              <label for="pseudo">Pseudo <span cla  ss="text-danger">*</span></label>
+                              <label for="pseudo">{{ __('register.username') }} <span cla  ss="text-danger">*</span></label>
                               <input type="text" class="form-control" id="pseudo" name="pseudo" required autofocus>
-                              <div class="invalid-feedback">Veuillez saisir votre pseudo.</div>
+                              <div class="invalid-feedback">{{ __('register.required_pseudo') }}</div>
                             </div>
                             <div class="row">
                               <div class="col-md-6">
                                 <div class="form-group mb-2">
-                                  <label for="email">Adresse email<span class="text-danger">*</span></label>
+                                  <label for="email">{{ __('register.email') }}<span class="text-danger">*</span></label>
                                   <input type="email" class="form-control" id="email" name="email" required>
-                                  <div class="invalid-feedback">Veuillez saisir un adresse email valide.</div>
+                                  <div class="invalid-feedback">{{ __('register.required_email') }}</div>
                                 </div>
                               </div>
                               <div class="col-md-6">
                                 <div class="form-group mb-2">
-                                  <label for="contact">Contact<span class="text-danger">*</span></label>
+                                  <label for="contact">{{ __('register.contact') }}<span class="text-danger">*</span></label>
                                   <input type="number" class="form-control" id="contact" name="contact" required>
-                                  <div class="invalid-feedback">Veuillez saisir votre contact.</div>
+                                  <div class="invalid-feedback">{{ __('register.required_contact') }}</div>
                                 </div>
                               </div>
                             </div>
                             <div class="form-group mb-2">
-                              <label for="address">Adresse<span class="text-danger">*</span></label>
+                              <label for="address">{{ __('register.address') }}<span class="text-danger">*</span></label>
                               <input type="text" class="form-control" id="address" name="address" required>
-                              <div class="invalid-feedback">Veuillez saisir votre contact.</div>
+                              <div class="invalid-feedback">{{ __('register.required_address') }}</div>
                             </div>
-              
+
                             <div class="row">
                               <div class="col-md-12">
                                 <div class="form-group mb-2">
-                                  <label for="password">Mot de passe<span class="text-danger">*</span></label>
+                                  <label for="password">{{ __('register.password') }}<span class="text-danger">*</span></label>
                                   <div class="input-group">
                                     <input type="password" class="form-control" id="password" name="password" required>
                                     <button type="button" class="btn btn-outline-secondary" id="toggle-password" style="height: 38px;">
@@ -72,25 +72,25 @@
                                     </button>
                                     <button type="button" class="btn btn-outline-secondary" id="generate-password" style="height: 38px;"> <i class="fas fa-key"></i></button>
                                   </div>
-                                  <div class="invalid-feedback">Veuillez saisir votre mot de passe.</div>
-                                </div>                                                             
+                                  <div class="invalid-feedback">{{ __('register.required_password') }}</div>
+                                </div>
                               </div>
                             </div>
                             <div class="row">
                               <div class="col-md-12">
                                 <div class="form-group mb-2">
-                                  <label for="password-confirm">Confirmer votre mot de passe<span class="text-danger">*</span></label>
+                                  <label for="password-confirm">{{ __('register.confirm_password') }}<span class="text-danger">*</span></label>
                                   <input type="password" class="form-control" id="password-confirm" name="password_confirmation" required>
-                                  <div class="invalid-feedback">Les mots de passe ne correspondent pas.</div>
+                                  <div class="invalid-feedback">{{ __('register.passwords_not_matching') }}</div>
                                 </div>
                               </div>
                             </div>
 
-                            <button type="button" class="btn btn-danger mt-2 w-100 text-uppercase" id="register-btn">S'inscrire</button>
-              
+                            <button type="button" class="btn btn-danger mt-2 w-100 text-uppercase" id="register-btn">{{ __('register.register_button') }}</button>
+
                             <div class="customer-option mt-4 text-center">
-                              <span class="text-secondary">Vous avez un compte ?</span>
-                              <a href="{{ route('login') }}" class="btn-text text-decoration-none text-warning js-show-register">Se connecter</a>
+                              <span class="text-secondary">{{ __('register.have_account') }}</span>
+                              <a href="{{ route('login') }}" class="btn-text text-decoration-none text-warning js-show-register">{{ __('register.login') }}</a>
                             </div>
                           </form>
                         </div>
@@ -144,8 +144,8 @@
         var button = $(this);
         var form = $('#register-form');
         var originalContent = button.html();
-        var loadingContent = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Chargement...';
-          
+        var loadingContent = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> {{ __("register.loading") }}';
+
         // Change the button content to show the spinner
         button.html(loadingContent);
         button.prop('disabled', true);
@@ -188,7 +188,7 @@
             // Réactiver le bouton et remettre le texte original
             button.html(originalContent);
             button.prop('disabled', false);
-            
+
             if (response.errors) {
               // Display server-side validation errors
               $.each(response.errors, function(field, messages) {
@@ -219,7 +219,12 @@
                 input.next('.invalid-feedback').text(messages.join(', ')).show();
               });
             } else {
-              console.error('Erreur inattendue:', xhr.responseText);
+                Swal.fire(
+                    '{{ __("register.error_title") }}',
+                    '{{ __("register.unexpected_error") }}',
+                    'error'
+                );
+
             }
           }
         });

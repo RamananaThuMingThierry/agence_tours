@@ -8,7 +8,7 @@
     <title>@yield('titre', __('title.default'))</title>
     <link rel="icon" href="{{ asset(config('public_path.public_path').'utiles/logo.jpg') }}" type="image/x-icon">
     <link rel="shortcut icon" href="{{ asset(config('public_path.public_path').'utiles/logo.jpg') }}" type="image/x-icon">
-    
+
     <meta name="description" content="@yield('meta_description', 'Madagascar Private Tour with Ricki Cardo. Explore nature, culture, and unique experiences.')">
     <meta name="keywords" content="@yield('meta_keywords', 'Madagascar, tour guide, travel, excursion, nature, culture, Ricki Cardo')">
     <meta name="author" content="RAMANANA Thu Ming Thierry" />
@@ -18,13 +18,13 @@
     <meta property="og:url" content="{{ url()->current() }}">
     <meta property="og:title" content="@yield('title', 'World of Madagascar Tour')">
     <meta property="og:description" content="@yield('meta_description', 'Explore Madagascar with a certified guide.')">
-    <meta property="og:image" content="{{ asset('images/cover.jpg') }}">
+    <meta property="og:image" content="{{ asset(config('public_path.public_path').'images/facebook.png') }}">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:title" content="@yield('title', 'World of Madagascar Tour')">
     <meta property="twitter:description" content="@yield('meta_description', 'Explore Madagascar with a certified guide.')">
-    <meta property="twitter:image" content="{{ asset('images/cover.jpg') }}">
+    <meta property="twitter:image" content="{{ asset(config('public_path.public_path').'images/twitter.png') }}">
 
     @stack('style')
     @include('frontoffice.layouts.style')

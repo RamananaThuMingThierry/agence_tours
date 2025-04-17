@@ -21,7 +21,7 @@
       <div class="row">
           <div class="col-md-12 text-center">
               @yield('content')
-              <a href="{{ route('login') }}" class="text-decoration-none" onclick="history.back()">&larr; Revenir en arrière</a>
+              <a href="{{ route('login') }}" class="text-decoration-none" onclick="history.back()">&larr;&nbsp;{{ __('error.go_back') }}</a>
           </div>
       </div>
   </div>
