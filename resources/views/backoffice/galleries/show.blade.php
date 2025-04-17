@@ -1,6 +1,6 @@
 <!-- Modal image preview -->
 <div class="modal fade" id="imagePreviewModal" tabindex="-1" aria-labelledby="imagePreviewLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-xl">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
       <div class="modal-content border-0 shadow-lg position-relative">
 
         <!-- Bouton de fermeture -->

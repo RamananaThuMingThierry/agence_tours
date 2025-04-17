@@ -34,8 +34,13 @@
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                 <li class="d-flex justify-content-center align-items-center">
                    <div class="text-center">
-                        <img src="{{ asset(config('public_path.public_path').'images/img.png') }}" class="rounded-circle" alt="Photo de profil" width="80px">
-                        <p class="fw-bold pt-2" style="font-size: 13px;">{{ Auth::user()->pseudo }}</p>
+                    <img 
+                        src="{{ asset(config('public_path.public_path') . 'images/' . (Auth::user()->avatar ? 'users/' . Auth::user()->avatar : 'img.png')) }}" 
+                        class="rounded-circle" 
+                        alt="Photo de profil"
+                        height="80px" 
+                        width="80px">
+                    <p class="fw-bold pt-2" style="font-size: 13px;">{{ Auth::user()->pseudo }}</p>
                    </div>
                 </li>
                 <hr class="mt-0">

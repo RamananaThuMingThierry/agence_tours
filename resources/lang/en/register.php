@@ -2,6 +2,7 @@
 
 return [
     'register' => 'Register',
+    'success' => 'Success!',
     'pseudo' => 'Username',
     'email' => 'Email address',
     'contact' => 'Contact',

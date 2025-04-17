@@ -194,6 +194,12 @@
     });
 </script>
 <script>
+    const translations = {
+        read_more: "{{ __('default.read_more') }}",
+        minimize_text: "{{ __('default.minimize_text') }}"
+    };
+</script>
+<script>
     document.addEventListener("DOMContentLoaded", function () {
         const toggles = document.querySelectorAll('.toggle-readmore');
 
@@ -201,14 +207,14 @@
             const tourId = toggle.getAttribute('data-tour-id');
             const target = document.getElementById('moreText' + tourId);
 
-            // Quand le collapse s’ouvre
+            if (!target) return;
+
             target.addEventListener('shown.bs.collapse', function () {
-                toggle.textContent = __('default.minimize_text');
+                toggle.textContent = translations.minimize_text;
             });
 
-            // Quand le collapse se referme
             target.addEventListener('hidden.bs.collapse', function () {
-                toggle.textContent = __('default.read_more');
+                toggle.textContent = translations.read_more;
             });
         });
     });
@@ -218,16 +224,16 @@
         const toggles = document.querySelectorAll('.toggle-readmore-testimonial');
 
         toggles.forEach(toggle => {
-            const collapseId = toggle.getAttribute('href').replace('#', '');
+            const collapseId = toggle.getAttribute('href')?.replace('#', '');
             const target = document.getElementById(collapseId);
 
             if (target) {
                 target.addEventListener('shown.bs.collapse', function () {
-                    toggle.textContent =  __('default.minimize_text');
+                    toggle.textContent = translations.minimize_text;
                 });
 
                 target.addEventListener('hidden.bs.collapse', function () {
-                    toggle.textContent = __('default.read_more');
+                    toggle.textContent = translations.read_more;
                 });
             }
         });

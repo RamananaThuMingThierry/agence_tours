@@ -21,6 +21,12 @@
         box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
 
+    .description-container {
+        max-height: 300px;
+        overflow-y: auto;
+        padding-right: 5px;
+    }
+
     @media (max-width: 768px) {
         .carousel-image {
             height: 250px;
@@ -48,7 +54,7 @@
                 <div class="col-md-2 d-none d-md-block">
                     <div class="list-group" id="imageList">
                         @foreach($tour->images as $key => $image)
-                            <div class="list-group-item image-thumbnail {{ $key == 0 ? 'active-image' : '' }}"
+                            <div class="list-group-item {{ $key == 0 ? 'active-image' : '' }}"
                                 data-bs-target="#carouselTour"
                                 data-bs-slide-to="{{ $key }}"
                                 style="cursor: pointer;">
@@ -90,15 +96,17 @@
 
         <!-- Partie droite : Infos actualité -->
         <div class="col-md-5">
-            <div class="card shadow-sm border-0 rounded-3 h-100">
+            <div class="card shadow-sm border-0 rounded-1 h-100">
                 <div class="card-body">
                     <h3 class="fw-bold text-warning">{{ $tour->title }}</h3>
                     <hr>
                     <div class="text-muted">
                         <p class="text-black">{{ __('tour.description') }}</p>
-                        {{ $tour->description }}
-                    </div>
-                    <p class="mb-1"><strong>{{ __('tour.status') }} :</strong>
+                        <div class="description-container">
+                            {!! nl2br(e($tour->description)) !!}
+                        </div>
+                    </div>                    
+                    <p class="my-2"><strong>{{ __('tour.status') }} :</strong>
                         <span class="badge {{ $tour->status === 'actif' ? 'bg-success' : 'bg-danger' }}">
                             {{ ucfirst($tour->status) }}
                         </span>

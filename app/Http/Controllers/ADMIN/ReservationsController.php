@@ -90,7 +90,7 @@ class ReservationsController extends Controller
             event(new ReservationCreated($reservation));
             
             // 📲 Redirection vers WhatsApp
-            $whatsappNumber = '261327563770'; // Numéro de l'admin
+            $whatsappNumber = '261380913703'; // Numéro de l'admin
             $clientMessage = "Bonjour, je viens de réserver un tour via le site. Voici mes informations:\n"
                 . "Nom: {$data['name']}\n"
                 . "Email: {$data['email']}\n"

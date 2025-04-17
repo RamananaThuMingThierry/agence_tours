@@ -1,6 +1,16 @@
 @extends('backoffice.admin')
 
-@section('titre', 'Mon profil')
+@section('titre', __('default.my_profile'))
+
+@push('styles')
+    <style>
+        .break-word {
+            word-wrap: break-word;
+            word-break: break-word;
+            white-space: normal;
+        }
+    </style>
+@endpush
 
 @section('content')
     @include('backoffice.profile.update')
@@ -12,7 +22,7 @@
                 <div class="card shadow-sm rounded-0">
                     <div class="card-header d-flex justify-content-between align-items-center">
                         <h5 class="mb-0"><i class="fas fa-user-circle me-2"></i>{{ __('default.my_profile') }}</h5>
-                        <a href="{{ route('admin.dashboard') }}" class="text-danger text-decoration-none"><i class="fas fa-chevron-left"></i>&nbsp;{{ __('Retour') }}</a>
+                        <a href="{{ route('admin.dashboard') }}" class="text-danger text-decoration-none"><i class="fas fa-chevron-left"></i>&nbsp;{{ __('default.back') }}</a>
                     </div>
 
                     <div class="card-body">
@@ -25,32 +35,32 @@
                         </div>
                         <div class="d-flex justify-content-center gap-2 mt-4 mb-2">
                             <button class="btn btn-outline-primary btn-sm" data-bs-toggle="modal" data-bs-target="#editInfoModal">
-                                <i class="fas fa-edit me-1"></i> {{ __('Modifier les infos') }}
+                                <i class="fas fa-edit me-1"></i> {{ __('default.edit_info') }}
                             </button>
 
                             <button class="btn btn-outline-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editPasswordModal">
-                                <i class="fas fa-key me-1"></i> {{ __('Changer le mot de passe') }}
+                                <i class="fas fa-key me-1"></i> {{ __('default.change_password') }}
                             </button>
                         </div>
                         <table class="table table-bordered">
                             <tr>
-                                <th>{{ __('Pseudo') }}</th>
-                                <td>{{ Auth::user()->pseudo }}</td>
+                                <th>{{ __('default.pseudo') }}</th>
+                                <td class="break-word">{{ Auth::user()->pseudo }}</td>
                             </tr>
                             <tr>
-                                <th>{{ __('Email') }}</th>
-                                <td>{{ Auth::user()->email }}</td>
+                                <th>{{ __('default.email') }}</th>
+                                <td class="break-word">{{ Auth::user()->email }}</td>
                             </tr>
                             <tr>
-                                <th>{{ __('Contact') }}</th>
-                                <td>{{ Auth::user()->contact ?? '-' }}</td>
+                                <th>{{ __('default.contact') }}</th>
+                                <td class="break-word">{{ Auth::user()->contact ?? '-' }}</td>
                             </tr>
                             <tr>
-                                <th>{{ __('Adresse') }}</th>
-                                <td>{{ Auth::user()->address ?? '-' }}</td>
+                                <th>{{ __('default.address') }}</th>
+                                <td class="break-word">{{ Auth::user()->address ?? '-' }}</td>
                             </tr>
                             <tr>
-                                <th>{{ __('Rôle') }}</th>
+                                <th>{{ __('default.role') }}</th>
                                 <td>
                                     <span class="badge bg-{{ Auth::user()->role === 'admin' ? 'info' : 'secondary' }}">
                                         {{ ucfirst(Auth::user()->role) }}
@@ -58,16 +68,16 @@
                                 </td>
                             </tr>
                             <tr>
-                                <th>{{ __('Statut') }}</th>
+                                <th>{{ __('default.status') }}</th>
                                 <td>
                                     <span class="badge bg-{{ Auth::user()->status === 'active' ? 'success' : 'secondary' }}">
-                                        {{ Auth::user()->status === 'active' ? __('Actif') : __('Inactif') }}
+                                        {{ Auth::user()->status === 'active' ? __('default.active') : __('default.inactive') }}
                                     </span>
                                 </td>
                             </tr>
                             <tr>
-                                <th>{{ __('Inscrit depuis') }}</th>
-                                <td>{{ Auth::user()->created_at->format('d/m/Y à H:i') }}</td>
+                                <th>{{ __('default.registered_since') }}</th>
+                                <td class="break-word">{{ Auth::user()->created_at->format('d/m/Y à H:i') }}</td>
                             </tr>
                         </table>
                     </div>

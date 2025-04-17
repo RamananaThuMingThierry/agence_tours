@@ -2,6 +2,11 @@
 
 return [
     'cancel' => 'Cancelar',
+    'pseudo' => 'Seudónimo',
+    'avatar' => 'Avatar',
+    'contact' => 'Contacto',
+    'address' => 'Dirección',
+    'role' => 'Rol',
     'save' => 'Guardar',
     'delete' => 'Eliminar',
     'add' => 'Añadir',

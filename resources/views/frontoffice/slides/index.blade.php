@@ -1,4 +1,4 @@
-<section id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
+<section id="heroCarousel" class="carousel slide" data-bs-ride="carousel" style="margin-top: 65px;">
     <div class="carousel-inner">
         @foreach ($slides as $index => $slide)
             <div class="carousel-item {{ $index === 0 ? 'active' : '' }}">

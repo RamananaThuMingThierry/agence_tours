@@ -62,19 +62,23 @@
                     </button>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="langMenu">
                         <li>
-                            <a class="dropdown-item {{ app()->getLocale() === 'fr' ? 'active' : '' }}" href="{{ route('lang', 'fr') }}">
-                                <img src="{{ asset(config('public_path.public_path') . 'img/icon_fr.png') }}" width="22px" alt="Français" />
-                                &nbsp;Français
+                            <a class="dropdown-item lang-change {{ app()->getLocale() === 'en' ? 'active' : '' }}" href="javascript:void(0);" data-lang="en">
+                                <i class="fas fa-flag-usa"></i>&nbsp;{{ __('lang.english') }}
                             </a>
                         </li>
                         <li>
-                            <a class="dropdown-item {{ app()->getLocale() === 'en' ? 'active' : '' }}" href="{{ route('lang', 'en') }}">
-                                <i class="fas fa-flag-usa"></i>&nbsp;English
+                            <a class="dropdown-item lang-change {{ app()->getLocale() === 'de' ? 'active' : '' }}" href="javascript:void(0);" data-lang="de">
+                                <img src="{{ asset(config('public_path.public_path') .'img/icon_de.png') }}" width="22px"/>&nbsp;{{ __('lang.german') }}
                             </a>
                         </li>
                         <li>
-                            <a class="dropdown-item {{ app()->getLocale() === 'de' ? 'active' : '' }}" href="{{ route('lang', 'de') }}">
-                                <i class="fas fa-flag"></i>&nbsp;Deutsch
+                            <a class="dropdown-item lang-change {{ app()->getLocale() === 'es' ? 'active' : '' }}" href="javascript:void(0);" data-lang="es">
+                                <img src="{{ asset(config('public_path.public_path') .'img/icon_es.png') }}" width="22px"/>&nbsp;{{ __('lang.spanish') }}
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item lang-change {{ app()->getLocale() === 'fr' ? 'active' : '' }}" href="javascript:void(0);" data-lang="fr">
+                                <img src="{{ asset(config('public_path.public_path') .'img/icon_fr.png') }}" width="22px"/>&nbsp;{{ __('lang.french') }}
                             </a>
                         </li>
                     </ul>

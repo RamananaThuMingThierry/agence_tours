@@ -6,17 +6,17 @@
     <section id="login-register" class="vh-100" style="background: url('{{ asset(config('public_path.public_path').'utiles/login.jpg') }}') no-repeat center center/cover;">
         <div class="container h-100">
             <div class="row d-flex justify-content-center align-items-center h-100">
-                <div class="col col-md-10">
-                <div class="card" style="border-radius: 1rem;">
+                <div class="col col-md-8">
+                <div class="card rounded-1 shadow-sm">
                     <div class="row g-0">
-                    <div class="col-md-6 col-lg-5 d-none d-md-block">
+                    <div class="col-md-6 col-lg-4 d-none d-md-block">
                         <div class="d-flex justify-content-center align-items-center h-100">
                             <img src="{{ asset(config('public_path.public_path'). 'utiles/logo.jpg') }}"
                             alt="login form" class="img-fluid" />
                         </div>
                     </div>
-                    <div class="col-md-6 col-lg-7 d-flex align-items-center">
-                        <div class="card-body p-4 p-lg-5 text-black">
+                    <div class="col-md-6 col-lg-8 d-flex align-items-center">
+                        <div class="card-body p-3 text-black">
                           <form id="register-form">
                             @csrf
                             <div class="d-flex align-items-center mb-3 pb-1">
@@ -35,7 +35,7 @@
                               <span class="h1 fw-bold mb-0">{{ __('register.register') }}</span>
                             </div>
                             <div class="form-group mb-2">
-                              <label for="pseudo">{{ __('register.username') }} <span cla  ss="text-danger">*</span></label>
+                              <label for="pseudo">{{ __('register.pseudo') }} <span cla  ss="text-danger">*</span></label>
                               <input type="text" class="form-control" id="pseudo" name="pseudo" required autofocus>
                               <div class="invalid-feedback">{{ __('register.required_pseudo') }}</div>
                             </div>
@@ -199,7 +199,7 @@
             } else if (response.success) {
               window.location.href = "{{ route('admin.dashboard') }}";
               Swal.fire(
-                  'Réuissi!',
+                  '{{ __("register.success") }}!',
                   response.message,
                   'success'
               );

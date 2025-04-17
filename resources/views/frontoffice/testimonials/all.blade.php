@@ -57,7 +57,7 @@
     @include('frontoffice.testimonials.index')
     <div id="testimonial_formulaire" style="background-color: #c0c0c0;" class="py-5">
         <div class="container">
-            <div class="text-center mb-5">
+            <div class="text-center mb-3">
                 <h2 class="fw-bold text-danger">{{ __('default.form') }}</h2>
                 <div class="mx-auto mt-2" style="width: 60px; height: 4px; background-color: #ffc107;"></div>
             </div>
@@ -76,7 +76,7 @@
                                 <label for="rating" class="form-label fw-bold">{{ __('testimonial.rating') }}</label>
                                 <select class="form-select" id="rating" name="rating">
                                     @for ($i = 1; $i <= 5; $i++)
-                                        <option value="{{ $i }}">{{ $i }} <span class="text-warning">★</span></option>
+                                        <option value="{{ $i }}">{{ $i }} ★</option>
                                     @endfor
                                 </select>
                                 <div class="invalid-feedback" id="error-rating"></div>

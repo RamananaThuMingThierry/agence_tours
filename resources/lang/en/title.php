@@ -7,4 +7,5 @@ return [
     'users' => 'Users',
     'reservations' => 'Reservations',
     'slides' => 'Slides',
+    'testimonials' => 'Testimonials'
 ];

@@ -7,4 +7,5 @@ return [
     'users' => 'Utilisateurs',
     'reservations' => 'Réservations',
     'slides' => 'Diapositives',
+    'testimonials' => 'Témoignages'
 ];

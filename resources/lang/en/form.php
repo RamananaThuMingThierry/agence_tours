@@ -1,6 +1,11 @@
 <?php
 
 return [
+    'pseudo' => 'Pseudo',
+    'avatar' => 'Avatar',
+    'contact' => 'Contact',
+    'address' => 'Address',
+    'role' => 'Role',
     'cancel' => 'Cancel',
     'save' => 'Save',
     'delete' => 'Delete',

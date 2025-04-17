@@ -17,7 +17,7 @@
     
     /* Par défaut, le header est transparent */
     .bg-header {
-        background-color: transparent;
+        background-color: white;
         box-shadow: none;
         transition: background-color 0.3s ease, box-shadow 0.3s ease;
     }

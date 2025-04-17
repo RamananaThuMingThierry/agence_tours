@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'success' => 'Réussi!',
     'register' => 'S’inscrire',
     'pseudo' => 'Nom d’utilisateur',
     'email' => 'Adresse e-mail',

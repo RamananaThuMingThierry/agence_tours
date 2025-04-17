@@ -39,7 +39,15 @@ class TourController extends Controller
             if($request->ajax()){
 
                 return DataTables::of($tours)
-
+                ->addColumn('description', function ($tour) {
+                    $maxLength = 100;
+                    $description = strip_tags($tour->description);
+                    $truncated = strlen($description) > $maxLength 
+                        ? substr($description, 0, $maxLength) . '...' 
+                        : $description;
+                
+                    return '<span title="'. e($description) .'">' . e($truncated) . '</span>';
+                })                
                 ->addColumn('images', function ($tour) {
 
                     $firstImage = $tour->images->first();
@@ -71,7 +79,7 @@ class TourController extends Controller
 
                     return '<div class="d-flex justify-content-center">' . $viewEditButton . $deleteButtons . '</div>';
                 })
-                ->rawColumns(['images','action'])
+                ->rawColumns(['images','action','description'])
                 ->make(true);
             }
 
