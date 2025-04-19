@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'find_us' => 'Finde uns',
     'choose_tour' => 'WÄHLE DEINE TOUR',
     'services' => 'DIENSTLEISTUNGEN',
     'slide_title' => 'WELT VON MADAGASKAR TOUR',

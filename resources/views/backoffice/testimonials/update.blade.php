@@ -1,10 +1,10 @@
 <!-- Edit Testimonial Status Modal -->
 <div class="modal fade" id="editTestimonialModal" tabindex="-1" aria-labelledby="editTestimonialLabel" aria-hidden="true">
-    <div class="modal-dialog modal-sm modal-dialog-centered">
+    <div class="modal-dialog">
       <form id="editTestimonialForm">
         @csrf
         <input type="hidden" id="edit-testimonial-id">
-        <div class="modal-content">
+        <div class="modal-content rounded-1">
           <div class="modal-header">
             <h5 class="modal-title" id="editTestimonialLabel">{{ __('testimonial.update_status') }}</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
@@ -18,7 +18,7 @@
             <div class="invalid-feedback" id="error-edit-status"></div>
           </div>
           <div class="modal-footer">
-            <button type="submit" id="btn-update-testimonial-status" class="btn btn-sm btn-primary">
+            <button type="submit" id="btn-update-testimonial-status" class="btn btn-sm btn-dark">
               <span class="spinner-border spinner-border-sm d-none me-1" role="status"></span>
               <span class="btn-text"><i class="fas fa-save"></i> {{ __('form.save') }}</span>
             </button>

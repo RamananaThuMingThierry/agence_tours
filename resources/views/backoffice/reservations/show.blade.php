@@ -1,9 +1,9 @@
 <!-- Modal de visualisation -->
 <div class="modal fade" id="reservationDetailModal" tabindex="-1" aria-labelledby="reservationDetailModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
-        <div class="modal-content shadow-sm rounded-0">
+        <div class="modal-content shadow-sm rounded-1">
             <div class="modal-header bg-light">
-                <h5 class="modal-title" id="reservationDetailModalLabel"><i class="fas fa-info-circle"></i>&nbsp;{{ __('reservation.reservation_details') }}</h5>
+                <h5 class="modal-title" id="reservationDetailModalLabel"><i class="fas fa-info-circle text-danger"></i>&nbsp;{{ __('reservation.reservation_details') }}</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="{{ __('form.cancel') }}"></button>
             </div>
             <div class="modal-body">
@@ -15,6 +15,9 @@
                     <li class="list-group-item"><strong>{{ __('form.tour') }}:</strong> <span id="res-tour"></span></li>
                     <li class="list-group-item"><strong>{{ __('form.status') }}:</strong> <span id="res-status"></span></li>
                 </ul>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-sm btn-outline-danger" data-bs-dismiss="modal" aria-label="{{ __('form.cancel') }}"><i class="fas fa-arrow-left"></i>&nbsp;{{ __('form.cancel') }}</button>
             </div>
         </div>
     </div>

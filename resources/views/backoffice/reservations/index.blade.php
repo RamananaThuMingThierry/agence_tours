@@ -49,6 +49,7 @@
                 processing: false,
                 serverSide: false,
                 responsive: true,
+                order: [[0, 'desc']],
                 columns: [
                     {
                         data: 'created_at',

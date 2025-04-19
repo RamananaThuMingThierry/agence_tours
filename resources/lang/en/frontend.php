@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'find_us' => 'Find Us',
     'choose_tour' => 'CHOOSE YOUR TOUR',
     'services' => 'SERVICES',
     'slide_title' => 'WORLD OF TOURS IN MADAGASCAR',

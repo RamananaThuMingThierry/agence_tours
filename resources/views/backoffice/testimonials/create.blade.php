@@ -3,7 +3,7 @@
     <div class="modal-dialog modal-lg">
         <form id="testimonialForm" enctype="multipart/form-data">
             @csrf
-            <div class="modal-content">
+            <div class="modal-content rounded-1">
                 <div class="modal-header">
                     <h5 class="modal-title" id="testimonialModalLabel">{{ __('testimonial.new') }}</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>

@@ -63,7 +63,7 @@
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="langMenu">
                         <li>
                             <a class="dropdown-item lang-change {{ app()->getLocale() === 'en' ? 'active' : '' }}" href="javascript:void(0);" data-lang="en">
-                                <i class="fas fa-flag-usa"></i>&nbsp;{{ __('lang.english') }}
+                                <img src="{{ asset(config('public_path.public_path') .'img/icon_en.png') }}" width="22px"/>&nbsp;{{ __('lang.english') }}
                             </a>
                         </li>
                         <li>

@@ -1,11 +1,11 @@
 <!-- Modal -->
 <div class="modal fade" id="galleryModal" tabindex="-1" aria-labelledby="galleryModalLabel" aria-hidden="true">
-    <div class="modal-dialog rounded-0">
+    <div class="modal-dialog">
       <form id="galleryForm" enctype="multipart/form-data">
           @csrf
-          <div class="modal-content">
+          <div class="modal-content rounded-1">
             <div class="modal-header">
-              <h5 class="modal-title" id="galleryModalLabel">{{ __('gallery.add') }}</h5>
+              <h5 class="modal-title" id="galleryModalLabel"><i class="fas fa-image text-danger"></i>&nbsp;{{ __('gallery.add') }}</h5>
               <button type="button" class="btn-close btn-close-danger" data-bs-dismiss="modal" aria-label="Fermer"></button>
             </div>
             <div class="modal-body">
@@ -25,7 +25,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-sm btn-outline-danger" data-bs-dismiss="modal"><i class="fas fa-arrow-left"></i>&nbsp;{{ __('form.cancel') }}</button>
-                <button type="submit" class="btn btn-sm btn-primary" id="btn-save-gallery">
+                <button type="submit" class="btn btn-sm btn-dark" id="btn-save-gallery">
                     <span class="spinner-border spinner-border-sm d-none me-1" role="status" aria-hidden="true"></span>
                     <span class="btn-text"><i class="fas fa-save"></i>&nbsp;{{ __('form.save') }}</span>
                 </button>

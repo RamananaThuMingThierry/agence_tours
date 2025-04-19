@@ -5,7 +5,7 @@
         @csrf
         @method('PUT')
         <input type="hidden" id="edit-id" name="id">
-        <div class="modal-content">
+        <div class="modal-content rounded-1">
           <div class="modal-header">
             <h5 class="modal-title">{{ __('gallery.update_status') }}</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
@@ -21,7 +21,7 @@
             </div>
           </div>
           <div class="modal-footer">
-            <button type="submit" class="btn btn-sm btn-primary" id="btn-update-status">
+            <button type="submit" class="btn btn-sm btn-dark" id="btn-update-status">
                 <span class="spinner-border spinner-border-sm d-none me-1" role="status" aria-hidden="true"></span>
                 <span class="btn-text"><i class="fas fa-save"></i>&nbsp;{{ __('form.save') }}</span>
             </button>

@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'find_us' => 'ENCUÉNTRANOS',
     'choose_tour' => 'ELIGE TU TOUR',
     'services' => 'SERVICIOS',
     'slide_title' => 'MUNDO DE TOURS EN MADAGASCAR',

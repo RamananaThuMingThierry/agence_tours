@@ -1,9 +1,9 @@
 <!-- Modal -->
 <div class="modal fade" id="slideModal" tabindex="-1" aria-labelledby="slideModalLabel" aria-hidden="true">
-    <div class="modal-dialog rounded-0 modal-lg">
+    <div class="modal-dialog modal-lg">
       <form id="slideForm" enctype="multipart/form-data">
         @csrf
-        <div class="modal-content">
+        <div class="modal-content rounded-1">
           <div class="modal-header">
             <h5 class="modal-title" id="slideModalLabel">{{ __('slide.new') }}</h5>
             <button type="button" class="btn-close btn-close-danger" data-bs-dismiss="modal" aria-label="Fermer"></button>
@@ -39,7 +39,7 @@
             <button type="button" class="btn btn-sm btn-outline-danger" data-bs-dismiss="modal">
               <i class="fas fa-arrow-left"></i>&nbsp;{{ __('form.cancel') }}
             </button>
-            <button type="submit" class="btn btn-sm btn-primary" id="btn-save-slide">
+            <button type="submit" class="btn btn-sm btn-dark" id="btn-save-slide">
               <span class="spinner-border spinner-border-sm d-none me-1" role="status" aria-hidden="true"></span>
               <span class="btn-text"><i class="fas fa-save"></i>&nbsp;{{ __('form.save') }}</span>
             </button>

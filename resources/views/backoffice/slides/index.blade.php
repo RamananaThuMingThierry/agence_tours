@@ -55,6 +55,7 @@
           processing: false,
           serverSide: false,
           responsive: true,
+          order: [[0, 'desc']],
           columns: [
               { data: 'image', className: 'text-center'},
               { data: 'title', className: 'text-center'},
@@ -251,7 +252,7 @@
             icon: 'warning',
             showCancelButton: true,
             customClass: {
-                confirmButton: 'btn btn-sm btn-primary',
+                confirmButton: 'btn btn-sm btn-dark',
                 cancelButton: 'btn btn-sm btn-danger ms-2'
             },
             buttonsStyling: false,

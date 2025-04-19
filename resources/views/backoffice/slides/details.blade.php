@@ -1,9 +1,9 @@
 <!-- Modal Show Slide -->
 <div class="modal fade" id="showSlideModal" tabindex="-1" aria-labelledby="showSlideModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content border-0 shadow">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content shadow rounded-1">
             <div class="modal-header">
-                <h5 class="modal-title" id="showSlideModalLabel">{{ __('slide.details') }}</h5>
+                <h5 class="modal-title" id="showSlideModalLabel"><i class="fas fa-info-circle text-danger"></i>&nbsp;{{ __('slide.details') }}</h5>
                 <button type="button" class="btn-close btn-close-red" data-bs-dismiss="modal" aria-label="Fermer"></button>
             </div>
             <div class="modal-body">
@@ -30,6 +30,9 @@
                         </div>
                     </div>
                 </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-sm btn-outline-danger" data-bs-dismiss="modal" aria-label="Fermer"><i class="fas fa-arrow-left"></i>&nbsp;{{ __('form.cancel') }}</button>
             </div>
         </div>
     </div>
