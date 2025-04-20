@@ -22,15 +22,14 @@
             <div class="mx-auto mt-1 mb-2" style="width: 60px; height: 4px; background-color: #ffc107;"></div>
         </div>
         <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-            <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7636.5799678936155!2d47.55107969262805!3d-18.928614330293705!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x21f07d97994a3395%3A0xb5898653a84f8955!2sAmbohipo%2C%20Tananarive!5e1!3m2!1sfr!2smg!4v1744920658867!5m2!1sfr!2smg" 
-                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" 
-                allowfullscreen="" 
-                loading="lazy" 
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4435.012258241979!2d47.45639431831178!3d-18.92407479660859!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x21f07f16f62fab8f%3A0x9f96d7739cdac299!2sWorld%20of%20Madagascar%20Tour!5e1!3m2!1sfr!2smg!4v1745119511271!5m2!1sfr!2smg"
+                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;"
+                allowfullscreen=""
+                loading="lazy"
                 referrerpolicy="no-referrer-when-downgrade">
             </iframe>
         </div>
     </div>
 </section>
 
-  
+

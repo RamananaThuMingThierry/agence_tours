@@ -1,12 +1,12 @@
 <!-- Modal Update -->
 <div class="modal fade" id="editSlideModal" tabindex="-1" aria-labelledby="editSlideModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-lg">
       <form id="editSlideForm" enctype="multipart/form-data">
         @csrf
         <input type="hidden" name="id" id="edit-id">
         <input type="hidden" name="_method" value="PUT">
 
-        <div class="modal-content">
+        <div class="modal-content rounded-1">
           <div class="modal-header">
             <h5 class="modal-title" id="editSlideModalLabel">{{ __('slide.edit') }}</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>

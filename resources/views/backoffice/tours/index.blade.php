@@ -201,7 +201,7 @@
             cancelButtonText: "{{ __('form.no') }}",
             buttonsStyling: false,
             customClass: {
-                confirmButton: 'btn btn-sm btn-primary',
+                confirmButton: 'btn btn-sm btn-dark',
                 cancelButton: 'btn btn-sm btn-danger ms-1'
             }
         }).then((result) => {
@@ -235,7 +235,7 @@
                             icon: "error"
                         });
                     }
-                });
+                 });
             }
         });
     });

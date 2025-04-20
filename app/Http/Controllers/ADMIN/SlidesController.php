@@ -66,7 +66,7 @@ class SlidesController extends Controller
 
                         if (Auth::check() && Auth::user()->isAdmin()) {
                             $deleteBtn = '<button type="button"
-                                              class="btn btn-outline-danger btn-sm btn-inline ms-1"
+                                              class="btn btn-outline-danger btn-sm btn-inline"
                                               title="Supprimer l\'image"
                                               data-id="' . $row->id . '"
                                               id="btn-delete-slide-confirm">

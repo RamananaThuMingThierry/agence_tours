@@ -22,7 +22,7 @@
                 <div class="card-body">
                   <div class="row">
                     <div class="col-md-4">
-                      <img src="{{ asset(config('public_path.public_path').'utiles/logo.jpg') }}" class="img-fluid rounded-pill" alt="">
+                      <img src="{{ asset(config('public_path.public_path').'utiles/logo.png') }}" class="img-fluid rounded-pill" alt="">
                     </div>
                     <div class="col-md-8 d-flex align-items-center justify-content-center">
                       <p class="text-muted">

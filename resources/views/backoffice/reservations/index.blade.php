@@ -254,7 +254,8 @@
                                 icon: 'success',
                                 title: "{{ __('form.delete') }}",
                                 text: response.message,
-                                confirmButtonText: 'OK'
+                                timer: 2000,
+                                showConfirmButton: false
                             });
                             $('#datatables').DataTable().ajax.reload(null, false);
                         },

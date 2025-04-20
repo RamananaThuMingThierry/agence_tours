@@ -11,7 +11,7 @@
                     <div class="row g-0">
                     <div class="col-md-6 col-lg-4 d-none d-md-block">
                         <div class="d-flex justify-content-center align-items-center h-100">
-                            <img src="{{ asset(config('public_path.public_path'). 'utiles/logo.jpg') }}"
+                            <img src="{{ asset(config('public_path.public_path'). 'utiles/logo.png') }}"
                             alt="login form" class="img-fluid" />
                         </div>
                     </div>
@@ -25,7 +25,7 @@
                                 <i class="fas fa-sign-in-alt fa-2x me-3 d-none d-md-block" style="color: #af8511;"></i>
 
                                 <!-- Logo visible sur les petits écrans (smartphone) -->
-                                <img src="{{ asset(config('public_path.public_path'). 'utiles/logo.jpg') }}"
+                                <img src="{{ asset(config('public_path.public_path'). 'utiles/logo.png') }}"
                                      alt="login form"
                                      class="img-fluid d-block d-md-none"
                                      style="width:50px;"

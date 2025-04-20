@@ -6,8 +6,8 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <title>@yield('titre', __('title.default'))</title>
-    <link rel="icon" href="{{ asset(config('public_path.public_path').'utiles/logo.jpg') }}" type="image/x-icon">
-    <link rel="shortcut icon" href="{{ asset(config('public_path.public_path').'utiles/logo.jpg') }}" type="image/x-icon">
+    <link rel="icon" href="{{ asset(config('public_path.public_path').'utiles/icon.png') }}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ asset(config('public_path.public_path').'utiles/icon.png') }}" type="image/x-icon">
 
     <meta name="description" content="@yield('meta_description', 'Madagascar Private Tour with Ricki Cardo. Explore nature, culture, and unique experiences.')">
     <meta name="keywords" content="@yield('meta_keywords', 'Madagascar, tour guide, travel, excursion, nature, culture, Ricki Cardo')">

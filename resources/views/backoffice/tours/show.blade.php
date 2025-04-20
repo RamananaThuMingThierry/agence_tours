@@ -40,7 +40,7 @@
 @endpush
 
 @section('content')
-<div class="container my-4">
+<div class="container-fluid my-4">
     <div class="row mb-2">
         <div class="col-12">
             <a href="{{ route('admin.tours.index') }}" class="text-danger"><i class="fas fa-chevron-left"></i>&nbsp;{{ __('default.back') }}</a>
@@ -48,7 +48,7 @@
     </div>
     <div class="row">
         <!-- Partie gauche : Slider + miniatures -->
-        <div class="col-md-7 mb-4">
+        <div class="col-md-5 mb-4">
             <div class="row">
                 <!-- Miniatures -->
                 <div class="col-md-2 d-none d-md-block">
@@ -95,7 +95,7 @@
         </div>
 
         <!-- Partie droite : Infos actualité -->
-        <div class="col-md-5">
+        <div class="col-md-7">
             <div class="card shadow-sm border-0 rounded-1 h-100">
                 <div class="card-body">
                     <h3 class="fw-bold text-warning">{{ $tour->title }}</h3>
@@ -105,7 +105,7 @@
                         <div class="description-container">
                             {!! nl2br(e($tour->description)) !!}
                         </div>
-                    </div>                    
+                    </div>
                     <p class="my-2"><strong>{{ __('tour.status') }} :</strong>
                         <span class="badge {{ $tour->status === 'actif' ? 'bg-success' : 'bg-danger' }}">
                             {{ ucfirst($tour->status) }}

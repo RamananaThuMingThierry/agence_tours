@@ -1,7 +1,7 @@
 <!-- Modal Show Slide -->
 <div class="modal fade" id="showSlideModal" tabindex="-1" aria-labelledby="showSlideModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-md">
-        <div class="modal-content shadow rounded-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content rounded-1">
             <div class="modal-header">
                 <h5 class="modal-title" id="showSlideModalLabel"><i class="fas fa-info-circle text-danger"></i>&nbsp;{{ __('slide.details') }}</h5>
                 <button type="button" class="btn-close btn-close-red" data-bs-dismiss="modal" aria-label="Fermer"></button>

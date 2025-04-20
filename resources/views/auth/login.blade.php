@@ -11,7 +11,7 @@
                         <div class="row g-0">
                             <div class="col-md-6 col-lg-5 d-none d-md-block">
                                 <div class="d-flex justify-content-center align-items-center h-100">
-                                    <img src="{{ asset(config('public_path.public_path').'utiles/logo.jpg') }}" alt="login form" class="img-fluid" />
+                                    <img src="{{ asset(config('public_path.public_path').'utiles/logo.png') }}" alt="login form" class="img-fluid" />
                                 </div>
                             </div>
                             <div class="col-md-6 col-lg-7 d-flex align-items-center">
@@ -22,7 +22,7 @@
 
                                         <div class="d-flex align-items-center mb-1">
                                             <i class="fas fa-sign-in-alt fa-2x me-3 d-none d-md-block text-warning"></i>
-                                            <img src="{{ asset(config('public_path.public_path').'utiles/logo.jpg') }}"
+                                            <img src="{{ asset(config('public_path.public_path').'utiles/logo.png') }}"
                                                  alt="login form"
                                                  class="img-fluid d-block d-md-none"
                                                  style="width:50px;"
@@ -72,7 +72,7 @@
                 var form = $(this);
                 var button = $('#login-btn');
                 var originalContent = button.html();
-                var loadingContent = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Chargement...';
+                var loadingContent = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> {{ __("loading.loading") }}';
 
                 // Désactiver le bouton et afficher un spinner
                 button.html(loadingContent).prop('disabled', true);

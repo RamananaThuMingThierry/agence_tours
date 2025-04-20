@@ -78,12 +78,15 @@
                     <hr>
                     <div class="modal-footer">
                         <a type="button" class="btn btn-sm rounded-0 btn-outline-danger me-1" href="{{ route('admin.tours.index') }}"><i class="fa fa-arrow-left"></i>&nbsp;{{ __('form.cancel') }}</a>
-                        <button type="submit" class="btn btn-sm rounded-0 btn-primary">
-                            @if(isset($tour->encrypted_id))
-                            <i class="fa fa-edit"></i>&nbsp;{{ __('form.edit') }}
-                            @else
-                                <i class="fa fa-add"></i>&nbsp;{{ __('form.add') }}
-                            @endif
+                        <button type="submit" class="btn btn-sm rounded-0 btn-primary" id="submitBtn">
+                            <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true" id="spinner"></span>
+                            <span id="btnText">
+                                @if(isset($tour->encrypted_id))
+                                    <i class="fa fa-edit"></i>&nbsp;{{ __('form.edit') }}
+                                @else
+                                    <i class="fa fa-add"></i>&nbsp;{{ __('form.add') }}
+                                @endif
+                            </span>
                         </button>
                     </div>
                 </div>
@@ -106,6 +109,11 @@
 
         $('#tourForm').submit(function (e) {
             e.preventDefault();
+
+            // Activer le spinner
+            $('#submitBtn').attr('disabled', true);
+            $('#spinner').removeClass('d-none');
+            $('#btnText').addClass('d-none');
 
             let tourId = $('#tour_id').val() || null;
             let formData = new FormData(this);
@@ -131,14 +139,20 @@
                     if (response.status === 200) {
                         Swal.fire({
                             position: "center",
+                            icon: "success",
                             title: "{{ __('form.success') }}",
                             text: response.message,
-                            icon: 'success',
-                            confirmButtonText: 'OK'
+                            timer: 2000,
+                            showConfirmButton: false
                         }).then(() => {
                             window.location.href = "{{ route('admin.tours.index') }}";
                         });
                     }
+
+                    // Réactiver le bouton et cacher le spinner en cas de succès
+                    $('#submitBtn').attr('disabled', false);
+                    $('#spinner').addClass('d-none');
+                    $('#btnText').removeClass('d-none');
                 },
                 error: function (xhr) {
                     if (xhr.responseJSON && xhr.responseJSON.errors) {
@@ -152,7 +166,8 @@
                                 title: "{{ __('form.error') }}",
                                 text: errors.images[0],
                                 icon: 'warning',
-                                confirmButtonText: 'OK'
+                                timer: 2000,
+                                showConfirmButton: false
                             });
                         }
                     } else {
@@ -160,9 +175,15 @@
                             title: "{{ __('form.error') }}",
                             text: "{{ __('form.an_error_unknown') }}",
                             icon: 'error',
-                            confirmButtonText: 'OK'
+                            timer: 2000,
+                            showConfirmButton: false
                         });
                     }
+
+                    // Réinitialiser le bouton en cas d’erreur
+                    $('#submitBtn').attr('disabled', false);
+                    $('#spinner').addClass('d-none');
+                    $('#btnText').removeClass('d-none');
                 }
             });
         });

@@ -1,5 +1,5 @@
 <nav class="sb-topnav navbar navbar-expand navbar-light" style="background-color: rgb(167, 9, 11);">
-    <h6 class="navbar-brand text-white  ps-3 h1 d-flex align-items-center"><img src="{{ asset(config('public_path.public_path').'utiles/logo.jpg') }}" class="rounded-circle" width="30px" height="30px">&nbsp;AGENCE TOURS</h6>
+    <h6 class="navbar-brand text-white  ps-3 h1 d-flex align-items-center"><img src="{{ asset(config('public_path.public_path').'utiles/logo.png') }}" class="rounded-circle" width="30px" height="30px">&nbsp;AGENCE TOURS</h6>
     <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
     <ul class="navbar-nav d-flex ms-auto me-0 me-md-3 my-2 my-md-0 flex-row">
           <li class="nav-item dropdown">
@@ -27,18 +27,18 @@
                         <img src="{{ asset(config('public_path.public_path') .'img/icon_fr.png') }}" width="22px"/>&nbsp;{{ __('lang.french') }}
                     </a>
                 </li>
-            </ul>            
+            </ul>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                 <li class="d-flex justify-content-center align-items-center">
                    <div class="text-center">
-                    <img 
-                        src="{{ asset(config('public_path.public_path') . 'images/' . (Auth::user()->avatar ? 'users/' . Auth::user()->avatar : 'img.png')) }}" 
-                        class="rounded-circle" 
+                    <img
+                        src="{{ asset(config('public_path.public_path') . 'images/' . (Auth::user()->avatar ? 'users/' . Auth::user()->avatar : 'img.png')) }}"
+                        class="rounded-circle"
                         alt="Photo de profil"
-                        height="80px" 
+                        height="80px"
                         width="80px">
                     <p class="fw-bold pt-2" style="font-size: 13px;">{{ Auth::user()->pseudo }}</p>
                    </div>

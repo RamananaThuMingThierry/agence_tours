@@ -8,12 +8,12 @@
             </div>
             <div class="modal-body">
                 <ul class="list-group">
-                    <li class="list-group-item"><strong>{{ __('form.name') }}:</strong> <span id="res-name"></span></li>
-                    <li class="list-group-item"><strong>{{ __('form.email') }}:</strong> <span id="res-email"></span></li>
-                    <li class="list-group-item"><strong>{{ __('form.phone') }}:</strong> <span id="res-phone"></span></li>
-                    <li class="list-group-item"><strong>{{ __('form.message') }}:</strong> <span id="res-message"></span></li>
-                    <li class="list-group-item"><strong>{{ __('form.tour') }}:</strong> <span id="res-tour"></span></li>
-                    <li class="list-group-item"><strong>{{ __('form.status') }}:</strong> <span id="res-status"></span></li>
+                    <li class="list-group-item"><span class="fw-bold">{{ __('form.name') }}:</span> <span id="res-name"></span></li>
+                    <li class="list-group-item"><span class="fw-bold">{{ __('form.email') }}:</span> <span id="res-email"></span></li>
+                    <li class="list-group-item"><span class="fw-bold">{{ __('form.phone') }}:</span> <span id="res-phone"></span></li>
+                    <li class="list-group-item"><span class="fw-bold">{{ __('form.message') }}:</span> <span id="res-message"></span></li>
+                    <li class="list-group-item"><span class="fw-bold">{{ __('form.tour') }}:</span> <span id="res-tour"></span></li>
+                    <li class="list-group-item"><span class="fw-bold">{{ __('form.status') }}:</span> <span id="res-status"></span></li>
                 </ul>
             </div>
             <div class="modal-footer">
