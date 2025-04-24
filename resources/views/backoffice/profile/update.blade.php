@@ -14,6 +14,10 @@
             <input type="text" name="pseudo" id="pseudo" value="{{ old('pseudo', Auth::user()->pseudo) }}" class="form-control">
           </div>
           <div class="mb-3">
+            <label for="email" class="form-label">{{ __('form.email') }}</label>
+            <input type="email" name="email" id="email" value="{{ old('email', Auth::user()->email) }}" class="form-control">
+          </div>
+          <div class="mb-3">
             <label for="contact" class="form-label">{{ __('profile.contact') }}</label>
             <input type="text" name="contact" id="contact" value="{{ old('contact', Auth::user()->contact) }}" class="form-control">
           </div>

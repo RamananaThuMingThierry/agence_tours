@@ -64,11 +64,25 @@
 @endsection
 
 @push('script')
+    @if(session('info'))
+        <script>
+            $(document).ready(function () {
+                Swal.fire({
+                    toast: true,
+                    position: 'top-end',
+                    icon: 'info',
+                    title: "{{ session('info') }}",
+                    showConfirmButton: false,
+                    timer: 5000,
+                    timerProgressBar: true
+                });
+            });
+        </script>
+    @endif
     <script>
         $(document).ready(function () {
             $('#login-form').on('submit', function (e) {
-                e.preventDefault(); // Empêcher la soumission classique
-
+                e.preventDefault();
                 var form = $(this);
                 var button = $('#login-btn');
                 var originalContent = button.html();
@@ -87,11 +101,11 @@
                     },
                     success: function (response) {
                         if (response.success) {
-                            Swal.fire({
-                                title: '{{ __("login.success_connection") }}',
-                                text: '{{ __("login.redirected_dashboard") }}',
-                                icon: 'success',
-                            });
+                            // Swal.fire({
+                            //     title: '{{ __("login.success_connection") }}',
+                            //     text: '{{ __("login.redirected_dashboard") }}',
+                            //     icon: 'success',
+                            // });
                             button.html(originalContent).prop('disabled', false);
                             window.location.href = "{{ route('admin.dashboard') }}";
                         }

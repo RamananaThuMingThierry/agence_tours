@@ -28,12 +28,12 @@ class RegisterController extends Controller
         ]);
 
         Auth::login($user);
-        
+
         event(new Registered($user));
-        
+
         return response()->json([
             'success' => true,
-            'message' => 'Enregistrement réussi. Un email de vérification a été envoyé.',
+            'message' => __('register.register_success'),
         ]);
     }
 }
