@@ -36,7 +36,7 @@
                     </div>
 
                     @include('backoffice.widget.input2', [
-                        'label' => __('tour.price') . ' USD',
+                        'label' => __('tour.price') . ' (USD)',
                         'type'  => 'number',
                         'name'  => 'price',
                         'value' => $tour->price,
