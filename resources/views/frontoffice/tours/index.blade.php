@@ -1,3 +1,6 @@
+@include('frontoffice.tours.modal')
+
+
 <section id="tours" class="py-5 position-relative" style="background: url('{{ asset(config('public_path.public_path').'images/cameleon.jpg') }}') no-repeat center center / cover;">
     <div class="container position-relative z-2">
         <div class="text-center text-white mb-5">
@@ -37,14 +40,14 @@
                                     @if($isLong)
                                         <span id="moreText{{ $tour->id }}" class="collapse">{{ substr($tour->description, 120) }}</span>
                                         <a class="text-primary toggle-readmore"
-                                        data-bs-toggle="collapse"
-                                        href="#moreText{{ $tour->id }}"
-                                        role="button"
-                                        aria-expanded="false"
-                                        aria-controls="moreText{{ $tour->id }}"
-                                        data-tour-id="{{ $tour->id }}">
-                                         {{ __('default.read_more') }}
-                                     </a>
+                                            href="javascript:void(0);"
+                                            role="button"
+                                            data-bs-toggle="modal"
+                                            data-bs-target="#tourDetailModal"
+                                            data-tour-title="{{ $tour->title }}"
+                                            data-tour-description="{{ $tour->description }}">
+                                            {{ __('default.read_more') }}
+                                        </a>
                                     @endif
                                 </p>
                                 <p class="text-danger text-center">{{ __('default.from') }}</p>

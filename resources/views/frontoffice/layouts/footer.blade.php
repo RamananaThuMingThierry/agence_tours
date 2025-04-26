@@ -27,11 +27,23 @@
             <div class="col-md-4 mb-4 text-center">
                 <h5 class="text-uppercase fw-bold text-danger">{{ __('frontend.contect') }}</h5>
                 <div class="d-flex justify-content-center gap-3">
-                    <a href="#" class="text-primary fs-5"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" class="text-warning fs-5"><i class="fab fa-instagram"></i></a>
-                    <a href="#" class="text-light fs-5"><i class="fab fa-twitter"></i></a>
-                    <a href="#" class="text-info fs-5"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="#" class="text-danger fs-5"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.facebook.com/profile.php?id=100084179285857" class="text-primary fs-5" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="custom-tooltip" title="Facebook" target="_blank">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://www.instagram.com/world_of_madagascar?igsh=MTRuNXR4bm9sNThkag==" class="text-warning fs-5" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="custom-tooltip" title="Instagram" target="_blank">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    {{--
+                    <a href="#" class="text-light fs-5" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="custom-tooltip" title="Twitter" target="_blank">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="text-info fs-5" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="custom-tooltip" title="LinkedIn" target="_blank">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    --}}
+                    <a href="https://youtube.com/@worldofmadagascartour?si=VZM6apbjNptx57aV" class="text-danger fs-5" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="custom-tooltip" title="YouTube" target="_blank">
+                        <i class="fab fa-youtube"></i>
+                    </a>
                 </div>
             </div>
         </div>

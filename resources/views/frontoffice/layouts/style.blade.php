@@ -14,7 +14,7 @@
       margin: 0;
       flex-direction: column;
     }
-    
+
     /* Par défaut, le header est transparent */
     .bg-header {
         background-color: white;

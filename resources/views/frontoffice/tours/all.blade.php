@@ -1,82 +1,83 @@
 @extends('frontoffice.app')
 
 @push('style')
-<style>
-    .bg-header {
-        background-color: #fff;
-    }
-
-    .divider {
-        width: 60px;
-        height: 4px;
-        background-color: #ffc107;
-        border-radius: 2px;
-    }
-
-    .nav-link:hover {
-        color: #ffc107 !important;
-    }
-
-    #scrollToTopBtn {
-        position: fixed;
-        bottom: 30px;
-        right: 20px;
-        display: none;
-        z-index: 9999;
-        width: 45px;
-        height: 45px;
-        font-size: 18px;
-        justify-content: center;
-        align-items: center;
-    }
-
-    #scrollToTopBtn:hover {
-        background-color: #c82333;
-    }
-
-    .tour-img {
-        transition: 0.4s ease-in-out;
-    }
-
-    .tour-card:hover .tour-img {
-        filter: blur(2px);
-    }
-
-    .tour-card {
-        position: relative;
-        z-index: 2;
-    }
-
-    .section-overlay {
-        position: absolute;
-        top: 0;
-        left: 0;
-        height: 100%;
-        width: 100%;
-        background-color: rgba(0, 0, 0, 0.5);
-        z-index: 1;
-    }
-
-    #tours {
-        margin-top: 60px !important;
-        background: url('{{ asset(config('public_path.public_path').'images/cameleon.jpg') }}') no-repeat center center / cover;
-        position: relative;
-        z-index: 0;
-        min-height:100vh;
-    }
-
-    @media (max-width: 991.98px) {
-        .nav-link:hover {
-            color: #ffffff !important;
+    <style>
+        .bg-header {
+            background-color: #fff;
         }
-    }
-</style>
+
+        .divider {
+            width: 60px;
+            height: 4px;
+            background-color: #ffc107;
+            border-radius: 2px;
+        }
+
+        .nav-link:hover {
+            color: #ffc107 !important;
+        }
+
+        #scrollToTopBtn {
+            position: fixed;
+            bottom: 30px;
+            right: 20px;
+            display: none;
+            z-index: 9999;
+            width: 45px;
+            height: 45px;
+            font-size: 18px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #scrollToTopBtn:hover {
+            background-color: #c82333;
+        }
+
+        .tour-img {
+            transition: 0.4s ease-in-out;
+        }
+
+        .tour-card:hover .tour-img {
+            filter: blur(2px);
+        }
+
+        .tour-card {
+            position: relative;
+            z-index: 2;
+        }
+
+        .section-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1;
+        }
+
+        #tours {
+            margin-top: 60px !important;
+            background: url('{{ asset(config('public_path.public_path').'images/cameleon.jpg') }}') no-repeat center center / cover;
+            position: relative;
+            z-index: 0;
+            min-height:100vh;
+        }
+
+        @media (max-width: 991.98px) {
+            .nav-link:hover {
+                color: #ffffff !important;
+            }
+        }
+    </style>
 @endpush
 
 @section('content')
     @section('title', 'Accueil - World of Madagascar Tour')
     @section('meta_description', 'Explore Madagascar with private tours, local guides, and cultural adventures.')
     @section('meta_keywords', 'Madagascar, Tours, Private guide, Adventure, Culture')
+    @include('frontoffice.tours.modal')
     @include('backoffice.reservations.create')
     <section id="tours" class="py-5 text-white position-relative">
         <div class="section-overlay"></div>
@@ -118,14 +119,14 @@
                                         @if($isLong)
                                             <span id="moreText{{ $tour->id }}" class="collapse">{{ substr($tour->description, 120) }}</span>
                                             <a class="text-primary toggle-readmore"
-                                            data-bs-toggle="collapse"
-                                            href="#moreText{{ $tour->id }}"
-                                            role="button"
-                                            aria-expanded="false"
-                                            aria-controls="moreText{{ $tour->id }}"
-                                            data-tour-id="{{ $tour->id }}">
-                                             {{ __('default.read_more') }}
-                                         </a>
+                                                href="javascript:void(0);"
+                                                role="button"
+                                                data-bs-toggle="modal"
+                                                data-bs-target="#tourDetailModal"
+                                                data-tour-title="{{ $tour->title }}"
+                                                data-tour-description="{{ $tour->description }}">
+                                                {{ __('default.read_more') }}
+                                            </a>
                                         @endif
                                     </p>
                                     <p class="text-danger text-center">{{ __('default.from') }}</p>
@@ -151,4 +152,47 @@
 @push('script')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var tourDetailModal = document.getElementById('tourDetailModal');
+
+            tourDetailModal.addEventListener('show.bs.modal', function (event) {
+                var button = event.relatedTarget; // Le bouton qui a déclenché le modal
+                var title = button.getAttribute('data-tour-title');
+                var description = button.getAttribute('data-tour-description');
+
+                var modalTitle = tourDetailModal.querySelector('.modal-title');
+                var modalBody = tourDetailModal.querySelector('#tourDetailDescription');
+
+                modalTitle.textContent = title;
+                modalBody.innerHTML = description.replace(/\n/g, '<br>'); // Respecte les retours à la ligne
+            });
+        });
+    </script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var tourDetailModal = document.getElementById('tourDetailModal');
+        var modalDialog = document.getElementById('tourDetailModalDialog');
+
+        tourDetailModal.addEventListener('show.bs.modal', function () {
+            if (window.innerWidth >= 768) {
+                modalDialog.classList.add('modal-dialog-centered');
+            } else {
+                modalDialog.classList.remove('modal-dialog-centered');
+            }
+        });
+
+        // Optionnel: Si tu veux aussi gérer le resize pendant que le modal est ouvert
+        window.addEventListener('resize', function() {
+            if (tourDetailModal.classList.contains('show')) {
+                if (window.innerWidth >= 768) {
+                    modalDialog.classList.add('modal-dialog-centered');
+                } else {
+                    modalDialog.classList.remove('modal-dialog-centered');
+                }
+            }
+        });
+    });
+</script>
+
 @endpush

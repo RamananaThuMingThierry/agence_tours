@@ -68,6 +68,11 @@
             background-color: #c82333;
         }
 
+        .custom-tooltip {
+            --bs-tooltip-bg: #ffc107;
+            --bs-tooltip-color: black;
+            font-weight: bold;
+        }
     </style>
 @endpush
 
@@ -86,3 +91,33 @@
     @include('frontoffice.contacts.index')
     @include('frontoffice.layouts.footer')
 @endsection
+
+@push('script')
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var tourDetailModal = document.getElementById('tourDetailModal');
+
+            tourDetailModal.addEventListener('show.bs.modal', function (event) {
+                var button = event.relatedTarget; // Le bouton qui a déclenché le modal
+                var title = button.getAttribute('data-tour-title');
+                var description = button.getAttribute('data-tour-description');
+
+                var modalTitle = tourDetailModal.querySelector('.modal-title');
+                var modalBody = tourDetailModal.querySelector('#tourDetailDescription');
+
+                modalTitle.textContent = title;
+                modalBody.innerHTML = description.replace(/\n/g, '<br>'); // Respecte les retours à la ligne
+            });
+        });
+    </script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl);
+        });
+    });
+    </script>
+
+
+@endpush
