@@ -67,7 +67,7 @@
                             <div class="col-12">
                                 <label for="name" class="form-label fw-bold">{{ __('testimonial.name') }}</label>
                                 <input type="text" class="form-control" id="name" name="name">
-                                <div class="invalid-feedback" id="error-name"></div>
+                                <span class="text-danger error-message" id="ErrorName"></span>
                             </div>
                         </div>
 
@@ -87,14 +87,14 @@
                             <div class="col-12">
                                 <label for="message" class="form-label fw-bold">{{ __('testimonial.message') }}</label>
                                 <textarea class="form-control" id="message" name="message" rows="4"></textarea>
-                                <div class="invalid-feedback" id="error-message"></div>
+                                <span class="text-danger error-message" id="ErrorMessage"></span>
                             </div>
                         </div>
 
                         <div class="mb-3">
                             <label for="image" class="form-label fw-bold">{{ __('testimonial.image') }}</label>
                             <input type="file" class="form-control" id="image" name="image">
-                            <div class="invalid-feedback" id="error-image"></div>
+                            <span class="text-danger error-message" id="ErrorImage"></span>
                         </div>
 
                         <div class="d-flex justify-content-end">
@@ -119,7 +119,7 @@
 
                 let formData = new FormData(this);
                 $('#testimonialForm input, #testimonialForm textarea, #testimonialForm select').removeClass('is-invalid');
-                $('#testimonialForm .invalid-feedback').text('');
+                $('.error-message').text(''); // Nettoie tous les messages d'erreurs avant envoi
 
                 // Spinner ON
                 const $btn = $('#btn-save-testimonial');
@@ -140,10 +140,14 @@
                         toastr.success("{{ __('testimonial.added') }}");
                     },
                     error: function (xhr) {
-                        const errors = xhr.responseJSON.errors;
-                        for (let key in errors) {
-                            $(`#${key}`).addClass('is-invalid');
-                            $(`#error-${key}`).text(errors[key][0]);
+                        if (xhr.responseJSON && xhr.responseJSON.errors) {
+                            const errors = xhr.responseJSON.errors;
+                            for (let key in errors) {
+                                // Mettre la classe is-invalid pour surligner l'input
+                                $(`#${key}`).addClass('is-invalid');
+                                // Remplir le bon span avec le message d'erreur
+                                $(`#Error${capitalizeFirstLetter(key)}`).text(errors[key][0]);
+                            }
                         }
                     },
                     complete: function () {
@@ -153,6 +157,10 @@
                     }
                 });
             });
+
+            function capitalizeFirstLetter(string) {
+                return string.charAt(0).toUpperCase() + string.slice(1);
+            }
         });
     </script>
 @endpush

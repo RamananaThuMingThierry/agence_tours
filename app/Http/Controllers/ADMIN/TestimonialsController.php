@@ -39,7 +39,9 @@ class TestimonialsController extends Controller
 
                 return DataTables::of($testimonials)
                     ->addColumn('image', function ($row) {
-                        $src = asset(config('public_path.public_path').'images/testimonials/'.$row->image);
+                        $src = $row->image
+                            ? asset(config('public_path.public_path').'images/testimonials/'.$row->image)
+                            : asset(config('public_path.public_path').'images/avatars/default.png');
                         return '<img src="' . $src . '" data-src="'.$src.'" class="rounded-2 testimonial-image" width="30" height="30" style="cursor: pointer;" alt="Image">';
                     })
                     ->addColumn('action', function ($row) {
@@ -92,24 +94,24 @@ class TestimonialsController extends Controller
     {
         try {
             $data = $request->validated();
-    
+
             // Traitement de l'image si fournie
             if ($request->hasFile('image')) {
                 $image      = $request->file('image');
                 $imageName  = Str::slug($data['name']) . '-' . time() . '.' . $image->getClientOriginalExtension();
                 $imagePath  = public_path('images/testimonials');
-    
+
                 // Créer le dossier s'il n'existe pas
                 if (!file_exists($imagePath)) {
                     mkdir($imagePath, 0755, true);
                 }
-    
+
                 $image->move($imagePath, $imageName);
                 $data['image'] = $imageName;
             }
-    
+
             $this->testimonialService->createTestimonial($data);
-    
+
             return response()->json([
                 'status'  => true,
                 'message' => __('testimonial.added'),
@@ -132,7 +134,7 @@ class TestimonialsController extends Controller
             $id = Crypt::decryptString($encrypted_id);
 
             $testimonial = $this->testimonialService->getTestimonialById($id);
-        
+
             return response()->json([
                 'status' => true,
                 'data' => [
@@ -164,16 +166,16 @@ class TestimonialsController extends Controller
         $request->validate([
             'status' => 'required|in:publish,archived'
         ]);
-    
+
         try {
             $id = Crypt::decryptString($encrypted_id);
 
             $testimonial = $this->testimonialService->getTestimonialById($id);
 
             $testimonial->status = $request->status;
-            
+
             $testimonial->save();
-        
+
             return response()->json([
                 'status' => true,
                 'message' => __('testimonial.updated')
@@ -186,7 +188,7 @@ class TestimonialsController extends Controller
             ], 404);
         }
     }
-    
+
     /**
      * Remove the specified resource from storage.
      */
@@ -201,9 +203,9 @@ class TestimonialsController extends Controller
             if ($testimonial->image && file_exists(public_path('images/testimonials/' . $testimonial->image))) {
                 unlink(public_path('images/testimonials/' . $testimonial->image));
             }
-        
+
             $testimonial->delete();
-        
+
             return response()->json([
                 'status' => true,
                 'message' => __('testimonial.deleted')

@@ -14,7 +14,7 @@
                 <div class="col-md-4">
                     <div class="card h-100 border-0 elevation-0 rounded-à p-3">
                         <div class="d-flex align-items-center mb-3">
-                            <img src="{{ $testimonial->image ? asset(config('public_path.public_path').'images/testimonials/' . $testimonial->image) : asset('images/empty.png') }}"
+                            <img src="{{ $testimonial->image ? asset(config('public_path.public_path').'images/testimonials/' . $testimonial->image) : asset('images/avatars/default.png') }}"
                                  class="rounded-circle me-3"
                                  width="60"
                                  height="60"
