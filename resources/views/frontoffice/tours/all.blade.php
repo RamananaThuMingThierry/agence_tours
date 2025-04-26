@@ -130,7 +130,7 @@
                                         @endif
                                     </p>
                                     <p class="text-danger text-center">{{ __('default.from') }}</p>
-                                    <p class="text-center"><span class="text-dark fw-bold">{{ $tour->price }}</span>&nbsp;<span class="text-secondary">USD</span></p>
+                                    <p class="text-center"><span class="text-dark fw-bold">{{ number_format($tour->price, 0, '.', ' ') }}</span>&nbsp;<span class="text-secondary">USD</span></p>
                                 </div>
                                 <a href="javascript:void(0);"
                                     class="btn btn-danger text-white mt-3 w-100"

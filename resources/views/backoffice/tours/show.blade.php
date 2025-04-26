@@ -111,7 +111,7 @@
                             {{ ucfirst($tour->status) }}
                         </span>
                     </p>
-                    <p class="mb-1"><strong>{{ __('tour.price') }} :</strong> {{ $tour->price }} USD</p>
+                    <p class="mb-4"><strong>{{ __('tour.price') }} :</strong> {{ number_format($tour->price, 0, '.', ' ') }} USD</p>
                 </div>
             </div>
         </div>

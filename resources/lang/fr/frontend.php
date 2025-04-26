@@ -4,7 +4,7 @@ return [
     'find_us' => 'TROUVEZ-NOUS',
     'choose_tour' => 'CHOISISSEZ VOTRE CIRCUIT',
     'services' => 'SERVICES',
-    'slide_title' => 'MONDE DES TOURS À MADAGASCAR',
+    'slide_title' => 'LE MONDE DE MADAGASCAR',
     'slide_subtitle' => 'Nous vous guiderons vers des lieux incroyables',
     'small_groupes' => 'PETITS GROUPES',
     'activity_tours' => 'TOURS D’ACTIVITÉ',

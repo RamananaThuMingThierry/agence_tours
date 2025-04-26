@@ -28,6 +28,17 @@
                                         </div>
                                     @endforeach
                                 </div>
+
+                                <!-- BOUTONS CONTROLES -->
+                                <button class="carousel-control-prev" type="button" data-bs-target="#carouselTour{{ $tour->id }}" data-bs-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Previous</span>
+                                </button>
+
+                                <button class="carousel-control-next" type="button" data-bs-target="#carouselTour{{ $tour->id }}" data-bs-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Next</span>
+                                </button>
                             </div>
                         </div>
 
@@ -51,7 +62,7 @@
                                     @endif
                                 </p>
                                 <p class="text-danger text-center">{{ __('default.from') }}</p>
-                                <p class="text-center"><span class="text-dark fw-bold">{{ $tour->price }}</span>&nbsp;<span class="text-secondary">USD</span></p>
+                                <p class="text-center"><span class="text-dark fw-bold">{{ number_format($tour->price, 0, '.', ' ') }}</span>&nbsp;<span class="text-secondary">USD</span></p>
                             </div>
 
                             <a href="javascript:void(0);"
