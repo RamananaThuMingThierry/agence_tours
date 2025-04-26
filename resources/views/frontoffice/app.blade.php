@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <title>@yield('titre', __('title.default'))</title>
+    <title>World of Madagascar Tour</title>
     <link rel="icon" href="{{ asset(config('public_path.public_path').'utiles/icon.png') }}" type="image/x-icon">
     <link rel="shortcut icon" href="{{ asset(config('public_path.public_path').'utiles/icon.png') }}" type="image/x-icon">
 

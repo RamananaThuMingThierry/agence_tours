@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: {{ url('sitemap.xml') }}
+Sitemap: https://world-of-madagascar-tour.com/sitemap.xml
