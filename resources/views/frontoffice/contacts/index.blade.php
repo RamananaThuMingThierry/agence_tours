@@ -8,7 +8,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8 text-center text-white">
                 <p class="mb-4">{{ __('frontend.contact_text') }}</p>
-                <a href="mailto:worldofmadagascartour@gmail.com" class="btn btn-danger btn-lg shadow-sm">
+                <a href="mailto:contact@world-of-madagascar-tour.com" class="btn btn-danger btn-lg shadow-sm">
                     <i class="fas fa-envelope"></i>&nbsp;{{ __('frontend.email_us') }}
                 </a>
             </div>

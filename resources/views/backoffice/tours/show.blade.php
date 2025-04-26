@@ -58,7 +58,7 @@
                                 data-bs-target="#carouselTour"
                                 data-bs-slide-to="{{ $key }}"
                                 style="cursor: pointer;">
-                                <img src="{{ asset('images/tours/' . $image->image) }}"
+                                <img src="{{ asset(config('public_path.public_path').'images/tours/' . $image->image) }}"
                                      class="w-100 rounded shadow-sm"
                                      style="height: 60px; object-fit: cover;">
                                 <span class="small d-block mt-1 text-center">#{{ $key + 1 }}</span>
@@ -73,7 +73,7 @@
                         <div class="carousel-inner">
                             @foreach($tour->images as $key => $image)
                                 <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
-                                    <img src="{{ asset('images/tours/' . $image->image) }}"
+                                    <img src="{{ asset(config('public_path.public_path').'images/tours/' . $image->image) }}"
                                          class="carousel-image"
                                          style="height: 500px;"
                                          alt="Image tour">

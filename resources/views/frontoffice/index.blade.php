@@ -27,7 +27,7 @@
         }
 
         .gallery-item {
-            height: 300px;
+            height: 400px;
         }
 
         .gallery-img {

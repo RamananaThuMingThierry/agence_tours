@@ -11,7 +11,7 @@
 
                   <p>
                     <i class="fas fa-envelope me-2"></i>
-                    <a href="mailto:worldofmadagascartour@gmail.com" class="text-decoration-none text-light">worldofmadagascartour@gmail.com</a>
+                    <a href="mailto:contact@world-of-madagascar-tour.com" class="text-decoration-none text-light">contact@world-of-madagascar-tour.com</a>
                   </p>
 
             </div>
