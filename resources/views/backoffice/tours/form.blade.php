@@ -35,8 +35,8 @@
                         <span class="text-danger error-message" id="DescriptionError"></span>
                     </div>
 
-                    @include('backoffice.widget.input2',[
-                        'label' => __('tour.price'),
+                    @include('backoffice.widget.input2', [
+                        'label' => __('tour.price') . ' USD',
                         'type'  => 'number',
                         'name'  => 'price',
                         'value' => $tour->price,
