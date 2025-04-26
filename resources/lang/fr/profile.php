@@ -8,4 +8,6 @@ return [
     'address' => 'Adresse',
     'avatar' => 'Avatar',
     'save' => 'Enregistrer',
+    'email_changed' => "Votre adresse email a été modifiée. Veuillez vous reconnecter.",
+    'profile_updated' => 'Profil mis à jour.'
 ];

@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'invalid_credentials' => 'Email ou mot de passe incorrect',
     'login' => 'Connexion',
     'login_subtitle' => 'Connectez-vous à votre compte',
     'email' => 'Adresse e-mail',

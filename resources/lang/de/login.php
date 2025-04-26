@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'invalid_credentials' => 'E-Mail oder Passwort ist falsch',
     'login' => 'Anmeldung',
     'login_subtitle' => 'Melden Sie sich bei Ihrem Konto an',
     'email' => 'E-Mail-Adresse',

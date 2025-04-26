@@ -282,8 +282,10 @@
                   text: '{{ __("logout.confirm_text") }}',
                   icon: 'warning',
                   showCancelButton: true,
-                  confirmButtonColor: '#3085d6',
-                  cancelButtonColor: '#d33',
+                  customClass: {
+                    confirmButton: 'btn btn-sm btn-dark',
+                    cancelButton: 'btn btn-sm btn-danger ms-2'
+                 },
                   confirmButtonText: '{{ __("logout.confirm_yes") }}',
                   cancelButtonText: '{{ __("logout.confirm_no") }}'
               }).then((result) => {

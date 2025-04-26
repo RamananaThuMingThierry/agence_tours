@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'register_success' => 'Registration successful. A verification email has been sent.',
     'register' => 'Register',
     'success' => 'Success!',
     'pseudo' => 'Username',
