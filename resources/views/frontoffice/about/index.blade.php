@@ -11,7 +11,7 @@
                     <div class="card-body">
                         <div class="row align-items-center">
                             <div class="col-md-5 mb-3 mb-md-0 text-center">
-                                <img src="{{ asset(config('public_path.public_path').'images/person.jpg') }}"
+                                <img src="{{ asset(config('public_path.public_path').'images/person.jpeg') }}"
                                      alt="Ricki Cardo"
                                      class="img-fluid rounded-3 shadow" style="max-height: 500px; object-fit: cover;">
                             </div>
