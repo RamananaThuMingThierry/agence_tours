@@ -239,6 +239,31 @@
         });
     });
 </script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var tourDetailModal = document.getElementById('tourDetailModal');
+        var modalDialog = document.getElementById('tourDetailModalDialog');
+
+        tourDetailModal.addEventListener('show.bs.modal', function () {
+            if (window.innerWidth >= 768) {
+                modalDialog.classList.add('modal-dialog-centered');
+            } else {
+                modalDialog.classList.remove('modal-dialog-centered');
+            }
+        });
+
+        // Optionnel: Si tu veux aussi gérer le resize pendant que le modal est ouvert
+        window.addEventListener('resize', function() {
+            if (tourDetailModal.classList.contains('show')) {
+                if (window.innerWidth >= 768) {
+                    modalDialog.classList.add('modal-dialog-centered');
+                } else {
+                    modalDialog.classList.remove('modal-dialog-centered');
+                }
+            }
+        });
+    });
+</script>
 
 
 
