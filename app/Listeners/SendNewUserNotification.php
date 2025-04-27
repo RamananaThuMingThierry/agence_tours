@@ -13,7 +13,7 @@ class SendNewUserNotification
 {
     public function handle(UserRegisteredEvent $event)
     {
-        Mail::to('ramananathumingthierry@gmail.com')->send(new WelcomeEmail($event->user));
-        Mail::to('ramananathumingthierry@gmail.com')->send(new NewUserNotification($event->user));
+        Mail::to('contact@world-of-madagascar-tour.com')->send(new WelcomeEmail($event->user));
+        Mail::to('contact@world-of-madagascar-tour.com')->send(new NewUserNotification($event->user));
     }
 }

@@ -77,9 +77,9 @@
 @endpush
 
 @section('content')
-    @section('title', 'Accueil - World of Madagascar Tour')
-    @section('meta_description', 'Explore Madagascar with private tours, local guides, and cultural adventures.')
-    @section('meta_keywords', 'Madagascar, Tours, Private guide, Adventure, Culture')
+    @section('title', 'World of Madagascar Tour - Circuits Touristiques à Madagascar')
+    @section('meta_description', 'Explorez Madagascar grâce à World of Madagascar Tour. Circuits sur mesure, immersion culturelle, aventure authentique.')
+    @section('meta_keywords', 'voyage Madagascar, circuit Madagascar, aventure, guide touristique')
 
     @include('backoffice.reservations.create')
     @include('frontoffice.slides.index')

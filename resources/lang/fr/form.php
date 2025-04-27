@@ -40,4 +40,5 @@ return [
     'delete_image_success' => 'Image supprimée avec succès',
     'delete_image_error' => 'Impossible de supprimer la dernière image de cet élément',
     'invalid_image_id' => 'ID d’image invalide ou corrompue.',
+    'unauthorized' => 'Vous n\'êtes pas autorisé à accéder à cette page.',
 ];

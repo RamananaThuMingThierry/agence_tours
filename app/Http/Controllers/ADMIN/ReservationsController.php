@@ -66,7 +66,6 @@ class ReservationsController extends Controller
             return view('backoffice.reservations.index');
 
         }catch (Exception $e) {
-            dd($e->getMessage());
             return response()->json([
                 'status' => false,
                 'message' => 'An error occurred while fetching the data.',
@@ -82,13 +81,13 @@ class ReservationsController extends Controller
     {
         $data = $request->validated();
         $data['status'] = 'pending';
-    
+
         try {
             $reservation = $this->reservationService->createReservation($data);
-    
+
             // ✉️ Envoi automatique à l'admin
             event(new ReservationCreated($reservation));
-            
+
             // 📲 Redirection vers WhatsApp
             $whatsappNumber = '261380913703'; // Numéro de l'admin
             $clientMessage = "Bonjour, je viens de réserver un tour via le site. Voici mes informations:\n"
@@ -96,14 +95,14 @@ class ReservationsController extends Controller
                 . "Email: {$data['email']}\n"
                 . "Téléphone: {$data['phone']}\n"
                 . "Message: {$data['message']}";
-    
+
             $whatsappUrl = "https://wa.me/{$whatsappNumber}?text=" . urlencode($clientMessage);
-    
+
             return response()->json([
                 'status' => true,
                 'redirect_url' => $whatsappUrl,
             ]);
-    
+
         } catch (Exception $e) {
             return response()->json([
                 'status' => false,

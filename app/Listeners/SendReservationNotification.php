@@ -10,7 +10,7 @@ class SendReservationNotification
 {
     public function handle(ReservationCreated $event)
     {
-        $adminEmail = 'ramananathumingthierry@gmail.com';
+        $adminEmail = 'contact@world-of-madagascar-tour.com';
 
         Mail::to($adminEmail)->send(new ReservationAdminMail($event->reservation));
     }

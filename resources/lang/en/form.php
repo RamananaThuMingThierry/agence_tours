@@ -40,4 +40,5 @@ return [
     'delete_image_success' => 'Image deleted successfully',
     'delete_image_error' => 'Unable to delete the last image of this item',
     'invalid_image_id' => 'Invalid or corrupted image ID.',
+    'unauthorized' => 'You are not authorized to access this page.',
 ];
