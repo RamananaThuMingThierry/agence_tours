@@ -66,7 +66,7 @@
         bottom: 30px;
         right: 20px;
         display: none;
-        z-index: 9999;
+        z-index: 1000;
         width: 45px;
         height: 45px;
         font-size: 18px;
