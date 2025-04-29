@@ -27,22 +27,17 @@
             <div class="col-md-4 mb-4 text-center">
                 <h5 class="text-uppercase fw-bold text-danger">{{ __('frontend.contect') }}</h5>
                 <div class="d-flex justify-content-center gap-3">
-                    <a href="https://www.facebook.com/profile.php?id=100084179285857" class="text-primary fs-5" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="custom-tooltip" title="Facebook" target="_blank">
-                        <i class="fab fa-facebook-f"></i>
+                    <a href="https://www.facebook.com/profile.php?id=100084179285857" class="fs-5" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="custom-tooltip" title="Facebook" target="_blank">
+                        <img src="{{ asset(config('public_path.public_path').'images/footer/facebook.png') }}" alt="Facebook" style="width:30px; height:auto;">
                     </a>
-                    <a href="https://www.instagram.com/world_of_madagascar?igsh=MTRuNXR4bm9sNThkag==" class="text-warning fs-5" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="custom-tooltip" title="Instagram" target="_blank">
-                        <i class="fab fa-instagram"></i>
+                    <a href="https://www.instagram.com/world_of_madagascar?igsh=MTRuNXR4bm9sNThkag==" class="fs-5" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="custom-tooltip" title="Instagram" target="_blank">
+                        <img src="{{ asset(config('public_path.public_path').'images/footer/instagram.png') }}" alt="Instagram" style="width:30px; height:auto;">
                     </a>
-                    {{--
-                    <a href="#" class="text-light fs-5" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="custom-tooltip" title="Twitter" target="_blank">
-                        <i class="fab fa-twitter"></i>
+                    <a href="https://youtube.com/@worldofmadagascartour?si=VZM6apbjNptx57aV" class="fs-5" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="custom-tooltip" title="YouTube" target="_blank">
+                        <img src="{{ asset(config('public_path.public_path').'images/footer/youtube.png') }}" alt="YouTube" style="width:30px; height:auto;">
                     </a>
-                    <a href="#" class="text-info fs-5" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="custom-tooltip" title="LinkedIn" target="_blank">
-                        <i class="fab fa-linkedin-in"></i>
-                    </a>
-                    --}}
-                    <a href="https://youtube.com/@worldofmadagascartour?si=VZM6apbjNptx57aV" class="text-danger fs-5" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="custom-tooltip" title="YouTube" target="_blank">
-                        <i class="fab fa-youtube"></i>
+                    <a href="https://wa.me/261380913703" class="fs-5" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="custom-tooltip" title="WhatsApp" target="_blank">
+                        <img src="{{ asset(config('public_path.public_path').'images/footer/whatsapp.png') }}" alt="WhatsApp" style="width:30px; height:auto;">
                     </a>
                 </div>
             </div>
