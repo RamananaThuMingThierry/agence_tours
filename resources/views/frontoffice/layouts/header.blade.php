@@ -27,9 +27,9 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ $isHome ? '#about' : route('frontoffice') . '#about' }}"
-                               class="nav-link {{ request()->is('*about*') ? 'active fw-bold text-white' : 'text-dark' }}">
-                                {{ __('nav.about') }}
+                            <a href="{{ route('tours') }}"
+                               class="nav-link {{ request()->routeIs('tours') ? 'active fw-bold text-white' : 'text-dark' }}">
+                                {{ __('nav.tours') }}
                             </a>
                         </li>
                         <li class="nav-item">
@@ -39,9 +39,9 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('tours') }}"
-                               class="nav-link {{ request()->routeIs('tours') ? 'active fw-bold text-white' : 'text-dark' }}">
-                                {{ __('nav.tours') }}
+                            <a href="{{ $isHome ? '#about' : route('frontoffice') . '#about' }}"
+                               class="nav-link {{ request()->is('*about*') ? 'active fw-bold text-white' : 'text-dark' }}">
+                                {{ __('nav.about') }}
                             </a>
                         </li>
                         <li class="nav-item">
@@ -52,7 +52,6 @@
                         </li>
                     </ul>
                 </div>
-
 
                 <!-- Language Selector -->
                 <div class="dropdown lang-dropdown-mobile d-lg-block">

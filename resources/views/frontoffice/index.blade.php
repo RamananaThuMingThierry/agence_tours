@@ -86,7 +86,6 @@
     @include('frontoffice.services.index')
     @include('frontoffice.galleries.index')
     @include('frontoffice.about.index')
-    @include('frontoffice.tours.index')
     @include('frontoffice.testimonials.index')
     @include('frontoffice.contacts.index')
     @include('frontoffice.layouts.footer')

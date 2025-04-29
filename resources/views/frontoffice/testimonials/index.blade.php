@@ -1,3 +1,4 @@
+@if(!empty($testimonials) && $testimonials->isNotEmpty())
 <section id="testimonials" class="py-5 bg-light">
     <div class="container">
         <div class="text-center mb-5">
@@ -50,3 +51,4 @@
         </div>
     </div>
 </section>
+@endif
