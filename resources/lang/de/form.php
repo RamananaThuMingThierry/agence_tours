@@ -1,6 +1,9 @@
 <?php
 
 return [
+    'not_found' => 'Kein Testimonial gefunden.',
+    'load_failed' => 'Laden fehlgeschlagen.',
+    'soumettre' => 'Einreichen',
     'cancel' => 'Abbrechen',
     'pseudo' => 'Benutzername',
     'avatar' => 'Avatar',

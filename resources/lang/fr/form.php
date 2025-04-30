@@ -1,6 +1,9 @@
 <?php
 
 return [
+    'not_found' => 'Aucun témoignage trouvé.',
+    'soumettre' => 'Soumettre',
+    'load_failed' => 'Échec du chargement.',
     'pseudo' => 'Pseudo',
     'avatar' => 'Avatar',
     'contact' => 'Contact',

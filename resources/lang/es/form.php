@@ -1,6 +1,9 @@
 <?php
 
 return [
+    'not_found' => 'No se encontró ningún testimonio.',
+    'load_failed' => 'Error de carga.',
+    'sousmettre' => 'Enviar',
     'cancel' => 'Cancelar',
     'pseudo' => 'Seudónimo',
     'avatar' => 'Avatar',

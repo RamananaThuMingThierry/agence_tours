@@ -23,6 +23,7 @@ use App\Http\Controllers\AUTH\ForgetPasswordController;
 
 Route::get('/', [FrontofficeController::class, 'index'])->name('frontoffice');
 Route::get('/testimonials', [FrontofficeController::class, 'testimonials'])->name('testimonials');
+Route::post('/testimonials', [TestimonialsController::class, 'store'])->name('testimonials.store');
 Route::get('/tours', [FrontofficeController::class, 'tours'])->name('tours');
 Route::post('/frontoffice/reservation', [ReservationsController::class, 'store'])->name('reservation');
 
@@ -58,7 +59,7 @@ Route::prefix('backoffice')->name('admin.')->middleware(['auth','check.status'])
     Route::resource('slides', SlidesController::class);
     Route::resource('reservations', ReservationsController::class);
     Route::resource('tour-images', TourImagesController::class);
-    Route::resource('testimonials', TestimonialsController::class);
+    Route::resource('testimonials', TestimonialsController::class)->except(['store']);
     Route::resource('users', UsersController::class);
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
     Route::put('/profile/update', [ProfileController::class, 'update'])->name('profile.update');

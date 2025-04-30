@@ -3,13 +3,13 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content rounded-0">
             <div class="modal-header">
-                <h5 class="modal-title" id="showTestimonialLabel">{{ __('testimonial.details') }}</h5>
+                <h5 class="modal-title" id="showTestimonialLabel"><i class="fas fa-info-circle"></i>&nbsp;{{ __('testimonial.details') }}</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
             </div>
             <div class="modal-body">
                 <div class="row g-3">
                     <div class="col-md-4 text-center">
-                        <img id="testimonial-show-image" src="" alt="Image" class="img-fluid rounded shadow">
+                        <img id="testimonial-show-image" src="" alt="Image" class="img-fluid rounded">
                     </div>
                     <div class="col-md-8">
                         <p><span class="fw-bold">{{ __('testimonial.name') }} :</span> <span id="testimonial-show-name"></span></p>

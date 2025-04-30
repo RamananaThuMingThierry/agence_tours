@@ -100,7 +100,7 @@
                         <div class="d-flex justify-content-end">
                             <button type="submit" class="btn btn-sm btn-dark" id="btn-save-testimonial">
                                 <span class="spinner-border spinner-border-sm d-none me-1" role="status" aria-hidden="true"></span>
-                                <span class="btn-text"><i class="fas fa-save"></i>&nbsp;{{ __('form.save') }}</span>
+                                <span class="btn-text"><i class="fas fa-save"></i>&nbsp;{{ __('form.soumettre') }}</span>
                             </button>
                         </div>
             </form>
@@ -128,7 +128,7 @@
                 $btn.find('.btn-text').html("{{ __('form.in_progress') }}");
 
                 $.ajax({
-                    url: "{{ route('admin.testimonials.store') }}",
+                    url: "{{ route('testimonials.store') }}",
                     type: "POST",
                     data: formData,
                     contentType: false,
@@ -153,7 +153,7 @@
                     complete: function () {
                         $btn.prop('disabled', false);
                         $btn.find('.spinner-border').addClass('d-none');
-                        $btn.find('.btn-text').html('<i class="fas fa-save"></i>&nbsp;{{ __("form.save") }}');
+                        $btn.find('.btn-text').html('<i class="fas fa-save"></i>&nbsp;{{ __("form.soumettre") }}');
                     }
                 });
             });

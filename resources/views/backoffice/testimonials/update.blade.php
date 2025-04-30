@@ -6,7 +6,7 @@
         <input type="hidden" id="edit-testimonial-id">
         <div class="modal-content rounded-1">
           <div class="modal-header">
-            <h5 class="modal-title" id="editTestimonialLabel">{{ __('testimonial.update_status') }}</h5>
+            <h5 class="modal-title" id="editTestimonialLabel"><i class="fas fa-edit"></i>&nbsp;{{ __('testimonial.update_status') }}</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
           </div>
           <div class="modal-body">
@@ -27,4 +27,3 @@
       </form>
     </div>
   </div>
-  

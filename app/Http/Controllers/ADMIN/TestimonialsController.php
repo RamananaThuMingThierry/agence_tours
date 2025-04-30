@@ -144,8 +144,8 @@ class TestimonialsController extends Controller
                     'rating'    => $testimonial->rating,
                     'status'    => $testimonial->status,
                     'image'     => $testimonial->image
-                        ? asset('images/testimonials/' . $testimonial->image)
-                        : asset('images/empty.png'),
+                        ? asset(config('public_path.public_path').'images/testimonials/' . $testimonial->image)
+                        : asset(config('public_path.public_path').'images/avatars/default.png'),
                     'created_at'=> $testimonial->created_at->format('d/m/Y H:i'),
                 ]
             ]);

@@ -1,6 +1,9 @@
 <?php
 
 return [
+    'not_found' => 'Not found any testimonial.',
+    'load_failed' => 'Loading failed.',
+    'soumettre' => 'Submit',
     'pseudo' => 'Pseudo',
     'avatar' => 'Avatar',
     'contact' => 'Contact',

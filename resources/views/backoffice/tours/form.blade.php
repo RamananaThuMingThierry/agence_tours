@@ -78,7 +78,7 @@
                     <hr>
                     <div class="modal-footer">
                         <a type="button" class="btn btn-sm rounded-0 btn-outline-danger me-1" href="{{ route('admin.tours.index') }}"><i class="fa fa-arrow-left"></i>&nbsp;{{ __('form.cancel') }}</a>
-                        <button type="submit" class="btn btn-sm rounded-0 btn-primary" id="submitBtn">
+                        <button type="submit" class="btn btn-sm rounded-0 btn-dark" id="submitBtn">
                             <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true" id="spinner"></span>
                             <span id="btnText">
                                 @if(isset($tour->encrypted_id))

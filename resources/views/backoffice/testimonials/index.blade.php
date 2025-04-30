@@ -16,10 +16,6 @@
     <div class="row pt-2">
         <div class="col-12 d-flex align-items-center justify-content-between">
             <h2 class="text-primary">@yield('titre')</h2>
-            <button class="btn btn-sm btn-success shadow-sm d-flex align-items-center" data-bs-toggle="modal" data-bs-target="#testimonialModal">
-                <i class="fas fa-plus p-1 text-white-50"></i>
-                <span class="d-none d-sm-inline">&nbsp;{{ __('testimonial.new') }}</span>
-            </button>
         </div>
     </div>
     <div class="row mb-2">
@@ -144,48 +140,6 @@
         // Recharger le tableau lorsque le bouton "Actualiser" est cliqué
         $('#btn-refresh').click(function() {
           table.ajax.reload(null, false); // Reload the data without resetting pagination
-        });
-
-        $('#testimonialForm').on('submit', function(e) {
-            e.preventDefault();
-
-            let formData = new FormData(this);
-            $('#testimonialForm input, #testimonialForm select').removeClass('is-invalid');
-            $('#testimonialForm .invalid-feedback').text('');
-
-            // ➕ Spinner ON
-            let $btn = $('#btn-save-testimonial');
-            $btn.prop('disabled', true);
-            $btn.find('.spinner-border').removeClass('d-none');
-            $btn.find('.btn-text').html('{{ __("form.in_progress") }}');
-
-            $.ajax({
-                url: "{{ route('admin.testimonials.store') }}",
-                type: "POST",
-                data: formData,
-                contentType: false,
-                processData: false,
-                success: function(response) {
-                    $('#testimonialModal').modal('hide');
-                    $('#testimonialForm')[0].reset();
-                    $('#datatables').DataTable().ajax.reload();
-                    toastr.options.positionClass = 'toast-middle-center';
-                    toastr.success("{{ __('testimonial.added') }}");
-                },
-                error: function(xhr) {
-                    let errors = xhr.responseJSON.errors;
-                    for (let key in errors) {
-                        $('#' + key).addClass('is-invalid');
-                        $('#error-' + key).text(errors[key][0]);
-                    }
-                },
-                complete: function() {
-                    // ➖ Spinner OFF
-                    $btn.prop('disabled', false);
-                    $btn.find('.spinner-border').addClass('d-none');
-                    $btn.find('.btn-text').html('<i class="fas fa-save"></i>&nbsp;{{ __("form.save") }}');
-                }
-            });
         });
       });
 

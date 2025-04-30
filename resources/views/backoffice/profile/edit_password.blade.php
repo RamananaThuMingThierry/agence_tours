@@ -1,11 +1,11 @@
 <!-- Modal Changement de mot de passe -->
 <div class="modal fade" id="editPasswordModal" tabindex="-1" aria-labelledby="editPasswordModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-lg modal-dialog-centered rounded-1">
       <form action="{{ route('admin.profile.password.update') }}" method="POST" class="modal-content">
         @csrf
         @method('PUT')
         <div class="modal-header">
-          <h5 class="modal-title" id="editPasswordModalLabel">{{ __('default.change_password') }}</h5>
+          <h5 class="modal-title" id="editPasswordModalLabel"><i class="fas fa-edit"></i>&nbsp;{{ __('default.change_password') }}</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
         </div>
         <div class="modal-body">
@@ -23,9 +23,8 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button type="submit" class="btn btn-sm btn-warning"><i class="fas fa-lock"></i> {{ __('default.update') }}</button>
+          <button type="submit" class="btn btn-sm btn-dark"><i class="fas fa-lock"></i>&nbsp;{{ __('default.update') }}</button>
         </div>
       </form>
     </div>
   </div>
-  
